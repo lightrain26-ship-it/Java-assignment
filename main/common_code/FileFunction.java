@@ -5,7 +5,24 @@ import java.io.FileNotFoundException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class FileFunction { // fliefunction
+public class FileFunction { 
+    
+    static final String ADMIN = "administrator.txt";
+    static final String RECORD = "record.txt";
+    static final String FACILITYOFFICE = "facilitiesOfficer.txt";
+    static final String ATTENDANCEOFFICE = "attendanceOfficer.txt";
+    static final String INSTRUCTOR  = "instructor.txt";
+    static final String STUDENT = "student.txt";
+    static final String SCHEDULE = "schedule.txt";
+    static final String STUDENTRATE = "studentRating.txt";
+    static final String ISSUE = "issue.txt";
+    static final String EQUIPMENT = "equipment.txt";
+    static final String ROOMEQUIPMENT = "room_equipment.txt";
+    static final String PAYMENT = "payment.txt";
+    static final String ATTENDANCE = "attendance.txt";
+    static final String BOOKING = "booking.txt";
+   
+    // fliefunction
     static void getRoleToRun(String role) {
         File[] txtFiles = getAllowedFiles(role);
         if (txtFiles.length == 0){
@@ -30,22 +47,21 @@ public class FileFunction { // fliefunction
         }
         input.close();
     }
-
     // constant var
     static boolean CanRead(String role, String filename){
         switch ((role)) {
             case "Managers": //report part need to fill all in later confirm
-                return filename.equals("administrator.txt") || filename.equals("record.txt");
+                return filename.equals(ADMIN) || filename.equals(RECORD);
             case "Adminstrators":
-                return filename.equals("facilitiesOfficer.txt") || filename.equals("attendanceOfficer.txt") || filename.equals("instructor.txt") || filename.equals("student.txt") || filename.equals("record.txt");
+                return filename.equals(FACILITYOFFICE) || filename.equals(ATTENDANCEOFFICE) || filename.equals(INSTRUCTOR) || filename.equals(STUDENT) || filename.equals(RECORD);
             case "Instructors":
-                return filename.equals("schedule.txt") || filename.equals("studentRating.txt") || filename.equals("issue.txt");
+                return filename.equals(SCHEDULE) || filename.equals(STUDENTRATE) || filename.equals(ISSUE);
             case "Facilities Officers":
-                return filename.equals("equipment.txt") || filename.equals("issue.txt") || filename.equals("room_equipment,txt");
+                return filename.equals(EQUIPMENT) || filename.equals(ISSUE) || filename.equals(ROOMEQUIPMENT);
             case "Attendance Officers":
-                return filename.equals("attendance.txt");
+                return filename.equals(ATTENDANCE);
             case "Students":
-                return filename.equals("payment.txt") || filename.equals("schedule.txt") || filename.equals("booking.txt");
+                return filename.equals(PAYMENT) || filename.equals(SCHEDULE) || filename.equals(BOOKING);
             default:
                 return false;
         }
