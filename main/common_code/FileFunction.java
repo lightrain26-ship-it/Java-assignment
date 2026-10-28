@@ -21,12 +21,14 @@ public class FileFunction {
     static final String PAYMENT = "payment.txt";
     static final String ATTENDANCE = "attendance.txt";
     static final String BOOKING = "booking.txt";
-   
-    // fliefunction
-    static void getRoleToRun(String role) {
+
+    
+    
+    // fliefunction, use File to make Readfunction can use it
+    public static File getRoleToRun(String role) {
         File[] txtFiles = getAllowedFiles(role);
         if (txtFiles.length == 0){
-            return;
+            return null;
         }
         Scanner input = new Scanner(System.in);
 // later need to make this option display in the GUI with better version and make sure it can get input by click( hope so it can works)
@@ -37,22 +39,23 @@ public class FileFunction {
         } catch (InputMismatchException e){
             System.out.println("Invalid input. Please type it again!");
             input.close();
-            return;
+            return null;
         }
         //range check: stops crashes on 0 or a number that's too big
         if(choice < 1 || choice > txtFiles.length){
             System.out.println("Invalid input. Pick the number between 1 to " + txtFiles.length + " .");
             input.close();
-            return;
+            return null;
         }
         input.close();
+        return txtFiles[choice - 1];
     }
     // constant var
     static boolean CanRead(String role, String filename){
         switch ((role)) {
             case "Managers": //report part need to fill all in later confirm
                 return filename.equals(ADMIN) || filename.equals(RECORD);
-            case "Adminstrators":
+            case "Administrators":
                 return filename.equals(FACILITYOFFICE) || filename.equals(ATTENDANCEOFFICE) || filename.equals(INSTRUCTOR) || filename.equals(STUDENT) || filename.equals(RECORD);
             case "Instructors":
                 return filename.equals(SCHEDULE) || filename.equals(STUDENTRATE) || filename.equals(ISSUE);
@@ -92,4 +95,3 @@ public class FileFunction {
 }
 
 }
-
