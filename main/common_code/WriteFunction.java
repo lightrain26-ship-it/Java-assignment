@@ -27,6 +27,8 @@ public class WriteFunction {
     }
     static String getLogFile(String role){
         switch ((role)) {
+            case "Managers":
+                return FileMenu.MANAGERRECORD;
             case "Administrators":
                 return FileMenu.ADMINRECORD;
 
@@ -45,7 +47,7 @@ public class WriteFunction {
 // writes a row to the role’s log
     public static void logChange(String role, String[] row){
         String logName = getLogFile(role);
-        //students, Managers: no log
+        //students: no log
         if (logName == null){
             return;
         }

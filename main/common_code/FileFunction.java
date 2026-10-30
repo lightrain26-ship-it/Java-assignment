@@ -9,6 +9,7 @@ import common_code.FileMenu;
 
 public class FileFunction { 
     
+    
     // fliefunction
     public static File getRoleToRun(String role) {
         File[] txtFiles = getAllowedFiles(role);
@@ -40,8 +41,8 @@ public class FileFunction {
     // constant var
     static boolean CanRead(String role, String filename){
         switch ((role)) {
-            case "Managers": //report part need to fill all in later confirm
-                return filename.equals(FileMenu.ADMIN) || filename.equals(FileMenu.ADMINRECORD)|| filename.equals(FileMenu.INSTRUCTORSRECORD)|| filename.equals(FileMenu.FACILITIESRECORD)|| filename.equals(FileMenu.ATTENDANCESRECORD);
+            case "Managers": 
+                return filename.equals(FileMenu.ADMIN) || filename.equals(FileMenu.ADMINRECORD)|| filename.equals(FileMenu.INSTRUCTORSRECORD)|| filename.equals(FileMenu.FACILITIESRECORD)|| filename.equals(FileMenu.ATTENDANCESRECORD)|| filename.equals(FileMenu.MANAGERRECORD);
             case "Administrators":
                 return filename.equals(FileMenu.FACILITYOFFICE) || filename.equals(FileMenu.ATTENDANCEOFFICE) || filename.equals(FileMenu.INSTRUCTOR) || filename.equals(FileMenu.STUDENT) || filename.equals(FileMenu.ADMINRECORD);
             case "Instructors":
@@ -75,4 +76,3 @@ public class FileFunction {
     } 
 
 }
-
