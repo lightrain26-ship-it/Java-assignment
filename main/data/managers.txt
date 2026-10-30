@@ -1,0 +1,4 @@
+staffID | password | role | name | email | phone | dob | gender | dateJoined
+MAN001 | manager001 | Manager | Alicia | MAN001@mail.sda.edu.my | 0391234567 | 1985-05-20 | Female | 2010-03-15
+MAN002 | manager002 | Manager | Ravi Kumar | MAN002@mail.sda.edu.my | 0123450211 | 1983-08-24 | Male | 2014-01-10
+MAN003 | manager003 | Manager | Farah Aziz | MAN003@mail.sda.edu.my | 0147788221 | 1987-02-17 | Female | 2015-08-17

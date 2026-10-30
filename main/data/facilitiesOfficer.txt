@@ -1,0 +1,4 @@
+staffID | password | role | name | email | phone | dob | gender | dateJoined
+FAC001 | facilities001 | FacilitiesOfficer | Priya | FAC001@mail.sda.edu.my | 0145566778 | 1990-09-30 | Female | 2014-02-10
+FAC003 | facilities003 | FacilitiesOfficer | Lee Hong | FAC003@mail.sda.edu.my | 0128877665 | 1991-05-21 | Male | 2019-07-15
+FAC004 | facilities004 | FacilitiesOfficer | Muthu Samy | FAC004@mail.sda.edu.my | 0192233445 | 1986-09-09 | Male | 2022-01-24

@@ -1,0 +1,4 @@
+staffID | password | role | name | email | phone | dob | gender | dateJoined
+ADM001 | admin001 | Administrator | Max | ADM001@mail.sda.edu.my | 0126478909 | 1994-01-12 | Male | 2013-06-08
+ADM002 | admin002 | Administrator | Nurul Huda | ADM002@mail.sda.edu.my | 0134455667 | 1992-03-30 | Female | 2016-04-12
+ADM004 | admin004 | Administrator | Siti Aminah | ADM004@mail.sda.edu.my | 0189900112 | 1995-10-02 | Female | 2021-08-23

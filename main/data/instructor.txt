@@ -1,0 +1,13 @@
+staffID | password | role | name | email | phone | dob | gender | specialty | grade | dateJoined
+INS001 | instructor001 | Instructor | Bennie | INS001@mail.sda.edu.my | 0123657676 | 1996-04-21 | Female | Karate | BEGINNER | 2020-09-28
+INS002 | instructor002 | Instructor | Hiroshi Sato | INS002@mail.sda.edu.my | 0198877665 | 1982-09-12 | Male | Karate | ADVANCED | 2021-01-18
+INS003 | instructor003 | Instructor | Hakim Rahman | INS003@mail.sda.edu.my | 0126677889 | 1991-02-14 | Male | Judo | BEGINNER | 2021-06-07
+INS004 | instructor004 | Instructor | Sofia Lee | INS004@mail.sda.edu.my | 0197766554 | 1993-10-09 | Female | Taekwondo | BEGINNER | 2021-11-22
+INS005 | instructor005 | Instructor | Aiko Tanaka | INS005@mail.sda.edu.my | 0172211003 | 1987-06-25 | Female | Karate | INTERMEDIATE | 2022-04-04
+INS006 | instructor006 | Instructor | Marcus Ng | INS006@mail.sda.edu.my | 0143322110 | 1989-12-01 | Male | MMA | BEGINNER | 2022-09-12
+INS007 | instructor007 | Instructor | Somchai Prasert | INS007@mail.sda.edu.my | 0159988441 | 1988-03-03 | Male | MuayThai | BEGINNER | 2023-03-06
+INS008 | instructor008 | Instructor | Li Wei | INS008@mail.sda.edu.my | 0166655330 | 1985-10-10 | Male | KungFu | BEGINNER | 2023-08-21
+INS009 | instructor009 | Instructor | Omar Farouk | INS009@mail.sda.edu.my | 0135566778 | 1984-04-30 | Male | Judo | INTERMEDIATE | 2024-01-15
+INS010 | instructor010 | Instructor | Chloe Park | INS010@mail.sda.edu.my | 01166554430 | 1994-08-08 | Female | Taekwondo | INTERMEDIATE | 2024-05-27
+INS011 | instructor011 | Instructor | Viktor Lim | INS011@mail.sda.edu.my | 0122233445 | 1986-01-29 | Male | MMA | INTERMEDIATE | 2024-09-16
+INS012 | instructor012 | Instructor | Jisoo Kim | INS012@mail.sda.edu.my | 0161122998 | 1988-11-19 | Female | Judo | ADVANCED | 2025-02-17

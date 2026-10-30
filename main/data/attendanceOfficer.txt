@@ -1,0 +1,4 @@
+staffID | password | role | name | email | phone | dob | gender | dateJoined
+ATT001 | attendance001 | AttendanceOfficer | Hafiz | ATT001@mail.sda.edu.my | 0167788990 | 1995-12-05 | Male | 2017-05-22
+ATT002 | attendance002 | AttendanceOfficer | Mei Xin | ATT002@mail.sda.edu.my | 0181122334 | 1993-06-13 | Female | 2019-10-07
+ATT003 | attendance003 | AttendanceOfficer | Ismail Yusof | ATT003@mail.sda.edu.my | 0124466880 | 1990-02-27 | Male | 2023-02-13
