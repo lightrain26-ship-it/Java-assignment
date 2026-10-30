@@ -5,38 +5,21 @@ import java.io.File;
 
 
 public class WriteFunction {
-        static final String ADMIN = "administrator.txt";
-        static final String FACILITYOFFICE = "facilitiesOfficer.txt";
-        static final String ATTENDANCEOFFICE = "attendanceOfficer.txt";
-        static final String INSTRUCTOR  = "instructor.txt";
-        static final String STUDENT = "student.txt";
-        static final String SCHEDULE = "schedule.txt";
-        static final String STUDENTRATE = "studentRating.txt";
-        static final String ISSUE = "issue.txt";
-        static final String EQUIPMENT = "equipment.txt";
-        static final String ROOMEQUIPMENT = "room_equipment.txt";
-        static final String PAYMENT = "payment.txt";
-        static final String ATTENDANCE = "attendance.txt";
-        static final String BOOKING = "booking.txt";
-        static final String ADMINRECORD = "Admin_record.txt";
-        static final String FACILITIESRECORD = "Facilities_record.txt";
-        static final String INSTRUCTORSRECORD = "Instructors_record.txt";
-        static final String ATTENDANCESRECORD = "Attendance_record.txt";
 
         static boolean CanWrite(String role, String filename){
         switch ((role)) {
             case "Managers": //report part need to fill all in later confirm
-                return filename.equals(ADMIN);
+                return filename.equals(FileMenu.ADMIN);
             case "Administrators":
-                return filename.equals(FACILITYOFFICE) || filename.equals(ATTENDANCEOFFICE) || filename.equals(INSTRUCTOR) || filename.equals(STUDENT);
+                return filename.equals(FileMenu.FACILITYOFFICE) || filename.equals(FileMenu.ATTENDANCEOFFICE) || filename.equals(FileMenu.INSTRUCTOR) || filename.equals(FileMenu.STUDENT);
             case "Instructors":
-                return filename.equals(SCHEDULE) || filename.equals(ISSUE) ;
+                return filename.equals(FileMenu.SCHEDULE) || filename.equals(FileMenu.ISSUE) ;
             case "Facilities Officers":
-                return filename.equals(EQUIPMENT) || filename.equals(ISSUE) || filename.equals(ROOMEQUIPMENT);
+                return filename.equals(FileMenu.EQUIPMENT) || filename.equals(FileMenu.ISSUE) || filename.equals(FileMenu.ROOMEQUIPMENT);
             case "Attendance Officers":
-                return filename.equals(ATTENDANCE);
+                return filename.equals(FileMenu.ATTENDANCE);
             case "Students":
-                return filename.equals(PAYMENT) || filename.equals(BOOKING);
+                return filename.equals(FileMenu.PAYMENT) || filename.equals(FileMenu.BOOKING);
             default:
                 return false;
         }
@@ -45,16 +28,16 @@ public class WriteFunction {
     static String getLogFile(String role){
         switch ((role)) {
             case "Administrators":
-                return ADMINRECORD;
+                return FileMenu.ADMINRECORD;
 
             case "Instructors":
-                return INSTRUCTORSRECORD;
+                return FileMenu.INSTRUCTORSRECORD;
 
             case "Facilities Officers":
-                return FACILITIESRECORD;
+                return FileMenu.FACILITIESRECORD;
 
             case "Attendance Officers":
-                return ATTENDANCESRECORD;
+                return FileMenu.ATTENDANCESRECORD;
             default:
                 return null;
         }

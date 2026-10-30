@@ -3,32 +3,11 @@ package common_code;
 import java.io.File;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import common_code.FileMenu;
 
 //import javax.swing.JOptionPane;
 
 public class FileFunction { 
-    
-    static final String ADMIN = "administrator.txt";
-    static final String FACILITYOFFICE = "facilitiesOfficer.txt";
-    static final String ATTENDANCEOFFICE = "attendanceOfficer.txt";
-    static final String INSTRUCTOR  = "instructor.txt";
-    static final String STUDENT = "student.txt";
-    static final String SCHEDULE = "schedule.txt";
-    static final String STUDENTRATE = "studentRating.txt";
-    static final String ISSUE = "issue.txt";
-    static final String EQUIPMENT = "equipment.txt";
-    static final String ROOMEQUIPMENT = "room_equipment.txt";
-    static final String PAYMENT = "payment.txt";
-    static final String ATTENDANCE = "attendance.txt";
-    static final String BOOKING = "booking.txt";
-    static final String ADMINRECORD = "Admin_record.txt";
-    static final String FACILITIESRECORD = "Facilities_record.txt";
-    static final String INSTRUCTORSRECORD = "Instructors_record.txt";
-    static final String ATTENDANCESRECORD = "Attendance_record.txt";
-
-    
-    
-    
     
     // fliefunction
     public static File getRoleToRun(String role) {
@@ -62,17 +41,17 @@ public class FileFunction {
     static boolean CanRead(String role, String filename){
         switch ((role)) {
             case "Managers": //report part need to fill all in later confirm
-                return filename.equals(ADMIN) || filename.equals(ADMINRECORD)|| filename.equals(INSTRUCTORSRECORD)|| filename.equals(FACILITIESRECORD)|| filename.equals(ATTENDANCESRECORD);
+                return filename.equals(FileMenu.ADMIN) || filename.equals(FileMenu.ADMINRECORD)|| filename.equals(FileMenu.INSTRUCTORSRECORD)|| filename.equals(FileMenu.FACILITIESRECORD)|| filename.equals(FileMenu.ATTENDANCESRECORD);
             case "Administrators":
-                return filename.equals(FACILITYOFFICE) || filename.equals(ATTENDANCEOFFICE) || filename.equals(INSTRUCTOR) || filename.equals(STUDENT) || filename.equals(ADMINRECORD);
+                return filename.equals(FileMenu.FACILITYOFFICE) || filename.equals(FileMenu.ATTENDANCEOFFICE) || filename.equals(FileMenu.INSTRUCTOR) || filename.equals(FileMenu.STUDENT) || filename.equals(FileMenu.ADMINRECORD);
             case "Instructors":
-                return filename.equals(SCHEDULE) || filename.equals(STUDENTRATE) || filename.equals(ISSUE);
+                return filename.equals(FileMenu.SCHEDULE) || filename.equals(FileMenu.STUDENTRATE) || filename.equals(FileMenu.ISSUE);
             case "Facilities Officers":
-                return filename.equals(EQUIPMENT) || filename.equals(ISSUE) || filename.equals(ROOMEQUIPMENT);
+                return filename.equals(FileMenu.EQUIPMENT) || filename.equals(FileMenu.ISSUE) || filename.equals(FileMenu.ROOMEQUIPMENT);
             case "Attendance Officers":
-                return filename.equals(ATTENDANCE);
+                return filename.equals(FileMenu.ATTENDANCE);
             case "Students":
-                return filename.equals(PAYMENT) || filename.equals(SCHEDULE) || filename.equals(BOOKING);
+                return filename.equals(FileMenu.PAYMENT) || filename.equals(FileMenu.SCHEDULE) || filename.equals(FileMenu.BOOKING);
             default:
                 return false;
         }
