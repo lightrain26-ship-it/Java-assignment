@@ -8,7 +8,6 @@ import java.util.Scanner;
 public class FileFunction { 
     
     static final String ADMIN = "administrator.txt";
-    static final String RECORD = "record.txt";
     static final String FACILITYOFFICE = "facilitiesOfficer.txt";
     static final String ATTENDANCEOFFICE = "attendanceOfficer.txt";
     static final String INSTRUCTOR  = "instructor.txt";
@@ -21,10 +20,16 @@ public class FileFunction {
     static final String PAYMENT = "payment.txt";
     static final String ATTENDANCE = "attendance.txt";
     static final String BOOKING = "booking.txt";
+    static final String ADMINRECORD = "Admin_record.txt";
+    static final String FACILITIESRECORD = "Facilities_record.txt";
+    static final String INSTRUCTORSRECORD = "Instructors_record.txt";
+    static final String ATTENDANCESRECORD = "Attendance_record.txt";
 
     
     
-    // fliefunction, use File to make Readfunction can use it
+    
+    
+    // fliefunction
     public static File getRoleToRun(String role) {
         File[] txtFiles = getAllowedFiles(role);
         if (txtFiles.length == 0){
@@ -54,9 +59,9 @@ public class FileFunction {
     static boolean CanRead(String role, String filename){
         switch ((role)) {
             case "Managers": //report part need to fill all in later confirm
-                return filename.equals(ADMIN) || filename.equals(RECORD);
+                return filename.equals(ADMIN) || filename.equals(ADMINRECORD)|| filename.equals(INSTRUCTORSRECORD)|| filename.equals(FACILITIESRECORD)|| filename.equals(ATTENDANCESRECORD);
             case "Administrators":
-                return filename.equals(FACILITYOFFICE) || filename.equals(ATTENDANCEOFFICE) || filename.equals(INSTRUCTOR) || filename.equals(STUDENT) || filename.equals(RECORD);
+                return filename.equals(FACILITYOFFICE) || filename.equals(ATTENDANCEOFFICE) || filename.equals(INSTRUCTOR) || filename.equals(STUDENT) || filename.equals(ADMINRECORD);
             case "Instructors":
                 return filename.equals(SCHEDULE) || filename.equals(STUDENTRATE) || filename.equals(ISSUE);
             case "Facilities Officers":
