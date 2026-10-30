@@ -1,9 +1,10 @@
 package common_code;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
+//import javax.swing.JOptionPane;
 
 public class FileFunction { 
     
@@ -42,12 +43,14 @@ public class FileFunction {
         try{
             choice = input.nextInt();
         } catch (InputMismatchException e){
+            //JOptionPane.showMessageDialog(null,"Invalid input. Please type it again!");
             System.out.println("Invalid input. Please type it again!");
             input.close();
             return null;
         }
         //range check: stops crashes on 0 or a number that's too big
         if(choice < 1 || choice > txtFiles.length){
+            //JOptionPane.showMessageDialog(null,"Invalid input. Pick the number between 1 to " + txtFiles.length + " .");
             System.out.println("Invalid input. Pick the number between 1 to " + txtFiles.length + " .");
             input.close();
             return null;
@@ -79,24 +82,18 @@ public class FileFunction {
         File folder = new File("data");
         File[] txtFiles = folder.listFiles((dir, name)-> name.endsWith(".txt") && CanRead(role, name));
         if (txtFiles == null || txtFiles.length == 0) {
+            //JOptionPane.showMessageDialog(null,"No txt files found in this folder.");
             System.out.println("No txt files found in this folder.");
             return new File[0];
         }
-
+//TODO: remove printing once GUI design is decided
         System.out.println("Available TXT files:");
         for (int i = 0; i < txtFiles.length; i++) {
+            //JOptionPane.showMessageDialog(null,(i + 1) + ". " + txtFiles[i].getName());
             System.out.println((i + 1) + ". " + txtFiles[i].getName());
         }
         return txtFiles;
     } 
-    static void readFile (File file) {
-        try( Scanner Reader = new Scanner(file)){
-         while(Reader.hasNextLine()){
-            System.out.println(Reader.nextLine());
-         }
-        }catch(FileNotFoundException e){
-          System.out.println("Unable reading the file: " + file.getName());
-        }
-}
 
 }
+
