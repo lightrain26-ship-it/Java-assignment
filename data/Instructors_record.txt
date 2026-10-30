@@ -1,1 +1,4 @@
 INS001 | UPDATE | test
+INS001 | UPDATE | test
+INS001 | UPDATE | test
+INS001 | UPDATE | test

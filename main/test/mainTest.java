@@ -1,3 +1,4 @@
+package test;
 import common_code.*;
 
 public class mainTest {
