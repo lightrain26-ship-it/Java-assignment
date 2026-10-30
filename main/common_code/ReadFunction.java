@@ -10,7 +10,8 @@ public class ReadFunction {
     public static List<String[]> readFile(File file) {
         //used to create a empty list
         List<String[]> lines = new ArrayList<String[]> ();
-        String splitLines = "[\\|]";
+        //skip the space to find "|"
+        String splitLines = "[\\s* \\|\\s* ]";
 
         try (Scanner myReader = new Scanner(file)){
             while(myReader.hasNextLine()){
