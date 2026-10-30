@@ -1,1 +1,7 @@
 recordID | actionType | accountID | accountName | accountRole | performedBy | actionDate | fieldChanged | oldValue | newValue
+REC001 | UPDATE | FAC007 | Alyssa | Facilities | ADM001 | 2015-10-30 | phone | 0751333337 | 0428784921
+REC002 | UPDATE | ATT008 | Michelle | Attendance | ADM004 | 2020-05-11 | phone | 0364549534 | 0304508972
+REC003 | UPDATE | ATT007 | David | Attendance | ADM002 | 2022-02-23 | phone | 0669557974 | 0952152720
+REC004 | UPDATE | ATT006 | Karen | Attendance | ADM009 | 2023-08-10 | phone | 0786493776 | 0464596641
+REC005 | UPDATE | INS009 | Lisa | Instructor | ADM010 | 2024-08-04 | phone | 0520576569 | 0910983110
+REC006 | UPDATE | STU013 | Chelsea | Student | ADM010 | 2026-05-13 | phone | 0921961538 | 0615467496
