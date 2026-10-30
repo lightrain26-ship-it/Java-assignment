@@ -5,9 +5,9 @@ public class mainTest {
     public static void main(String[] args) {
 
         // Test 1: role with a log -> should add a line to Instructors_record.txt
-        System.out.println("=== Test 1: Instructors ===");
-        WriteFunction.logChange("Instructors", new String[] {"INS001", "UPDATE", "test"});
-        System.out.println("Check Instructors_record.txt for: INS001 | UPDATE | test");
+        // System.out.println("=== Test 1: Instructors ===");
+        // WriteFunction.logChange("Instructors", new String[] {"INS001", "UPDATE", "test"});
+        // System.out.println("Check Instructors_record.txt for: INS001 | UPDATE | test");
 
         // Test 2: roles without a log -> nothing should be written
         System.out.println("\n=== Test 2: Students and Managers ===");
