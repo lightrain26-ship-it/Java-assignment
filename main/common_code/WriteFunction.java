@@ -74,23 +74,6 @@ public class WriteFunction {
         return txtFiles;
     } 
 
-    //clear fle first then overwrite the file
-    public static boolean overWriteFile(File file, List<String[]> rows){
-        if (file == null || rows == null || rows.isEmpty()){
-            return false;
-        }
-        try(FileWriter writer = new FileWriter(file, false)) {
-            for (String[] row: rows){
-                String line = String.join(" | ", row);
-                writer.write(line +"\n");
-            }
-            return true;
-        } catch (IOException e) {
-            // TODO: handle exception, later need to be changed into GUI version
-            System.out.println("Unable to write: " + file.getName());
-        }
-        return false;
-    }
 
 }
 
