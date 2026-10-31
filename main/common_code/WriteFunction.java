@@ -1,9 +1,7 @@
 package common_code;
 
 import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.List;
+
 
 
 
@@ -12,7 +10,7 @@ public class WriteFunction {
         static boolean CanWrite(String role, String filename){
         switch ((role)) {
             case "Managers": //report part need to fill all in later confirm
-                return filename.equals(FileMenu.ADMIN);
+                return filename.equals(FileMenu.ADMIN) || filename.equals(FileMenu.MANAGER);
             case "Administrators":
                 return filename.equals(FileMenu.FACILITYOFFICE) || filename.equals(FileMenu.ATTENDANCEOFFICE) || filename.equals(FileMenu.INSTRUCTOR) || filename.equals(FileMenu.STUDENT);
             case "Instructors":
@@ -73,6 +71,14 @@ public class WriteFunction {
         }
         return txtFiles;
     } 
+    //make  add record for staff and managers
+    public static boolean addRecord(String role,File file,String[] row){
+        if (CanWrite(role, file.getName()) == false){
+            return false;
+        }
+        return WriteFile.appendFile(file, row);
+
+    }
 
 
 }
