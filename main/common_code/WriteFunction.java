@@ -1,6 +1,7 @@
 package common_code;
 
 import java.io.File;
+import java.util.List;
 
 
 
@@ -79,6 +80,35 @@ public class WriteFunction {
         return WriteFile.appendFile(file, row);
 
     }
+
+            //make  update record for staff and managers
+    public static boolean updateRecord(String role,File file,List<String[]> rows){
+        if (CanWrite(role, file.getName()) == false){
+            return false;
+        }
+        return WriteFile.overWriteFile(file, rows);
+
+    }
+
+        public static String[] deleteRecord(String ID, String role,File file){
+        if (CanWrite(role, file.getName()) == false){
+            return null;
+        }
+        List<String[]> rows = ReadFunction.readFile(file);
+        
+        for(int i = 1; i < rows.size(); i ++){
+            String[] rowData = rows.get(i);
+            
+            if (rowData[0].equals(ID)){
+                rows.remove(i);
+                WriteFile.overWriteFile(file, rows);
+                return rowData;
+            }
+            
+        }
+        return null;
+    }
+
 
 
 }

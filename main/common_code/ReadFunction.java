@@ -11,7 +11,7 @@ public class ReadFunction {
         //used to create a empty list
         List<String[]> lines = new ArrayList<String[]> ();
         //skip the space to find "|"
-        String splitLines = "[\\s* \\|\\s* ]";
+        String splitLines = "\\s* \\|\\s*";
 
         try (Scanner myReader = new Scanner(file)){
             while(myReader.hasNextLine()){
@@ -20,6 +20,7 @@ public class ReadFunction {
                 lines.add(skipBreak);
             }
         }catch (FileNotFoundException e) {
+            //TODO: later need to change to GUI version
             System.out.println("An error occurred!");
             // getname is ude to gain the file name
             System.out.println("Unable to read: " + file.getName());
