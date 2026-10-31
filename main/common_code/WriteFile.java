@@ -20,7 +20,7 @@ public class WriteFile {
         //TODO: show this in GUI POPUP LATER
         //JOptionPane.showMessageDialog(null,"Unable to write: " + file.getName());
     }
-    return true;
+    return false;
 }
 
     //clear fle first then overwrite the file
