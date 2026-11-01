@@ -1,10 +1,9 @@
 package common_code;
 
 import java.io.File;
+
 import java.util.List;
-
-
-
+import java.util.NoSuchElementException;
 
 public class WriteFunction {
 
@@ -59,9 +58,11 @@ public class WriteFunction {
     public static File[] getWriteableFiles(String role){
         File folder = new File("data");
         File[] txtFiles = folder.listFiles((dir, name)-> name.endsWith(".txt") && CanWrite(role, name));
-        if (txtFiles == null || txtFiles.length == 0) {
+        if (txtFiles == null) {
             //JOptionPane.showMessageDialog(null,"No txt files allowed to be written by this role.");
-            System.out.println("No txt files allowed to be written by this role.");
+            throw new IllegalStateException("Data folder not found: " + folder.getAbsolutePath());
+        }
+        if(txtFiles.length == 0) {
             return new File[0];
         }
 //TODO: remove printing once GUI design is decided
@@ -71,28 +72,53 @@ public class WriteFunction {
             System.out.println((i + 1) + ". " + txtFiles[i].getName());
         }
         return txtFiles;
-    } 
+    }
+
     //make  add record for staff and managers
-    public static boolean addRecord(String role,File file,String[] row){
+    public static void addRecord(String role,File file,String[] row){
         if (CanWrite(role, file.getName()) == false){
-            return false;
+            throw new SecurityException(role + " does not have permission to write to " + file.getName());
         }
-        return WriteFile.appendFile(file, row);
+        WriteFile.appendFile(file, row);
+
+    }
+                //make  update record for staff and managers
+    public static String[] updateRecord(String role,File file,String[] newRow){
+        if (CanWrite(role, file.getName()) == false){
+            throw new SecurityException(role + " does not have permission to write to " + file.getName());
+        }
+        if (newRow == null || newRow.length == 0){
+            throw new IllegalArgumentException("Please check the new row! It is missing or empty.");
+        }
+        for (String value: newRow){
+            if (value == null || value.contains("|")){
+                throw new IllegalArgumentException("Please check the new row! It contains invalid value '|'.");
+            }
+        }
+        List<String[]> rows = ReadFunction.readFile(file);
+        if (rows.isEmpty()){
+            throw new IllegalStateException("The file is empty. Cannot update record.");
+        }
+        if (newRow.length != rows.get(0).length){
+            throw new IllegalArgumentException("The new row length does not match the existing row length.");
+        }
+
+        for(int i = 1; i < rows.size(); i ++){
+            String[] rowData = rows.get(i);
+            
+            if (rowData[0].equals(newRow[0])){
+                rows.set(i, newRow);
+                WriteFile.overWriteFile(file, rows);
+                return rowData;
+            }
+        }
+        throw new NoSuchElementException("No record found with ID: " + newRow[0]);
 
     }
 
-            //make  update record for staff and managers
-    public static boolean updateRecord(String role,File file,List<String[]> rows){
+    public static String[] deleteRecord(String ID, String role,File file){
         if (CanWrite(role, file.getName()) == false){
-            return false;
-        }
-        return WriteFile.overWriteFile(file, rows);
-
-    }
-
-        public static String[] deleteRecord(String ID, String role,File file){
-        if (CanWrite(role, file.getName()) == false){
-            return null;
+            throw new SecurityException(role + " does not have permission to write to " + file.getName());
         }
         List<String[]> rows = ReadFunction.readFile(file);
         
@@ -106,11 +132,10 @@ public class WriteFunction {
             }
             
         }
-        return null;
+        throw new NoSuchElementException("No record found with ID: " + ID);
     }
 
-
-
 }
+
 
 
