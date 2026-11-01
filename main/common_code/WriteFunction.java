@@ -10,7 +10,7 @@ public class WriteFunction {
         static boolean CanWrite(String role, String filename){
         switch ((role)) {
             case "Managers": //report part need to fill all in later confirm
-                return filename.equals(FileMenu.ADMIN) || filename.equals(FileMenu.MANAGER);
+                return filename.equals(FileMenu.ADMIN);
             case "Administrators":
                 return filename.equals(FileMenu.FACILITYOFFICE) || filename.equals(FileMenu.ATTENDANCEOFFICE) || filename.equals(FileMenu.INSTRUCTOR) || filename.equals(FileMenu.STUDENT);
             case "Instructors":

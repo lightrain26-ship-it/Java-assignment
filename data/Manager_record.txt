@@ -1,3 +1,1 @@
-MAN001 | UPDATE | test
-MAN001 | UPDATE | test
-MAN001 | UPDATE | test
+recordID | actionType | accountID | accountName | accountRole | performedBy | actionDate | fieldChanged | oldValue | newValue
