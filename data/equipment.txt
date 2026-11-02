@@ -1,0 +1,25 @@
+equipment_id | equipment_name | qty | category
+EQ1 | Karate Gi | 25 | Training Gear
+EQ2 | Makiwara Striking Board | 5 | Training Gear
+EQ3 | Kicking Shield | 8 | Training Gear
+EQ4 | Judo Gi | 24 | Training Gear
+EQ5 | Crash Mat | 18 | Training Gear
+EQ6 | Grappling Dummy | 3 | Training Gear
+EQ7 | Taekwondo Dobok | 22 | Training Gear
+EQ8 | Chest Guard | 14 | Training Gear
+EQ9 | Kicking Paddle | 10 | Training Gear
+EQ10 | MMA Gloves | 18 | Training Gear
+EQ11 | Heavy Punching Bag | 8 | Training Gear
+EQ12 | Shin Guards | 15 | Training Gear
+EQ13 | Muay Thai Pads | 10 | Training Gear
+EQ14 | Thai Boxing Gloves | 12 | Training Gear
+EQ15 | Banana Bag | 4 | Training Gear
+EQ16 | Wooden Dummy | 3 | Training Gear
+EQ17 | Bo Staff | 18 | Training Gear
+EQ18 | Kung Fu Shoes | 25 | Training Gear
+EQ19 | Floor Mat | 100 | Training Gear
+EQ20 | Air Conditioner | 14 | Electrical
+EQ21 | LED Ceiling Light | 45 | Electrical
+EQ22 | Digital Timer | 3 | Electrical
+EQ23 | Water Dispenser | 1 | Electrical
+EQ24 | CCTV Camera | 12 | Electrical

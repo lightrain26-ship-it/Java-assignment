@@ -1,1 +1,11 @@
-
+issue_id | room_id | equipment_id | affected | reported_by | status | brief_description
+IS1 | R1 | EQ20 | 1 | INS002 | In Progress | Air conditioner not cooling
+IS2 | R2 | EQ5 | 3 | INS003 | In Progress | Crash mats torn at the edges
+IS3 | R4 | EQ11 | 1 | INS006 | Resolved | Heavy bag chain broken
+IS4 | R3 | EQ21 | 2 | INS004 | In Progress | Ceiling lights flickering
+IS5 | R5 | - | 0 | INS007 | In Progress | Roof leaking above the training area
+IS6 | R6 | EQ17 | 2 | INS008 | Resolved | Bo staffs cracked
+IS7 | R1 | EQ24 | 1 | INS001 | In Progress | CCTV camera not recording
+IS8 | R4 | EQ22 | 1 | INS011 | Resolved | Digital timer display not working
+IS9 | R3 | - | 0 | INS010 | In Progress | Floor is slippery and unsafe for training
+IS10 | R5 | EQ14 | 3 | INS007 | In Progress | Thai boxing gloves worn out
