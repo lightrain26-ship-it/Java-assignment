@@ -38,9 +38,6 @@ public class WriteFunction {
 
             case "Facilities Officers":
                 return FileMenu.FACILITIESRECORD;
-
-            case "Attendance Officers":
-                return FileMenu.ATTENDANCESRECORD;
             default:
                 return null;
         }
@@ -72,67 +69,6 @@ public class WriteFunction {
             System.out.println((i + 1) + ". " + txtFiles[i].getName());
         }
         return txtFiles;
-    }
-
-    //make  add record for staff and managers
-    public static void addRecord(String role,File file,String[] row){
-        if (CanWrite(role, file.getName()) == false){
-            throw new SecurityException(role + " does not have permission to write to " + file.getName());
-        }
-        WriteFile.appendFile(file, row);
-
-    }
-                //make  update record for staff and managers
-    public static String[] updateRecord(String role,File file,String[] newRow){
-        if (CanWrite(role, file.getName()) == false){
-            throw new SecurityException(role + " does not have permission to write to " + file.getName());
-        }
-        if (newRow == null || newRow.length == 0){
-            throw new IllegalArgumentException("Please check the new row! It is missing or empty.");
-        }
-        for (String value: newRow){
-            if (value == null || value.contains("|")){
-                throw new IllegalArgumentException("Please check the new row! It contains invalid value '|'.");
-            }
-        }
-        List<String[]> rows = ReadFunction.readFile(file);
-        if (rows.isEmpty()){
-            throw new IllegalStateException("The file is empty. Cannot update record.");
-        }
-        if (newRow.length != rows.get(0).length){
-            throw new IllegalArgumentException("The new row length does not match the existing row length.");
-        }
-
-        for(int i = 1; i < rows.size(); i ++){
-            String[] rowData = rows.get(i);
-            
-            if (rowData[0].equals(newRow[0])){
-                rows.set(i, newRow);
-                WriteFile.overWriteFile(file, rows);
-                return rowData;
-            }
-        }
-        throw new NoSuchElementException("No record found with ID: " + newRow[0]);
-
-    }
-
-    public static String[] deleteRecord(String ID, String role,File file){
-        if (CanWrite(role, file.getName()) == false){
-            throw new SecurityException(role + " does not have permission to write to " + file.getName());
-        }
-        List<String[]> rows = ReadFunction.readFile(file);
-        
-        for(int i = 1; i < rows.size(); i ++){
-            String[] rowData = rows.get(i);
-            
-            if (rowData[0].equals(ID)){
-                rows.remove(i);
-                WriteFile.overWriteFile(file, rows);
-                return rowData;
-            }
-            
-        }
-        throw new NoSuchElementException("No record found with ID: " + ID);
     }
 
 }

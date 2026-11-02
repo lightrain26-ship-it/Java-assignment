@@ -19,6 +19,5 @@ public class FileMenu {
         public static final String ADMINRECORD = "Admin_record.txt";
         public static final String FACILITIESRECORD = "Facilities_record.txt";
         public static final String INSTRUCTORSRECORD = "Instructors_record.txt";
-        public static final String ATTENDANCESRECORD = "Attendance_record.txt";
 
 }
