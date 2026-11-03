@@ -1,0 +1,17 @@
+studentID | password | name | email | phone | dob | gender | specialty | grade | dateJoined
+STU001 | student001 | Thomas | STU001@mail.sda.edu.my | 0125689856 | 2008-03-13 | Male | Karate | ADVANCED | 2014-07-16
+STU003 | student003 | Sherly | STU003@mail.sda.edu.my | 0125689078 | 2009-08-16 | Female | Taekwondo | BEGINNER | 2022-11-21
+STU004 | student004 | Aisha Karim | STU004@mail.sda.edu.my | 0127788990 | 2010-05-22 | Female | Judo | BEGINNER | 2023-01-09
+STU005 | student005 | Ethan Chong | STU005@mail.sda.edu.my | 0191122445 | 2007-12-03 | Male | Karate | BEGINNER | 2023-02-20
+STU006 | student006 | Nur Aliya | STU006@mail.sda.edu.my | 0139900113 | 2011-07-14 | Female | Taekwondo | BEGINNER | 2023-04-03
+STU007 | student007 | Daniel Tan | STU007@mail.sda.edu.my | 0143344556 | 2001-03-28 | Male | MMA | BEGINNER | 2023-05-15
+STU008 | student008 | Priscilla Lau | STU008@mail.sda.edu.my | 0178899001 | 2008-09-09 | Female | Karate | INTERMEDIATE | 2023-06-26
+STU009 | student009 | Amir Hamzah | STU009@mail.sda.edu.my | 0126655447 | 2005-01-17 | Male | Judo | BEGINNER | 2023-08-07
+STU010 | student010 | Wei Jie | STU010@mail.sda.edu.my | 0184433221 | 2003-10-30 | Male | MuayThai | BEGINNER | 2023-09-18
+STU011 | student011 | Hannah Yap | STU011@mail.sda.edu.my | 01155663390 | 2012-02-06 | Female | Karate | BEGINNER | 2023-10-30
+STU012 | student012 | Irfan Zain | STU012@mail.sda.edu.my | 0197788112 | 2009-06-19 | Male | KungFu | BEGINNER | 2023-12-04
+STU013 | student013 | Kavitha Raj | STU013@mail.sda.edu.my | 0132211009 | 2006-11-25 | Female | Karate | INTERMEDIATE | 2024-01-22
+STU014 | student014 | Ryan Pillai | STU014@mail.sda.edu.my | 0146677880 | 2002-12-16 | Male | Judo | INTERMEDIATE | 2024-02-26
+STU015 | student015 | Fatimah Zahra | STU015@mail.sda.edu.my | 0183344998 | 1999-09-23 | Female | Taekwondo | INTERMEDIATE | 2024-06-24
+STU016 | student016 | Hugo Martin | STU016@mail.sda.edu.my | 0175544338 | 2000-01-31 | Male | MMA | INTERMEDIATE | 2024-10-21
+STU017 | student017 | Nathan Goh | STU017@mail.sda.edu.my | 0198800223 | 2002-04-27 | Male | Judo | ADVANCED | 2025-03-31
