@@ -1,0 +1,20 @@
+classID | className | discipline | grade | instructorID | dayOfWeek | time | room | fee | capacity
+CLS001 | Karate Basics & Kata | Karate | BEGINNER | INS001 | Monday | 09:00 - 10:30 | Dojo A | 100.00 | 20
+CLS002 | Fundamental Karate Strikes | Karate | BEGINNER | INS001 | Wednesday | 10:00 - 11:30 | Dojo A | 100.00 | 20
+CLS003 | Intermediate Kumite Sparring | Karate | INTERMEDIATE | INS005 | Tuesday | 14:00 - 15:30 | Dojo A | 130.00 | 18
+CLS004 | Karate Defensive Stances | Karate | INTERMEDIATE | INS005 | Thursday | 16:00 - 17:30 | Dojo A | 130.00 | 18
+CLS005 | Master Class Advanced Kata | Karate | ADVANCED | INS002 | Saturday | 10:00 - 12:00 | Dojo A | 180.00 | 15
+CLS006 | Intro to Judo Breakfalls | Judo | BEGINNER | INS003 | Monday | 11:00 - 12:30 | Mat Area 1 | 110.00 | 15
+CLS007 | Beginner Judo Throws & Sweeps | Judo | BEGINNER | INS003 | Wednesday | 14:00 - 15:30 | Mat Area 1 | 110.00 | 15
+CLS008 | Intermediate Ground Grappling | Judo | INTERMEDIATE | INS009 | Friday | 15:00 - 16:30 | Mat Area 1 | 140.00 | 15
+CLS009 | Advanced Competition Judo | Judo | ADVANCED | INS012 | Sunday | 14:00 - 16:00 | Mat Area 1 | 190.00 | 12
+CLS010 | Taekwondo Basic Kicks & Poomsae | Taekwondo | BEGINNER | INS004 | Tuesday | 10:00 - 11:30 | Studio 1 | 100.00 | 20
+CLS011 | Beginner Dynamic Footwork | Taekwondo | BEGINNER | INS004 | Friday | 10:00 - 11:30 | Studio 1 | 100.00 | 20
+CLS012 | Intermediate Taekwondo Sparring | Taekwondo | INTERMEDIATE | INS010 | Thursday | 14:00 - 15:30 | Studio 1 | 130.00 | 18
+CLS013 | Intro to MMA & Conditioning | MMA | BEGINNER | INS006 | Monday | 17:00 - 18:30 | Ring 1 | 120.00 | 15
+CLS014 | Beginner MMA Clinch & Takedowns | MMA | BEGINNER | INS006 | Wednesday | 17:00 - 18:30 | Ring 1 | 120.00 | 15
+CLS015 | Intermediate MMA Cage Control | MMA | INTERMEDIATE | INS011 | Saturday | 15:00 - 17:00 | Ring 1 | 160.00 | 12
+CLS016 | Muay Thai Striking & Clinch | MuayThai | BEGINNER | INS007 | Tuesday | 17:00 - 18:30 | Studio 2 | 110.00 | 16
+CLS017 | Muay Thai Heavy Bag Drills | MuayThai | BEGINNER | INS007 | Friday | 17:00 - 18:30 | Studio 2 | 110.00 | 16
+CLS018 | Northern Shaolin Kung Fu Basics | KungFu | BEGINNER | INS008 | Thursday | 10:00 - 11:30 | Studio 2 | 100.00 | 16
+CLS019 | Kung Fu Traditional Weaponry | KungFu | BEGINNER | INS008 | Saturday | 13:00 - 14:30 | Studio 2 | 120.00 | 15

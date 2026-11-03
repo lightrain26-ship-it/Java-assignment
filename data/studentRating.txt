@@ -1,0 +1,1 @@
+ratingID | studentID | classID | instructorID | ratingScore | feedback | ratingDate
