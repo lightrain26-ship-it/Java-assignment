@@ -2,8 +2,6 @@ package common_code;
 
 import java.io.File;
 
-import java.util.List;
-import java.util.NoSuchElementException;
 
 public class WriteFunction {
 
