@@ -1,1 +1,4 @@
 recordID | actionType | accountID | accountName | accountRole | performedBy | actionDate | fieldChanged | oldValue | newValue
+REC001 | ADD | ADM005 | James | Administrator | MAN001 | 2026-11-08 | N/A | N/A | N/A
+REC002 | ADD | ADM003 | James | Administrator | MAN001 | 2026-11-08 | N/A | N/A | N/A
+REC003 | ADD | ADM004 | Jack | Administrator | MAN001 | 2026-11-08 | N/A | N/A | N/A

@@ -107,9 +107,9 @@ public class InputHelper {
           throw new IllegalArgumentException("Gender must be male (M) or female (F).");
         }
 
-        public static String deleteUser(Scanner input, String prefix){
+        public static String modifyUser(Scanner input, String prefix, String prompt){
         while(true){
-         System.out.print("Enter " + prefix+ " ID for delete : ");
+         System.out.print("Enter " + prefix+ " ID for " + prompt +": ");
          String userID = input.nextLine().trim();
          try{
              return checkID(userID,prefix);
