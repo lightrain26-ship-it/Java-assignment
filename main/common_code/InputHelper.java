@@ -106,4 +106,43 @@ public class InputHelper {
         }
           throw new IllegalArgumentException("Gender must be male (M) or female (F).");
         }
+
+        public static String deleteUser(Scanner input, String prefix){
+        while(true){
+         System.out.print("Enter " + prefix+ " ID for delete : ");
+         String userID = input.nextLine().trim();
+         try{
+             return checkID(userID,prefix);
+             }catch(IllegalArgumentException e){ 
+             System.out.println(e.getMessage()); 
+            }
+     }
+ }
+
+    public static String checkID(String userID, String prefix){
+        if (userID == null || userID.isEmpty()){
+            throw new IllegalArgumentException("ID must not be empty.");
+        }
+        if(!userID.toUpperCase().matches(prefix+ "\\d{3}")){
+            throw new IllegalArgumentException("ID must be " + prefix + " followed by 3 digits (e.g.ADM001).");
+        }
+        
+        return userID.toUpperCase();
+
+    }
+
+    public static boolean inputConfirm(Scanner input, String confirm){
+        while(true){
+            System.out.print(confirm);
+            String answer = input.nextLine().trim().toLowerCase();
+            if(answer.equals("y") || answer.equals("yes")){
+               return true;
+            }else if(answer.equals("n") || answer.equals("no")){
+                throw new IllegalStateException("Delete cancelled.");     
+            } else{
+                System.out.println("Please enter y or n.");
+        }
+    }
+    }
+
 }

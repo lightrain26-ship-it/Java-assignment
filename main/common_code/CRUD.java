@@ -73,7 +73,7 @@ public class CRUD {
         throw new NoSuchElementException("No record found with ID: " + newRow[0]);
 
     }
-
+// DELETE WHOLE COLUMN
     public static String[] deleteRecord(String ID, String role,File file){
         if (WriteFunction.CanWrite(role, file.getName()) == false){
             throw new SecurityException(role + " does not have permission to write to " + file.getName());
@@ -91,6 +91,30 @@ public class CRUD {
             
         }
         throw new NoSuchElementException("No record found with ID: " + ID);
+    }
+// FOR DELETE THE DATA EXCEPT ID ROW
+            public static String[] deactivateRecord(String ID, String role,File file){
+        if (WriteFunction.CanWrite(role, file.getName()) == false){
+            throw new SecurityException(role + " does not have permission to write to " + file.getName());
+        }
+        List<String[]> rows = readFile(file);
+        
+        for(int i = 1; i < rows.size(); i ++){
+            String[] rowData = rows.get(i);
+            
+            if (rowData[0].equals(ID)){
+                String[] newRow = new String[rowData.length];
+                newRow[0] = ID;
+                for (int j = 1; j < newRow.length;j++){
+                    newRow[j] = FileMenu.EMPTY_DOMAIN;
+                }
+                rows.set(i, newRow);
+                WriteFile.overWriteFile(file, rows);
+                return rowData;
+            }
+            
+        }
+        throw new NoSuchElementException(ID+ " is already deleted or not inside the file, please check again.");
     }
     
 }
