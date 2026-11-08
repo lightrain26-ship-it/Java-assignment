@@ -1,7 +1,8 @@
 package common_code;
+
 import java.time.LocalDate;
 
-abstract class User {
+public abstract class User {
     private String userID;
     private String password;
     private String name;
@@ -83,4 +84,7 @@ abstract class User {
     public void setDateJoined(LocalDate dateJoined){
         this.dateJoined = dateJoined;
     }
+    public abstract String getRole();
+
+    public abstract String[] toFileRow();
 }
