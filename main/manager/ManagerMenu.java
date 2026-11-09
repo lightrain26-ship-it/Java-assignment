@@ -28,7 +28,7 @@ public class ManagerMenu {
             try {
                 switch (choice) {
                     case 1:
-                        ManageAdminAccount.ManageAdminAccount();
+                        ManageAdminAccount.showMenu();
                         break;
                     case 2:
                         StaffReport.generateStaffReport();
@@ -48,5 +48,7 @@ public class ManagerMenu {
             }
 
         } while (choice != 4);
+    input.close();
     }
+    
 }

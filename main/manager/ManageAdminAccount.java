@@ -8,7 +8,7 @@ import java.time.LocalDate;
 import java.time.YearMonth;
 
 public class ManageAdminAccount {
-    public static void ManageAdminAccount() {
+    public static void showMenu() {
         //System.out.println("Manage Admin Account");
         // Implement the logic for managing admin accounts here
         // manage Admin accounts
