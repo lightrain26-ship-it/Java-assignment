@@ -2,12 +2,8 @@ package manager;
 
 import common_code.*;
 
-
-import java.util.Arrays;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Scanner;
-import java.io.File;
 import java.time.LocalDate;
 import java.time.YearMonth;
 
