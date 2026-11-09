@@ -2,6 +2,7 @@ package common_code;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.time.YearMonth;
 import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
@@ -143,6 +144,29 @@ public class InputHelper {
                 System.out.println("Please enter y or n.");
         }
     }
+    }
+
+        public static YearMonth checkJoinMonth(String text) {
+        if (text == null || text.isEmpty()) {
+            throw new IllegalArgumentException("Join month must not be empty.");
+        }
+        try {
+            return YearMonth.parse(text);          // "2024-08" -> 2024-08
+        } catch (DateTimeParseException e) {
+            throw new IllegalArgumentException("Please use yyyy-MM, e.g. 2024-08.");
+        }
+    }
+
+    public static YearMonth inputJoinMonth(Scanner input) {
+        while (true) {
+            System.out.print("Join month (yyyy-MM): ");
+            String text = input.nextLine().trim();
+            try {
+                return checkJoinMonth(text);
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
     }
 
 }
