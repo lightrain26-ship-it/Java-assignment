@@ -1,1 +1,21 @@
 paymentID | bookingID | studentID | classID | amount | paymentDate | paymentMethod | status
+PAY001 | BKG001 | STU001 | CLS005 | 180.00 | 2026-09-01 | Online Banking | Paid
+PAY002 | BKG002 | STU003 | CLS010 | 100.00 | 2026-09-02 | Credit Card | Paid
+PAY003 | BKG003 | STU004 | CLS006 | 110.00 | 2026-09-03 | E-Wallet | Paid
+PAY004 | BKG004 | STU005 | CLS001 | 100.00 | 2026-09-04 | Online Banking | Paid
+PAY005 | BKG005 | STU006 | CLS011 | 100.00 | 2026-09-05 | Debit Card | Paid
+PAY006 | BKG006 | STU007 | CLS013 | 120.00 | 2026-09-06 | Online Banking | Paid
+PAY007 | BKG007 | STU008 | CLS003 | 130.00 | 2026-09-07 | Credit Card | Paid
+PAY008 | BKG008 | STU009 | CLS007 | 110.00 | 2026-09-08 | E-Wallet | Paid
+PAY009 | BKG009 | STU010 | CLS016 | 110.00 | 2026-09-09 | Online Banking | Paid
+PAY010 | BKG010 | STU011 | CLS002 | 100.00 | 2026-09-10 | Debit Card | Paid
+PAY011 | BKG011 | STU012 | CLS018 | 100.00 | 2026-09-11 | Credit Card | Paid
+PAY012 | BKG012 | STU013 | CLS004 | 130.00 | 2026-09-12 | Online Banking | Paid
+PAY013 | BKG013 | STU014 | CLS008 | 140.00 | 2026-09-13 | E-Wallet | Paid
+PAY014 | BKG014 | STU015 | CLS012 | 130.00 | 2026-09-14 | Debit Card | Paid
+PAY015 | BKG015 | STU016 | CLS015 | 160.00 | 2026-09-15 | Online Banking | Paid
+PAY016 | BKG016 | STU017 | CLS009 | 190.00 | 2026-09-16 | Credit Card | Paid
+PAY017 | BKG017 | STU005 | CLS002 | 100.00 | 2026-09-17 | Online Banking | Paid
+PAY018 | BKG018 | STU003 | CLS011 | 100.00 | 2026-09-18 | E-Wallet | Refunded
+PAY019 | BKG019 | STU009 | CLS006 | 110.00 | 2026-09-19 | Debit Card | Paid
+PAY020 | BKG020 | STU001 | CLS005 | 180.00 | 2026-09-20 | Online Banking | Paid
