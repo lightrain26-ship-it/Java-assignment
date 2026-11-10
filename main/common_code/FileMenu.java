@@ -18,7 +18,6 @@ public class FileMenu {
         public static final String MANAGERRECORD = "Manager_record.txt";
         public static final String ADMINRECORD = "Admin_record.txt";
         public static final String FACILITIESRECORD = "Facilities_record.txt";
-        public static final String INSTRUCTORSRECORD = "Instructors_record.txt";
         public static final String EMAIL_DOMAIN = "@mail.sda.edu.my";
         public static final String EMPTY_DOMAIN = "N/A";
 

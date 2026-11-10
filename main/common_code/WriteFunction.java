@@ -30,10 +30,6 @@ public class WriteFunction {
                 return FileMenu.MANAGERRECORD;
             case "Administrators":
                 return FileMenu.ADMINRECORD;
-
-            case "Instructors":
-                return FileMenu.INSTRUCTORSRECORD;
-
             case "Facilities Officers":
                 return FileMenu.FACILITIESRECORD;
             default:
