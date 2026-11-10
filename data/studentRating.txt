@@ -1,1 +1,17 @@
 ratingID | studentID | classID | instructorID | ratingScore | feedback | ratingDate
+RAT001 | STU001 | CLS005 | INS002 | 5 | Excellent advanced kata training. The instructor explains every movement clearly. | 2026-09-05
+RAT002 | STU003 | CLS010 | INS004 | 4 | Good beginner class. I enjoyed learning the basic kicks. | 2026-09-08
+RAT003 | STU004 | CLS006 | INS003 | 5 | The instructor was patient and helped me understand breakfall techniques. | 2026-09-07
+RAT004 | STU005 | CLS001 | INS001 | 4 | Good introduction to karate. The class was enjoyable and easy to follow. | 2026-09-07
+RAT005 | STU006 | CLS011 | INS004 | 5 | Very fun class. The footwork exercises helped improve my coordination. | 2026-09-11
+RAT006 | STU007 | CLS013 | INS006 | 4 | Good introduction to MMA. I would appreciate more practical exercises. | 2026-09-14
+RAT007 | STU008 | CLS003 | INS005 | 5 | Excellent sparring session. The instructor provided useful feedback. | 2026-09-15
+RAT008 | STU009 | CLS007 | INS003 | 3 | The techniques were useful but the training pace was quite fast. | 2026-09-16
+RAT009 | STU010 | CLS016 | INS007 | 4 | Enjoyable Muay Thai training with good striking demonstrations. | 2026-09-18
+RAT010 | STU011 | CLS002 | INS001 | 5 | The instructor explained the basic strikes clearly and made learning enjoyable. | 2026-09-16
+RAT011 | STU012 | CLS018 | INS008 | 4 | Interesting introduction to Kung Fu. I enjoyed learning the traditional movements. | 2026-09-17
+RAT012 | STU013 | CLS004 | INS005 | 4 | Good defensive stance training. More practice time would be helpful. | 2026-09-17
+RAT013 | STU014 | CLS008 | INS009 | 5 | Excellent grappling lessons. The instructor demonstrated every technique carefully. | 2026-09-18
+RAT014 | STU015 | CLS012 | INS010 | 3 | The sparring session was challenging but I learned several useful techniques. | 2026-09-17
+RAT015 | STU016 | CLS015 | INS011 | 5 | Great MMA training. The instructor provided detailed guidance throughout the session. | 2026-09-19
+RAT016 | STU017 | CLS009 | INS012 | 5 | Excellent competition-level training with challenging exercises. | 2026-09-20
