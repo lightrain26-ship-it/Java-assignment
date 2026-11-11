@@ -8,4 +8,4 @@ IS6 | R6 | EQ17 | 2 | INS008 | Resolved | Bo staffs cracked
 IS7 | R1 | EQ24 | 1 | INS001 | In Progress | CCTV camera not recording
 IS8 | R4 | EQ22 | 1 | INS011 | Resolved | Digital timer display not working
 IS9 | R3 | - | 0 | INS010 | In Progress | Floor is slippery and unsafe for training
-IS10 | R5 | EQ14 | 3 | INS007 | In Progress | Thai boxing gloves worn outTEST001 | test1 | test2 | test3 | test4 | test5 | test6
+IS10 | R5 | EQ14 | 3 | INS007 | In Progress | Thai boxing gloves worn out
