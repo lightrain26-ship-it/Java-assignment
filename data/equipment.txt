@@ -23,4 +23,3 @@ EQ021 | LED Ceiling Light | 45 | Electrical
 EQ022 | Digital Timer | 3 | Electrical
 EQ023 | Water Dispenser | 1 | Electrical
 EQ024 | CCTV Camera | 12 | Electrical
-EQ025 | Test Gloves | 10 | Training Gear
