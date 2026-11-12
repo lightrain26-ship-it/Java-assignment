@@ -55,7 +55,7 @@ public class equipmentLogic {
 
         String search = answer.trim().toLowerCase();
 
-        // Find all id, equipment, category that has the same keyword (it can be partial or whole match)
+        // Find all id, equipment, qty, category that has the same keyword (it can be partial or whole match)
         for (equipment e : loadequipment()) {
             if (e.getEquipmentId().toLowerCase().equals(search)
                 || e.getEquipmentName().toLowerCase().contains(search)
