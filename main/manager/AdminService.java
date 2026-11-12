@@ -71,11 +71,15 @@ public class AdminService {
         logAction("ADD", adminID, admin.getName(), FileMenu.EMPTY_DOMAIN, FileMenu.EMPTY_DOMAIN, FileMenu.EMPTY_DOMAIN);
         return admin;
     }
-// Keeps the ID, sets the rest to N/A; logs; returns the admin as it was
+
+// Keeps the ID, sets the rest to N/A; logs; returns the admin as it was, and put the old data in to oldValue
     public AdminAccount deactivateAdmin(String adminID){
         AdminAccount admin = findActiveAdmin(adminID); // fails first if not found
+        String oldValue =String.join("; ",
+                admin.getId(), admin.getName(), admin.getEmail(), admin.getPhone(),
+                admin.getDob().toString(), admin.getGender(), admin.getDateJoined().toString());
         CRUD.deactivateRecord(adminID, "Managers", adminFile);
-        logAction("DELETE", adminID,admin.getName(), FileMenu.EMPTY_DOMAIN, FileMenu.EMPTY_DOMAIN, FileMenu.EMPTY_DOMAIN);
+        logAction("DELETE", adminID,admin.getName(), "account deleted", oldValue, FileMenu.EMPTY_DOMAIN);
         return admin;
     }
 
