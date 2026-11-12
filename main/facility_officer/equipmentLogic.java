@@ -57,25 +57,10 @@ public class equipmentLogic {
 
         // Find all id, equipment, category that has the same keyword (it can be partial or whole match)
         for (equipment e : loadequipment()) {
-            if (e.getEquipmentId().toLowerCase().contains(search)
+            if (e.getEquipmentId().toLowerCase().equals(search)
                 || e.getEquipmentName().toLowerCase().contains(search)
+                || String.valueOf(e.getQty()).equals(search)
                 || e.getCategory().toLowerCase().contains(search)) {
-                result.add(e);
-            }
-        }
-        return result;
-    }
-
-    public static List<equipment> searchQty(int qty) {
-        if (qty < 0) {
-            throw new IllegalArgumentException("Quantity cannot be negative.");
-        }
-
-        List<equipment> result = new ArrayList<>();
-
-        // For quantity search, it has to be an exact match
-        for (equipment e : loadequipment()) {
-            if (e.getQty() == qty) {
                 result.add(e);
             }
         }
