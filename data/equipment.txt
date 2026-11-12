@@ -1,5 +1,5 @@
 equipment_id | equipment_name | qty | category
-EQ001 | Karate Gi | 25 | Training Gear
+EQ001 | Karate Gi | 30 | Training Gear
 EQ002 | Makiwara Striking Board | 5 | Training Gear
 EQ003 | Kicking Shield | 8 | Training Gear
 EQ004 | Judo Gi | 24 | Training Gear
@@ -23,4 +23,3 @@ EQ021 | LED Ceiling Light | 45 | Electrical
 EQ022 | Digital Timer | 3 | Electrical
 EQ023 | Water Dispenser | 1 | Electrical
 EQ024 | CCTV Camera | 12 | Electrical
- 
