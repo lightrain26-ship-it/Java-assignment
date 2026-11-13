@@ -98,16 +98,43 @@ public class StaffService {
         }
 
         try {
-            //searchFile(fileInstructor, search, searchResult);
-            //searchFile(fileFacilities, search, searchResult);
-            //searchFile(fileAttendance, search, searchResult);
-            //searchFile(fileManager, search, searchResult);
-            //searchFile(fileAdministrator, search, searchResult);
+            searchFile(fileInstructor, search, searchResult);
+            searchFile(fileFacilities, search, searchResult);
+            searchFile(fileAttendance, search, searchResult);
+            searchFile(fileManager, search, searchResult);
+            searchFile(fileAdministrator, search, searchResult);
             return searchResult;
         } catch (Exception e) {
-            //System.err.println("Search Failed: "6 + e.getMessage());
+            System.err.println("Search Failed: " + e.getMessage());
             throw e;
         }
+    }
+
+    //SearchFile Method
+    private void searchFile(File file, String keyword, List<String[]> searchResult) {
+        if (file == null || !file.exists()) {
+            throw new IllegalArgumentException("File does not exist: " + file.getName());
+        }
+
+        List<String[]> data = CRUD.readFile(file);
+
+        for(int i = 1; i < data.size(); i++) {
+            String[] record = data.get(i);
+            //Ignore Row with missing value except ID
+            if(record[1].equals(FileMenu.EMPTY_DOMAIN)) {
+                continue; // Skip empty records
+            }
+
+            //Check all columns for the keyword
+            for(String value : record) {
+                if(value.toLowerCase().contains(keyword)) {
+                    searchResult.add(record);
+                    break; // Break inner loop to avoid duplicate entries
+                }
+            }
+        }
+        
+
     }
 
 
