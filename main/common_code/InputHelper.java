@@ -169,4 +169,27 @@ public class InputHelper {
         }
     }
 
+    public static LocalDate checkDate(String text) {
+        if (text == null || text.isEmpty()) {
+            throw new IllegalArgumentException("Date must not be empty.");
+        }
+        try {
+            return LocalDate.parse(text);              // "2026-09-01" -> date
+        } catch (DateTimeParseException e) {
+            throw new IllegalArgumentException("Please use yyyy-MM-dd, e.g. 2026-09-01.");
+        }
+    }
+
+    public static LocalDate inputDate(Scanner input, String prompt) {
+        while (true) {
+            System.out.print(prompt);                  // e.g. "From (yyyy-MM-dd): "
+            String text = input.nextLine().trim();
+            try {
+                return checkDate(text);
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
 }
