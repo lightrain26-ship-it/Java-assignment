@@ -18,6 +18,10 @@ public class issue {
             throw new IllegalArgumentException("Affected quantity cannot be negative");
         }
 
+        if (dateReported == null){
+            throw new IllegalArgumentException("Date cannot be empty");
+        }
+
         if (briefDescription == null || briefDescription.trim().isEmpty()) {
             throw new IllegalArgumentException("Brief description cannot be empty");
         }
