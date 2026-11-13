@@ -42,7 +42,7 @@ public class FileFunction {
             case "Managers": //report part need to fill all in later confirm
                 return filename.equals(FileMenu.MANAGER)|| filename.equals(FileMenu.ADMIN) || filename.equals(FileMenu.ADMINRECORD)|| filename.equals(FileMenu.STUDENTRATE)|| filename.equals(FileMenu.FACILITIESRECORD)|| filename.equals(FileMenu.ATTENDANCE)|| filename.equals(FileMenu.MANAGERRECORD) || filename.equals(FileMenu.PAYMENT);
             case "Administrators":
-                return filename.equals(FileMenu.FACILITYOFFICE) || filename.equals(FileMenu.ATTENDANCEOFFICE) || filename.equals(FileMenu.INSTRUCTOR) || filename.equals(FileMenu.STUDENT) || filename.equals(FileMenu.ADMINRECORD);
+                return filename.equals(FileMenu.MANAGER) || filename.equals(FileMenu.FACILITYOFFICE) || filename.equals(FileMenu.ATTENDANCEOFFICE) || filename.equals(FileMenu.INSTRUCTOR) || filename.equals(FileMenu.STUDENT) || filename.equals(FileMenu.ADMINRECORD);
             case "Instructors":
                 return filename.equals(FileMenu.SCHEDULE) || filename.equals(FileMenu.STUDENTRATE) || filename.equals(FileMenu.ISSUE);
             case "Facilities Officers":
