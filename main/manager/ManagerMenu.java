@@ -34,7 +34,8 @@ public class ManagerMenu {
                         StaffReport.generateStaffReport();
                         break;
                     case 3:
-                        RevenueReport.generateRevenueReport();
+                        ManagerReport report = new RevenueReport(); 
+                        report.generate(input);
                         break;
                     case 4:
                         System.out.println("Exiting the program. Goodbye!");
