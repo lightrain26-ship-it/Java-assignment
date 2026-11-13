@@ -23,7 +23,7 @@ public abstract class User {
         this.dateJoined = dateJoined;
     }
 
-    public User(String userID, 
+   
     public String getId(){
         return userID;
     }

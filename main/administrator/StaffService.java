@@ -23,7 +23,7 @@ public class StaffService {
         this.userRole = userRole;
         this.userRole = userRole;
         if(userRole.equals("Managers")) {
-            this.logFile = new File("data", FileMenu.MANAGERRECORD);
+            this.logFile = new File("data", FileMenu.ADMINRECORD);
         } else if(userRole.equals("Administrators")) {
             this.logFile = new File("data", FileMenu.ADMINRECORD);
         }
