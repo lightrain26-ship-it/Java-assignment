@@ -8,7 +8,6 @@ import java.util.Scanner;
 
 public class FileFunction { 
     
-    
     // fliefunction
     public static File getRoleToRun(String role) {
         File[] txtFiles = getAllowedFiles(role);
