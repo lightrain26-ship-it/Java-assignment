@@ -40,7 +40,7 @@ public class FileFunction {
     static boolean CanRead(String role, String filename){
         switch ((role)) {
             case "Managers": //report part need to fill all in later confirm
-                return filename.equals(FileMenu.MANAGER)|| filename.equals(FileMenu.ADMIN) || filename.equals(FileMenu.ADMINRECORD)|| filename.equals(FileMenu.STUDENTRATE)|| filename.equals(FileMenu.FACILITIESRECORD)|| filename.equals(FileMenu.ATTENDANCE)|| filename.equals(FileMenu.MANAGERRECORD) || filename.equals(FileMenu.PAYMENT);
+                return filename.equals(FileMenu.MANAGER)|| filename.equals(FileMenu.ADMIN) || filename.equals(FileMenu.ADMINRECORD)|| filename.equals(FileMenu.STUDENTRATE)|| filename.equals(FileMenu.FACILITIESRECORD)|| filename.equals(FileMenu.ATTENDANCE) || filename.equals(FileMenu.PAYMENT);
             case "Administrators":
                 return filename.equals(FileMenu.MANAGER) || filename.equals(FileMenu.FACILITYOFFICE) || filename.equals(FileMenu.ATTENDANCEOFFICE) || filename.equals(FileMenu.INSTRUCTOR) || filename.equals(FileMenu.STUDENT) || filename.equals(FileMenu.ADMINRECORD);
             case "Instructors":

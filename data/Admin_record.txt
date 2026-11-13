@@ -50,3 +50,5 @@ REC048 | ADD | STU016 | Hugo Martin | Student | ADM001 | 2024-10-21 | N/A | N/A 
 REC049 | ADD | INS012 | Jisoo Kim | Instructor | ADM004 | 2025-02-17 | N/A | N/A | N/A
 REC050 | ADD | STU017 | Nathan Goh | Student | ADM002 | 2025-03-31 | N/A | N/A | N/A
 REC051 | UPDATE | STU017 | Nathan Goh | Student | ADM001 | 2026-02-10 | grade | INTERMEDIATE | ADVANCED
+REC052 | ADD | ADM005 | Den | Administrator | MAN001 | 2026-11-13 | N/A | N/A | N/A
+REC053 | DELETE | ADM005 | Den | Administrator | MAN001 | 2026-11-13 | account deleted | ADM005; Den; ADM005@mail.sda.edu.my; 0124878767; 1995-08-22; Male; 2026-11-13 | N/A

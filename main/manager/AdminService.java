@@ -14,7 +14,7 @@ public class AdminService {
     private String managerID;                          // who is using the service (for logs)
     
     private final File adminFile = new File("data", FileMenu.ADMIN);
-    private final File logFile = new File("data", FileMenu.MANAGERRECORD);
+    private final File logFile = new File("data", FileMenu.ADMINRECORD);
     
     public AdminService(String managerID) {
         this.managerID = managerID;

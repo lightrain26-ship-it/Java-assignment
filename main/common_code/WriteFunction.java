@@ -27,7 +27,7 @@ public class WriteFunction {
     static String getLogFile(String role){
         switch ((role)) {
             case "Managers":
-                return FileMenu.MANAGERRECORD;
+                return FileMenu.ADMINRECORD;
             case "Administrators":
                 return FileMenu.ADMINRECORD;
             case "Facilities Officers":
