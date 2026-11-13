@@ -31,11 +31,12 @@ public class ManagerMenu {
                         ManageAdminAccount.showMenu();
                         break;
                     case 2:
-                        StaffReport.generateStaffReport();
+                        ManagerReport report = new StaffReport();
+                        report.generate(input);
                         break;
                     case 3:
-                        ManagerReport report = new RevenueReport(); 
-                        report.generate(input);
+                        ManagerReport revenueReport = new RevenueReport(); 
+                        revenueReport.generate(input);
                         break;
                     case 4:
                         System.out.println("Exiting the program. Goodbye!");
