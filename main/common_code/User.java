@@ -21,8 +21,9 @@ public abstract class User {
         this.dob = dob;
         this.gender = gender;
         this.dateJoined = dateJoined;
-
     }
+
+    public User(String userID, 
     public String getId(){
         return userID;
     }
