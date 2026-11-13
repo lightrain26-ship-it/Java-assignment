@@ -8,4 +8,4 @@ IS006 | R006 | EQ017 | 2 | INS008 | 2026-10-18 | In Progress | Bo staffs cracked
 IS007 | R001 | EQ024 | 1 | INS001 | 2026-10-21 | In Progress | CCTV camera not recording
 IS008 | R004 | EQ022 | 1 | INS011 | 2026-10-24 | In Progress | Digital timer display not working
 IS009 | R003 | - | 0 | INS010 | 2026-10-29 | In Progress | Floor tiles cracked near the entrance
-IS010 | R005 | EQ014 | 3 | INS007 | 2026-11-0 | In Progress | Thai boxing gloves worn out
+IS010 | R005 | EQ014 | 3 | INS007 | 2026-11-10 | In Progress | Thai boxing gloves worn out
