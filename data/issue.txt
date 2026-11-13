@@ -1,11 +1,11 @@
-issue_id | room_id | equipment_id | affected | reported_by | status | brief_description
-IS001 | R001 | EQ020 | 1 | INS002 | In Progress | Air conditioner not cooling
-IS002 | R002 | EQ005 | 3 | INS003 | In Progress | Crash mats torn at the edges
-IS003 | R004 | EQ011 | 1 | INS006 | Resolved | Heavy bag chain broken
-IS004 | R003 | EQ021 | 2 | INS004 | In Progress | Ceiling lights flickering
-IS005 | R005 | - | 0 | INS007 | In Progress | Roof leaking above the training area
-IS006 | R006 | EQ017 | 2 | INS008 | Resolved | Bo staffs cracked
-IS007 | R001 | EQ024 | 1 | INS001 | In Progress | CCTV camera not recording
-IS008 | R004 | EQ022 | 1 | INS011 | Resolved | Digital timer display not working
-IS009 | R003 | - | 0 | INS010 | In Progress | Floor is slippery and unsafe for training
-IS010 | R005 | EQ014 | 3 | INS007 | In Progress | Thai boxing gloves worn out
+issue_id | room_id | equipment_id | affected | reported_by | date_reported | status | brief_description
+IS001 | R001 | EQ020 | 1 | INS002 | 2026-09-19 | Resolved | Air conditioner not cooling
+IS002 | R002 | EQ005 | 3 | INS003 | 2026-09-21 | Resolved | Crash mats torn at the edges
+IS003 | R004 | EQ011 | 1 | INS006 | 2026-09-28 | Resolved | Heavy bag chain broken
+IS004 | R003 | EQ021 | 2 | INS004 | 2026-10-06 | Resolved | Ceiling lights flickering
+IS005 | R005 | - | 0 | INS007 | 2026-10-13 | In Progress | Water dripping from roof near the banana bags
+IS006 | R006 | EQ017 | 2 | INS008 | 2026-10-18 | In Progress | Bo staffs cracked
+IS007 | R001 | EQ024 | 1 | INS001 | 2026-10-21 | In Progress | CCTV camera not recording
+IS008 | R004 | EQ022 | 1 | INS011 | 2026-10-24 | In Progress | Digital timer display not working
+IS009 | R003 | - | 0 | INS010 | 2026-10-29 | In Progress | Floor tiles cracked near the entrance
+IS010 | R005 | EQ014 | 3 | INS007 | 2026-11-10 | In Progress | Thai boxing gloves worn out
