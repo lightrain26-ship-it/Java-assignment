@@ -37,7 +37,7 @@ public class issue {
         this.reportedBy = reportedBy;
         this.dateReported = dateReported;
         setStatus(status);  // Validate and set status
-        this.briefDescription = briefDescription;
+        this.briefDescription = briefDescription.trim();
     }
 
     // Getters
@@ -73,14 +73,16 @@ public class issue {
         return briefDescription;
     }
 
+    // Setter
     public void setStatus(String status) {
-        if (status.equals("In Progress") || status.equals("Resolved")) {
+        if ("In Progress".equals(status) || "Resolved".equals(status)) {
             this.status = status;
         } else {
             throw new IllegalArgumentException("Status must be either 'In Progress' or 'Resolved'");
         }
     }
 
+    // Turn it into a row of String
     public String[] issueRows() {
         return new String[]{
             issueId, 
@@ -88,7 +90,7 @@ public class issue {
             equipmentId, 
             String.valueOf(affected), // Convert int to String
             reportedBy, 
-            dateReported.toString(), // saved as yyyy-mm-dd
+            dateReported.toString(), // turn the date into a String
             status, 
             briefDescription};
 
