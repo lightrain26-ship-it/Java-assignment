@@ -7,9 +7,9 @@ import common_code.InputHelper;
 import common_code.WriteFunction;
 import java.io.File;
 import java.time.LocalDate;
-//import java.util.ArrayList;
+import java.util.ArrayList;
 //import java.util.Arrays;
-//import java.util.List;
+import java.util.List;
 
 public class StaffService {
     private static final int MIN_AGE = 18; //Minimum age for staff
@@ -17,22 +17,20 @@ public class StaffService {
     //Store userID currently logging in
     private String userID;          //The userID logged in
     private String userRole;        //Administrator or Manager
-    private File logFile;           //The log file for the current user
+    private File logFile = new File("data", FileMenu.ADMINRECORD);           //The log file for the current user
     
     public StaffService(String userID, String userRole) {
+        this.userID = userID;
         this.userRole = userRole;
-        this.userRole = userRole;
-        if(userRole.equals("Managers")) {
-            this.logFile = new File("data", FileMenu.ADMINRECORD);
-        } else if(userRole.equals("Administrators")) {
-            this.logFile = new File("data", FileMenu.ADMINRECORD);
-        }
     }
 
     //Stop other roles from accessing this service
     public void checkRoleAllowed(String role) {
-        if (userRole.equals("Administrator") && userRole.equals("Managers")) {
-            throw new SecurityException("Access denied. Only Administrators and Managers can access this service.");
+        if (!userRole.equals("Administrators") && !userRole.equals("Managers")) {
+            throw new SecurityException("Access denied. Only Administrators and Managers can access this service");
+        }
+        if (userRole.equals("Managers") && !role.equals("Administrator")) {
+            throw new SecurityException("Access denied. Managers can only manage Administrator accounts");
         }
     }
 
@@ -69,7 +67,9 @@ public class StaffService {
         WriteFunction.logChange(userRole, row);
     }
 
-    //HELPER METHODS
+    //===================================================================================================================================
+    //                                       ADD STAFF
+    //===================================================================================================================================
     //Specify txt file, ID prefix, password and Instructor for each role
     public StaffAccount addStaff(String role, String name, String phone, LocalDate dob, String gender, String specialty, String grade) {
         File targetFile;
@@ -152,8 +152,71 @@ public class StaffService {
         return staff;
     }
 
-      //HELPER METHOD
-      //
+    //===================================================================================================================================
+    //                                       SEARCH STAFF
+    //===================================================================================================================================
+    //HELPER METHODS
+    //Check userRole for searching and viewing txt file
+    public File[] getManagedFiles() {
+        if (userRole.equals("Managers")) {
+            return new File[]{new File("data", FileMenu.ADMIN)};
+        } else if (userRole.equals("Administrators")) {
+            return new File[]{
+                    new File("data", FileMenu.INSTRUCTOR),
+                    new File("data", FileMenu.FACILITYOFFICE),
+                    new File("data", FileMenu.ATTENDANCEOFFICE),
+                    new File("data", FileMenu.MANAGER),
+                    new File("data", FileMenu.ADMIN)
+            };
+        } else {
+            throw new SecurityException("Access denied. Only Administrators and Managers can access this service");
+        }
+    }
 
+    //HELPER METHODS
+    //Read files and return active staff as objects
+    public List<StaffAccount> getAllStaff() {
+        List<StaffAccount> allStaff = new ArrayList<>();
 
+        for(File file : getManagedFiles()) {
+            List<String[]> rows = CRUD.readFile(file);
+            if(rows.isEmpty()) {
+                continue;
+            }
+            int columns = rows.get(0).length;
+            for (int i = 1; i<rows.size(); i++) {
+                String[] row = rows.get(i);
+                if (row.length != columns) {
+                    throw new IllegalStateException("Inconsistent number of columns in file: " + file.getName() + " at line " + (i + 1));
+                }
+                if (row[1].equals(FileMenu.EMPTY_DOMAIN)) {
+                    continue; //Skip deleted staff
+                }
+                if (row[2].equals("Instructor")) {
+                    allStaff.add(InstructorAccount.fromInstructorRow(row));
+                } else {
+                    allStaff.add(StaffAccount.fromRow(row));
+                }
+            }
+        }
+        return allStaff;
+    }
+
+    //===================================================================================================================================
+    //                                       SEARCH STAFF
+    //===================================================================================================================================
+    public List<StaffAccount> searchStaff(String keyword) {
+        if (keyword == null || keyword.trim().isEmpty()) {
+            throw new IllegalArgumentException("Search keyword cannot be empty");
+        }
+        keyword = keyword.trim();
+
+        List<StaffAccount> results = new ArrayList<>();
+        for (StaffAccount staff : getAllStaff()) {
+            if (staff.matches(keyword)) {
+                results.add(staff);
+            }
+        }
+        return results;
+    }
 }

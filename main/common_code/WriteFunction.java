@@ -10,7 +10,7 @@ public class WriteFunction {
             case "Managers": //report part need to fill all in later confirm
                 return filename.equals(FileMenu.ADMIN);
             case "Administrators":
-                return filename.equals(FileMenu.FACILITYOFFICE) || filename.equals(FileMenu.ATTENDANCEOFFICE) || filename.equals(FileMenu.INSTRUCTOR) || filename.equals(FileMenu.STUDENT);
+                return filename.equals(FileMenu.FACILITYOFFICE) || filename.equals(FileMenu.ATTENDANCEOFFICE) || filename.equals(FileMenu.INSTRUCTOR) || filename.equals(FileMenu.STUDENT) || filename.equals(FileMenu.ADMIN) || filename.equals(FileMenu.MANAGER);
             case "Instructors":
                 return filename.equals(FileMenu.SCHEDULE) || filename.equals(FileMenu.ISSUE) ;
             case "Facilities Officers":
