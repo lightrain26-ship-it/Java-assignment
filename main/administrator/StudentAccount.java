@@ -1,6 +1,9 @@
 package administrator;
 
-public class StudentAccount {
+import common_code.User;
+import java.time.LocalDate;
+
+public class StudentAccount extends User{
     private String specialty;
     private String grade;
     
@@ -32,22 +35,14 @@ public class StudentAccount {
     }
 
     //Student.txt has 10 columns and no role column
-    @Override public String[] toFileRow() {
-        return new String[] {getID(), 
-                            getPassword(),
-                            getName(), 
-                            getEmail(), 
-                            getPhone(), 
-                            getDob().toString(), 
-                            getGender(), 
-                            specialty, 
-                            grade, 
-                            getDateJoined().toString()};
+    @Override
+    public String[] toFileRow() {
+        return new String[] {getId(), getPassword(), getName(), getEmail(), getPhone(), getDob().toString(), getGender(), specialty, grade, getDateJoined().toString()};
     }
 
     public static StudentAccount fromRow(String[] row) {
         return new StudentAccount(row[0], row[1], row[2], row[3], row[4],
-                                row[5], row[6], row[7], row[8], LocalDate.parse(row[9]));
+                                LocalDate.parse(row[5]), row[6], row[7], row[8], LocalDate.parse(row[9]));
     }
 
     //Search every field except password
@@ -65,8 +60,8 @@ public class StudentAccount {
     }
 
     @Override
-    public Stirng toStirng() {
-        return getID() + " | " + getName() + " | " + getEmail() + " | " + getPhone() + " | " + 
-            getDob() + " | " + getGender + " | " + specialty + " | " + grade + " | " + getDateJoined();
+    public String toString() {
+        return getId() + " | " + getName() + " | " + getEmail() + " | " + getPhone() + " | " + 
+            getDob() + " | " + getGender() + " | " + specialty + " | " + grade + " | " + getDateJoined();
     }
 }

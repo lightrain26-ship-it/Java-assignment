@@ -53,7 +53,7 @@ public class ManageStudent {
 
     //Write one ADD line into Admin_record.txt
     private void logAdd(StudentAccount student) {
-        String recordID = IDGenerator.generateID(logFile, "REC");
+        String recordID = IDGenerator.generateNextID(logFile, "REC");
         String[] row = {recordID, "ADD", student.getId(), student.getName(), student.getRole(), userID, LocalDate.now().toString(), FileMenu.EMPTY_DOMAIN, FileMenu.EMPTY_DOMAIN, FileMenu.EMPTY_DOMAIN};
         WriteFunction.logChange(userRole, row);
     }
@@ -61,13 +61,13 @@ public class ManageStudent {
     //======================================================================================================================================
     //                                      ADD Student
     //======================================================================================================================================
-    public StudentAccount addStudent(String name, String phone, LocalDate dob, Stirng gender, String specialty, String grade) {
+    public StudentAccount addStudent(String name, String phone, LocalDate dob, String gender, String specialty, String grade) {
         //Check input values
         if (dob == null) {
             throw new IllegalArgumentException("Date of Birth cannot be empty");
         }
         name = name == null ? null : name.trim();
-        phone = phone == null ? null : phone.tirm();
+        phone = phone == null ? null : phone.trim();
         gender = gender == null ? null : gender.trim();
 
         InputHelper.checkName(name);
@@ -76,5 +76,42 @@ public class ManageStudent {
         gender = InputHelper.checkGender(gender);
         specialty = checkSpecialty(specialty);
         grade = checkGrade(grade);
+
+        //Prepare values that are not typed by admin
+        String id = IDGenerator.generateNextID(studentFile, "STU");
+        String email = IDGenerator.generateEmail(id);
+        String password = "student" + id.substring(3);
+
+        //Build the object, then save and log it
+        StudentAccount student = new StudentAccount(id, password, name, email, phone, dob, gender, specialty, grade, LocalDate.now());
+        CRUD.addRecord(userRole, studentFile, student.toFileRow());
+        logAdd(student);
+        return student;
+    }
+
+    //=================================================================================================================================
+    //                          View Student
+    //=================================================================================================================================
+    //Return every active student
+    public List<StudentAccount> getAllStudent() {
+        List<StudentAccount> allStudents = new ArrayList<>();
+
+        List<String[]> rows = CRUD.readFile(studentFile);
+        if (rows.isEmpty()) {
+            return allStudents;
+        }
+        int columns = rows.get(0).length;
+
+        for (int i = 1; i < rows.size(); i++) {
+            String[] row = rows.get(i);
+            if (row.length != columns) {                    //blank or broken line
+                continue;
+            }
+            if (row[1].equals(FileMenu.EMPTY_DOMAIN)) {     //deleted account
+                continue;
+            }
+            allStudents.add(StudentAccount.fromRow(row));
+        }
+        return allStudents;
     }
 }
