@@ -11,7 +11,7 @@ import java.util.ArrayList;
 //import java.util.Arrays;
 import java.util.List;
 
-public class StaffService {
+public class ManageStaff {
     private static final int MIN_AGE = 18; //Minimum age for staff
     
     //Store userID currently logging in
@@ -19,7 +19,7 @@ public class StaffService {
     private String userRole;        //Administrator or Manager
     private File logFile = new File("data", FileMenu.ADMINRECORD);           //The log file for the current user
     
-    public StaffService(String userID, String userRole) {
+    public ManageStaff(String userID, String userRole) {
         this.userID = userID;
         this.userRole = userRole;
     }
@@ -205,6 +205,7 @@ public class StaffService {
     //===================================================================================================================================
     //                                       SEARCH STAFF
     //===================================================================================================================================
+    //Returns every row where the keyword exist
     public List<StaffAccount> searchStaff(String keyword) {
         if (keyword == null || keyword.trim().isEmpty()) {
             throw new IllegalArgumentException("Search keyword cannot be empty");

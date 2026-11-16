@@ -34,7 +34,10 @@ public class StaffAccount extends User {
                 || getName().toLowerCase().contains(keyword)
                 || getRole().toLowerCase().contains(keyword)
                 || getEmail().toLowerCase().contains(keyword)
-                || getPhone().contains(keyword);
+                || getPhone().contains(keyword)
+                || getDob().toString().contains(keyword)
+                || getGender().equalsIgnoreCase(keyword)
+                || getDateJoined().toString().contains(keyword);
     }
 
     @Override public String toString() {
