@@ -1,44 +1,53 @@
 room_id | room_name | equipment_id | qty
-R001 | Karate Dojo | EQ001 | 20
-R001 | Karate Dojo | EQ002 | 4
-R001 | Karate Dojo | EQ003 | 6
-R001 | Karate Dojo | EQ019 | 30
+R001 | Karate Dojo | EQ001 | 25
+R001 | Karate Dojo | EQ002 | 5
+R001 | Karate Dojo | EQ003 | 12
+R001 | Karate Dojo | EQ019 | 60
 R001 | Karate Dojo | EQ020 | 2
-R001 | Karate Dojo | EQ021 | 8
-R001 | Karate Dojo | EQ024 | 2
-R002 | Judo Hall | EQ004 | 20
-R002 | Judo Hall | EQ005 | 15
-R002 | Judo Hall | EQ006 | 3
+R001 | Karate Dojo | EQ021 | 16
+R001 | Karate Dojo | EQ022 | 1
+R001 | Karate Dojo | EQ023 | 1
+R001 | Karate Dojo | EQ024 | 4
+R002 | Judo Hall | EQ004 | 30
+R002 | Judo Hall | EQ005 | 30
+R002 | Judo Hall | EQ006 | 15
 R002 | Judo Hall | EQ020 | 2
-R002 | Judo Hall | EQ021 | 8
+R002 | Judo Hall | EQ021 | 16
+R002 | Judo Hall | EQ022 | 1
 R002 | Judo Hall | EQ023 | 1
-R002 | Judo Hall | EQ024 | 2
+R002 | Judo Hall | EQ024 | 4
 R003 | Taekwondo Studio | EQ007 | 20
-R003 | Taekwondo Studio | EQ008 | 12
-R003 | Taekwondo Studio | EQ009 | 10
-R003 | Taekwondo Studio | EQ019 | 25
+R003 | Taekwondo Studio | EQ008 | 30
+R003 | Taekwondo Studio | EQ009 | 20
+R003 | Taekwondo Studio | EQ019 | 50
 R003 | Taekwondo Studio | EQ020 | 2
-R003 | Taekwondo Studio | EQ021 | 6
-R003 | Taekwondo Studio | EQ024 | 2
-R004 | MMA Training Room | EQ010 | 15
-R004 | MMA Training Room | EQ011 | 6
-R004 | MMA Training Room | EQ012 | 12
-R004 | MMA Training Room | EQ019 | 20
-R004 | MMA Training Room | EQ020 | 3
-R004 | MMA Training Room | EQ021 | 8
-R004 | MMA Training Room | EQ022 | 2
-R004 | MMA Training Room | EQ024 | 2
-R005 | Muay Thai Gym | EQ013 | 8
-R005 | Muay Thai Gym | EQ014 | 12
-R005 | Muay Thai Gym | EQ015 | 4
+R003 | Taekwondo Studio | EQ021 | 12
+R003 | Taekwondo Studio | EQ022 | 1
+R003 | Taekwondo Studio | EQ023 | 1
+R003 | Taekwondo Studio | EQ024 | 4
+R004 | MMA Training Room | EQ010 | 30
+R004 | MMA Training Room | EQ011 | 12
+R004 | MMA Training Room | EQ012 | 24
+R004 | MMA Training Room | EQ019 | 40
+R004 | MMA Training Room | EQ020 | 2
+R004 | MMA Training Room | EQ021 | 16
+R004 | MMA Training Room | EQ022 | 1
+R004 | MMA Training Room | EQ023 | 1
+R004 | MMA Training Room | EQ024 | 4
+R005 | Muay Thai Gym | EQ013 | 20
+R005 | Muay Thai Gym | EQ014 | 24
+R005 | Muay Thai Gym | EQ015 | 7
 R005 | Muay Thai Gym | EQ020 | 2
-R005 | Muay Thai Gym | EQ021 | 6
+R005 | Muay Thai Gym | EQ021 | 12
 R005 | Muay Thai Gym | EQ022 | 1
-R005 | Muay Thai Gym | EQ024 | 2
-R006 | Kung Fu Hall | EQ016 | 3
-R006 | Kung Fu Hall | EQ017 | 15
-R006 | Kung Fu Hall | EQ018 | 20
-R006 | Kung Fu Hall | EQ019 | 20
+R005 | Muay Thai Gym | EQ023 | 1
+R005 | Muay Thai Gym | EQ024 | 4
+R006 | Kung Fu Hall | EQ016 | 7
+R006 | Kung Fu Hall | EQ017 | 20
+R006 | Kung Fu Hall | EQ018 | 15
+R006 | Kung Fu Hall | EQ019 | 40
 R006 | Kung Fu Hall | EQ020 | 2
-R006 | Kung Fu Hall | EQ021 | 6
-R006 | Kung Fu Hall | EQ024 | 2
+R006 | Kung Fu Hall | EQ021 | 12
+R006 | Kung Fu Hall | EQ022 | 1
+R006 | Kung Fu Hall | EQ023 | 1
+R006 | Kung Fu Hall | EQ024 | 4
