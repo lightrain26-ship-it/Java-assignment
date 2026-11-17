@@ -68,7 +68,7 @@ public class ManageStaff {
     }
 
     //===================================================================================================================================
-    //                                       ADD STAFF
+    //                                                  ADD STAFF
     //===================================================================================================================================
     //Specify txt file, ID prefix, password and Instructor for each role
     public StaffAccount addStaff(String role, String name, String phone, LocalDate dob, String gender, String specialty, String grade) {
@@ -153,7 +153,7 @@ public class ManageStaff {
     }
 
     //===================================================================================================================================
-    //                                       SEARCH STAFF
+    //                                                  SEARCH STAFF
     //===================================================================================================================================
     //HELPER METHODS
     //Check userRole for searching and viewing txt file
