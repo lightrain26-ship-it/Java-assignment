@@ -161,18 +161,6 @@ public class issue {
         return null; // Return null if no matching issue is found
     }
 
-    // How many equipment that has a problem right now
-    public static int getAffectedQty(String equipmentId) {
-        int affect = 0;
-
-        for (issue u: loadIssue()){
-            if (u.getEquipmentId().equals(equipmentId)) {
-                affect += u.getAffected();
-            }
-        }
-        return affect;
-    }
-
     // Change the "In Progress" status to "Resolved"
     public static issue updateIssue(String issueId, String newStatus) {
         File isFile = new File("data", FileMenu.ISSUE);
@@ -185,7 +173,7 @@ public class issue {
 
         // A "Resolved" and "Disposed" issue cannot be changed again
         if(!"In Progress".equals(iss.getStatus())) {
-            throw new IllegalStateException(issueId + "is already " + iss.getStatus() +  "and it cannot be changed.");
+            throw new IllegalStateException(issueId + "is already " + iss.getStatus() +  " and it cannot be changed.");
         }
 
         if (!"Resolved".equals(newStatus) && !"Disposed".equals(newStatus)) {

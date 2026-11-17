@@ -45,6 +45,16 @@ public class equipment {
         return category;
     }
 
+    public String getStockStatus() {
+        if (totalQty == 0) {
+            return "Out of Stock";
+        }
+        if (totalQty <= minQty) {
+            return "Needs Restock";
+        }
+        return "In Stock";
+    }
+
     // Setters
     public void setEquipmentName(String equipmentName) {
         if(equipmentName == null || equipmentName.trim().isEmpty()) {
