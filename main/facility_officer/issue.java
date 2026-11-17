@@ -80,10 +80,10 @@ public class issue {
 
     // Setter
     public void setStatus(String status) {
-        if ("In Progress".equals(status) || "Resolved".equals(status)) {
+        if ("In Progress".equals(status) || "Resolved".equals(status) || "Disposed".equals(status)) {
             this.status = status;
         } else {
-            throw new IllegalArgumentException("Status must be either 'In Progress' or 'Resolved'");
+            throw new IllegalArgumentException("Status must be either 'In Progress', 'Resolved', or 'Disposed'");
         }
     }
 
@@ -161,8 +161,20 @@ public class issue {
         return null; // Return null if no matching issue is found
     }
 
+    // How many equipment that has a problem right now
+    public static int getAffectedQty(String equipmentId) {
+        int affect = 0;
+
+        for (issue u: loadIssue()){
+            if (u.getEquipmentId().equals(equipmentId)) {
+                affect += u.getAffected();
+            }
+        }
+        return affect;
+    }
+
     // Change the "In Progress" status to "Resolved"
-    public static issue updateIssue(String issueId) {
+    public static issue updateIssue(String issueId, String newStatus) {
         File isFile = new File("data", FileMenu.ISSUE);
 
         issue iss = findIssue(issueId);
@@ -171,15 +183,43 @@ public class issue {
             throw new IllegalArgumentException(issueId + " not found.");
         }
 
-        // A "Resolved" issue cannot be changed again
-        if("Resolved".equals(iss.getStatus())) {
-            throw new IllegalStateException(issueId + " has already been resolved.");
+        // A "Resolved" and "Disposed" issue cannot be changed again
+        if(!"In Progress".equals(iss.getStatus())) {
+            throw new IllegalStateException(issueId + "is already " + iss.getStatus() +  "and it cannot be changed.");
         }
 
-        iss.setStatus("Resolved");
+        if (!"Resolved".equals(newStatus) && !"Disposed".equals(newStatus)) {
+            throw new IllegalArgumentException("New status must be 'Resolved' or 'Disposed'.");
+        }
 
+        int roomQty = 0;
+
+        if ("Disposed".equals(newStatus)) {
+            if ("-".equals(iss.getEquipmentId())){
+                throw new IllegalArgumentException("A room problem can only be resolved.");
+            }
+
+            // Find how many equipments are in that room
+            roomEquipment.loadRoomEquipment();
+            roomQty = -1;
+            for (roomEquipment r : roomEquipment.getRoomsForEquipment(iss.getEquipmentId())) {
+                if (r.getRoomId().equals(iss.getRoomId())) {
+                    roomQty = r.getQty();
+                }
+            }
+
+            if (roomQty < iss.getAffected()) {
+                throw new IllegalArgumentException("The room doesn't have enough quantity to dispose.");
+            }
+        }
+
+        // Lower down the room quantity and the equipment total quantity
+        if ("Disposed".equals(newStatus)) {
+            roomEquipment.updateRoomQty(iss.getRoomId(), iss.getEquipmentId(), roomQty - iss.getAffected());
+        }
+
+        iss.setStatus(newStatus);
         CRUD.updateRecord("Facilities Officers", isFile, iss.issueRows());
-
         return iss;
     }
 }

@@ -137,6 +137,11 @@ public class equipment {
                 throw new IllegalArgumentException("Each room can only be added once.");
             }
             sRm.add(r.getRoomId());
+
+            if (r.getQty() < 1) {
+                throw new IllegalArgumentException("Each room must have at least 1.");
+            }
+
             sum += r.getQty();
         }
         if (sum != totalQty) {
