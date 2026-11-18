@@ -73,7 +73,7 @@ public class Login implements Repository{
     // Validate password format...
     public boolean validPassword(String pw) {
 
-        return pw != null && !pw.contains(" ") && pw.length() >= 8;
+        return !pw.contains(" ") && pw.length() >= 8;
     }
 
     // Authenticate the user...
