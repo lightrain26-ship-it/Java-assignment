@@ -56,6 +56,6 @@ LOG054 | DELETE | Equipment | EQ025 | Whistle Set | FAC001 | 2025-04-02 | N/A | 
 LOG055 | UPDATE | Issue | IS001 | Air conditioner not cooling | FAC001 | 2026-09-24 | status | In Progress | Resolved
 LOG056 | UPDATE | Issue | IS002 | Crash mats torn at the edges | FAC004 | 2026-09-26 | status | In Progress | Disposed
 LOG057 | UPDATE | Room Stock | R002-EQ006 | Judo Crash Pad in Judo Hall | FAC004 | 2026-09-26 | quantity | 15 | 12
-LOG058 | UPDATE | Issue | IS003 | Heavy bag chain broken | FAC001 | 2026-10-02 | status | In Progress | Disposed
+LOG058 | UPDATE | Issue | IS003 | Heavy punching bag chain broken | FAC001 | 2026-10-02 | status | In Progress | Disposed
 LOG059 | UPDATE | Room Stock | R004-EQ011 | Heavy Punching Bag in MMA Training Room | FAC001 | 2026-10-02 | quantity | 12 | 11
 LOG060 | UPDATE | Issue | IS004 | Ceiling lights flickering | FAC004 | 2026-10-09 | status | In Progress | Resolved
