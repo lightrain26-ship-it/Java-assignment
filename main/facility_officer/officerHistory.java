@@ -112,7 +112,7 @@ public class officerHistory {
         log("DELETE", "Equipment", id, current.getEquipmentName(), NA, NA, NA);
     }
 
-    // Room stock: UPDATE (quantity of one equipment in one room)
+    // RoomEquipment: UPDATE (quantity of one equipment in one room)
     public void updateRoomQty(String roomId, String equipmentId, int newQty) {
         roomEquipment before = findRoom(roomId, equipmentId);
         int oldQty = before.getQty();
@@ -121,13 +121,12 @@ public class officerHistory {
         roomEquipment.updateRoomQty(roomId, equipmentId, newQty);
 
         if (oldQty != newQty) {
-            log("UPDATE", "Room Stock", roomId + "-" + equipmentId, label, "quantity",
+            log("UPDATE", "RoomEquipment", roomId + "-" + equipmentId, label, "quantity",
                 String.valueOf(oldQty), String.valueOf(newQty));
         }
     }
 
     // Issue: UPDATE (In Progress to Resolved or Disposed)
-    // A Disposed issue lowers the room quantity, so it also writes a Room Stock row
     public issue updateIssue(String issueId, String newStatus) {
         issue bf = issue.findIssue(issueId);
         if (bf == null) {
@@ -135,16 +134,7 @@ public class officerHistory {
         }
 
         issue updated = issue.updateIssue(issueId, newStatus);
-        log("UPDATE", "Issue", issueId, bf.getBriefDescription(), "status",
-            bf.getStatus(), updated.getStatus());
-
-        if ("Disposed".equals(newStatus)) {
-            roomEquipment after = findRoom(bf.getRoomId(), bf.getEquipmentId());
-            int newQty = after.getQty();
-            int oldQty = newQty + bf.getAffected();
-            log("UPDATE", "Room Stock", bf.getRoomId() + "-" + bf.getEquipmentId(),
-                stockName(after), "quantity", String.valueOf(oldQty), String.valueOf(newQty));
-        }
+        log("UPDATE", "Issue", issueId, bf.getBriefDescription(), "status", bf.getStatus(), updated.getStatus());
         return updated;
     }
 }
