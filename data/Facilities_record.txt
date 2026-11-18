@@ -1,0 +1,4 @@
+logID | actionType | targetType | targetID | performedBy | actionDate | fieldChanged | oldValue | newValue
+LOG001 | ADD | Equipment | EQ001 | Karate focus mitts | FAC001 | 2022-03-07 | N/A | N/A | N/A
+LOG002 | UPDATE | Room Stock | R001-EQ019 | Floor Mat in Karate Dojo | FAC002 | 2023-02-13 | quantity | 50 | 60
+LOG003 | UPDATE | Equipment | EQ001 | Karate focus mitts | FAC001 | 2023-05-22 | minQty | 8 | 10

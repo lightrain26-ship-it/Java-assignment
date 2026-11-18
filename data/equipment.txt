@@ -4,12 +4,12 @@ EQ002 | Makiwara Striking Board | 5 | 2 | Training Gear
 EQ003 | Kicking Shield | 12 | 4 | Training Gear
 EQ004 | Body Guard | 30 | 5 | Training Gear
 EQ005 | Head Guard | 30 | 5 | Training Gear
-EQ006 | Judo Crash Pad | 15 | 6 | Training Gear
+EQ006 | Judo Crash Pad | 12 | 6 | Training Gear
 EQ007 | Punch mitts | 20 | 5 | Training Gear
 EQ008 | Chest Guard | 30 | 7 | Training Gear
 EQ009 | Kicking Paddle | 20 | 8 | Training Gear
 EQ010 | MMA Gloves | 30 | 10 | Training Gear
-EQ011 | Heavy Punching Bag | 12 | 4 | Training Gear
+EQ011 | Heavy Punching Bag | 11 | 4 | Training Gear
 EQ012 | Shin Guards | 24 | 9 | Training Gear
 EQ013 | Muay Thai Pads | 20 | 5 | Training Gear
 EQ014 | Thai Boxing Gloves | 24 | 9 | Training Gear
