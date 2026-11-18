@@ -115,6 +115,55 @@ public class Login implements Repository{
         return null;
     }
     
-    
+/* this is the logic for switching between users
+            switch(s){
+            case LoginResult.INCORRECT_PASSWORD_EMAIL:
+                emailtxt.setText("Incorrect Email or Password!");
+                emailtxt.setForeground(Color.red);
+                break;
+                
+            case LoginResult.INVALID_EMAIL:
+                emailtxt.setText("INVALID EMAIL!");
+                emailtxt.setForeground(Color.red);
+                break;
+                
+            case LoginResult.INVALID_PASSWORD_FORMAT:
+                emailtxt.setText("Password must be atleast 8 Characters");
+                emailtxt.setForeground(Color.red);
+                break;
+                
+            case LoginResult.SUCCESS:
+                String id = log.getID(email);
+                String role = id.substring(0, 3);
+                
+                switch(role){
+                    case "STU" -> {
+                        Student_Main_UI stu = new Student_Main_UI(id);
+                        stu.setVisible(true);
+                }
+                        
+                    case "MAN" -> {
+                }
+                        
+                    case "ADM" -> {
+                }
+                        
+                    case "INS" -> {
+                }
+                        
+                    case "FAC" -> {
+                }
+                        
+                    case "ATT" -> {
+                }
+                    default -> JOptionPane.showMessageDialog( null,"NO NO SYUDUDU");
+                        
+                }
+                this.dispose();
+                parent.dispose();// this one to close the main menu..
+// this one to close the main menu..
+            default:
+                JOptionPane.showMessageDialog(null,"ERRORR");
+*/    
 
 }
