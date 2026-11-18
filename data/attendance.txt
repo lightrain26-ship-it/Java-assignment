@@ -1,0 +1,1 @@
+scheID | studentID | status | dateTime | attOffID
