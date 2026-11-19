@@ -3,42 +3,42 @@ RAT001 | STU001 | CLS001 | INS001 | 5 | Clear demonstrations made the basic stan
 RAT002 | STU005 | CLS001 | INS001 | 4 | The instructor was patient and gave useful corrections throughout the class. | 2026-10-01
 RAT003 | STU008 | CLS001 | INS001 | 5 | A good introduction to Shotokan Karate with a balanced mix of technique and practice. | 2026-10-01
 RAT004 | STU011 | CLS001 | INS001 | 4 | The drills were enjoyable and helped me feel more confident with the fundamentals. | 2026-10-01
-RAT005 | STU001 | CLS002 | INS001 | 4 | The kata practice was challenging and helped me improve my technique. | 2026-11-06
-RAT006 | STU005 | CLS002 | INS001 | 5 | I enjoyed the sparring drills and received helpful feedback on my timing. | 2026-11-06
-RAT007 | STU011 | CLS002 | INS001 | 4 | A demanding class that improved my control, focus and movement. | 2026-11-06
-RAT008 | STU013 | CLS002 | INS001 | 5 | The instructor explained the details of each technique clearly. | 2026-11-06
-RAT009 | STU003 | CLS003 | INS002 | 3 | The basic kicks and poomsae exercises were easy to follow and engaging. | 2026-10-22
-RAT010 | STU005 | CLS003 | INS002 | 4 | Good demonstrations helped me improve my balance and kicking accuracy. | 2026-10-22
-RAT011 | STU006 | CLS003 | INS002 | 5 | The class was active and enjoyable, with useful corrections from the instructor. | 2026-10-22
-RAT012 | STU014 | CLS003 | INS002 | 4 | I learned several techniques that I can continue practising outside class. | 2026-10-22
-RAT013 | STU015 | CLS003 | INS002 | 5 | The basic kicks and poomsae exercises were easy to follow and engaging. | 2026-10-22
-RAT014 | STU003 | CLS004 | INS002 | 4 | The instructor explained the combinations clearly and corrected my form. | 2026-10-04
-RAT015 | STU006 | CLS004 | INS002 | 5 | A useful class for improving speed, balance and control. | 2026-10-04
-RAT016 | STU014 | CLS004 | INS002 | 4 | I appreciated the structured exercises and practical feedback. | 2026-10-04
-RAT017 | STU015 | CLS004 | INS002 | 3 | The conditioning drills were challenging but helped improve my stamina. | 2026-10-04
+RAT005 | STU001 | CLS002 | INS002 | 4 | The kata practice was challenging and helped me improve my technique. | 2026-11-06
+RAT006 | STU005 | CLS002 | INS002 | 5 | I enjoyed the sparring drills and received helpful feedback on my timing. | 2026-11-06
+RAT007 | STU011 | CLS002 | INS002 | 4 | A demanding class that improved my control, focus and movement. | 2026-11-06
+RAT008 | STU013 | CLS002 | INS002 | 5 | The instructor explained the details of each technique clearly. | 2026-11-06
+RAT009 | STU003 | CLS003 | INS004 | 3 | The basic kicks and poomsae exercises were easy to follow and engaging. | 2026-10-22
+RAT010 | STU005 | CLS003 | INS004 | 4 | Good demonstrations helped me improve my balance and kicking accuracy. | 2026-10-22
+RAT011 | STU006 | CLS003 | INS004 | 5 | The class was active and enjoyable, with useful corrections from the instructor. | 2026-10-22
+RAT012 | STU014 | CLS003 | INS004 | 4 | I learned several techniques that I can continue practising outside class. | 2026-10-22
+RAT013 | STU015 | CLS003 | INS004 | 5 | The basic kicks and poomsae exercises were easy to follow and engaging. | 2026-10-22
+RAT014 | STU003 | CLS004 | INS010 | 4 | The instructor explained the combinations clearly and corrected my form. | 2026-10-04
+RAT015 | STU006 | CLS004 | INS010 | 5 | A useful class for improving speed, balance and control. | 2026-10-04
+RAT016 | STU014 | CLS004 | INS010 | 4 | I appreciated the structured exercises and practical feedback. | 2026-10-04
+RAT017 | STU015 | CLS004 | INS010 | 3 | The conditioning drills were challenging but helped improve my stamina. | 2026-10-04
 RAT018 | STU004 | CLS005 | INS003 | 5 | I enjoyed learning how to combine throws with groundwork. | 2026-10-07
 RAT019 | STU009 | CLS005 | INS003 | 4 | The instructor was encouraging and helped me improve my technique safely. | 2026-10-07
 RAT020 | STU014 | CLS005 | INS003 | 5 | A very useful introduction to Kodokan Judo fundamentals. | 2026-10-07
 RAT021 | STU017 | CLS005 | INS003 | 4 | The judo throws were demonstrated clearly and practised at a comfortable pace. | 2026-10-07
-RAT022 | STU004 | CLS006 | INS003 | 5 | I learned useful competition preparation techniques and transitions. | 2026-11-12
-RAT023 | STU009 | CLS006 | INS003 | 4 | The instructor provided detailed feedback on positioning and timing. | 2026-11-12
-RAT024 | STU014 | CLS006 | INS003 | 5 | A demanding session that improved my confidence in advanced judo. | 2026-11-12
-RAT025 | STU017 | CLS006 | INS003 | 4 | The randori exercises were challenging and helped me think more tactically. | 2026-11-12
-RAT026 | STU003 | CLS007 | INS004 | 5 | I enjoyed the practical combinations and the pace of the session. | 2026-10-10
-RAT027 | STU007 | CLS007 | INS004 | 3 | The instructor gave useful advice on transitioning between striking and grappling. | 2026-10-10
-RAT028 | STU010 | CLS007 | INS004 | 4 | A challenging but enjoyable class that improved my overall coordination. | 2026-10-10
-RAT029 | STU012 | CLS007 | INS004 | 5 | The striking and grappling drills provided a good introduction to MMA. | 2026-10-10
-RAT030 | STU013 | CLS007 | INS004 | 4 | I enjoyed the practical combinations and the pace of the session. | 2026-10-10
-RAT031 | STU016 | CLS007 | INS004 | 5 | The instructor gave useful advice on transitioning between striking and grappling. | 2026-10-10
-RAT032 | STU001 | CLS008 | INS005 | 4 | A good Muay Thai session with a balance of technique and conditioning. | 2026-10-13
-RAT033 | STU005 | CLS008 | INS005 | 5 | The pad work was engaging and helped improve my striking combinations. | 2026-10-13
-RAT034 | STU006 | CLS008 | INS005 | 4 | I enjoyed practising the clinch techniques with clear demonstrations. | 2026-10-13
-RAT035 | STU010 | CLS008 | INS005 | 5 | The instructor gave helpful corrections on stance and distance. | 2026-10-13
-RAT036 | STU014 | CLS008 | INS005 | 4 | A good Muay Thai session with a balance of technique and conditioning. | 2026-10-13
-RAT037 | STU016 | CLS008 | INS005 | 5 | The pad work was engaging and helped improve my striking combinations. | 2026-10-13
-RAT038 | STU001 | CLS009 | INS006 | 4 | The instructor explained the forms carefully and made the techniques approachable. | 2026-10-16
-RAT039 | STU003 | CLS009 | INS006 | 5 | I enjoyed the coordination exercises and traditional movements. | 2026-10-16
-RAT040 | STU005 | CLS009 | INS006 | 3 | A worthwhile introduction to Kung Fu with plenty of useful practice. | 2026-10-16
-RAT041 | STU010 | CLS009 | INS006 | 4 | The basic Wing Chun and Shaolin movements were interesting to learn. | 2026-10-16
-RAT042 | STU012 | CLS009 | INS006 | 5 | The instructor explained the forms carefully and made the techniques approachable. | 2026-10-16
-RAT043 | STU014 | CLS009 | INS006 | 4 | I enjoyed the coordination exercises and traditional movements. | 2026-10-16
+RAT022 | STU004 | CLS006 | INS012 | 5 | I learned useful competition preparation techniques and transitions. | 2026-11-12
+RAT023 | STU009 | CLS006 | INS012 | 4 | The instructor provided detailed feedback on positioning and timing. | 2026-11-12
+RAT024 | STU014 | CLS006 | INS012 | 5 | A demanding session that improved my confidence in advanced judo. | 2026-11-12
+RAT025 | STU017 | CLS006 | INS012 | 4 | The randori exercises were challenging and helped me think more tactically. | 2026-11-12
+RAT026 | STU003 | CLS007 | INS006 | 5 | I enjoyed the practical combinations and the pace of the session. | 2026-10-10
+RAT027 | STU007 | CLS007 | INS006 | 3 | The instructor gave useful advice on transitioning between striking and grappling. | 2026-10-10
+RAT028 | STU010 | CLS007 | INS006 | 4 | A challenging but enjoyable class that improved my overall coordination. | 2026-10-10
+RAT029 | STU012 | CLS007 | INS006 | 5 | The striking and grappling drills provided a good introduction to MMA. | 2026-10-10
+RAT030 | STU013 | CLS007 | INS006 | 4 | I enjoyed the practical combinations and the pace of the session. | 2026-10-10
+RAT031 | STU016 | CLS007 | INS006 | 5 | The instructor gave useful advice on transitioning between striking and grappling. | 2026-10-10
+RAT032 | STU001 | CLS008 | INS007 | 4 | A good Muay Thai session with a balance of technique and conditioning. | 2026-10-13
+RAT033 | STU005 | CLS008 | INS007 | 5 | The pad work was engaging and helped improve my striking combinations. | 2026-10-13
+RAT034 | STU006 | CLS008 | INS007 | 4 | I enjoyed practising the clinch techniques with clear demonstrations. | 2026-10-13
+RAT035 | STU010 | CLS008 | INS007 | 5 | The instructor gave helpful corrections on stance and distance. | 2026-10-13
+RAT036 | STU014 | CLS008 | INS007 | 4 | A good Muay Thai session with a balance of technique and conditioning. | 2026-10-13
+RAT037 | STU016 | CLS008 | INS007 | 5 | The pad work was engaging and helped improve my striking combinations. | 2026-10-13
+RAT038 | STU001 | CLS009 | INS008 | 4 | The instructor explained the forms carefully and made the techniques approachable. | 2026-10-16
+RAT039 | STU003 | CLS009 | INS008 | 5 | I enjoyed the coordination exercises and traditional movements. | 2026-10-16
+RAT040 | STU005 | CLS009 | INS008 | 3 | A worthwhile introduction to Kung Fu with plenty of useful practice. | 2026-10-16
+RAT041 | STU010 | CLS009 | INS008 | 4 | The basic Wing Chun and Shaolin movements were interesting to learn. | 2026-10-16
+RAT042 | STU012 | CLS009 | INS008 | 5 | The instructor explained the forms carefully and made the techniques approachable. | 2026-10-16
+RAT043 | STU014 | CLS009 | INS008 | 4 | I enjoyed the coordination exercises and traditional movements. | 2026-10-16
