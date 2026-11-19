@@ -10,7 +10,7 @@ R001 | Karate Dojo | EQ023 | 1
 R001 | Karate Dojo | EQ024 | 4
 R002 | Judo Hall | EQ004 | 30
 R002 | Judo Hall | EQ005 | 30
-R002 | Judo Hall | EQ006 | 15
+R002 | Judo Hall | EQ006 | 12
 R002 | Judo Hall | EQ020 | 2
 R002 | Judo Hall | EQ021 | 16
 R002 | Judo Hall | EQ022 | 1
@@ -26,7 +26,7 @@ R003 | Taekwondo Studio | EQ022 | 1
 R003 | Taekwondo Studio | EQ023 | 1
 R003 | Taekwondo Studio | EQ024 | 4
 R004 | MMA Training Room | EQ010 | 30
-R004 | MMA Training Room | EQ011 | 12
+R004 | MMA Training Room | EQ011 | 11
 R004 | MMA Training Room | EQ012 | 24
 R004 | MMA Training Room | EQ019 | 40
 R004 | MMA Training Room | EQ020 | 2
