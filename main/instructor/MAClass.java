@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MAClass implements Repository<MAClass>{
-    private final static String MA_CLASS ="src/instructor/course.txt";
+    private final static String MA_CLASS ="data/class.txt";
     
     private Instructor inst;
     

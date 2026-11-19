@@ -20,7 +20,7 @@ import java.util.List;
 
 
 public class Schedule implements Repository<Schedule> {
-    private final String SCHEDULE = "src/instructor/classSchedule.txt";
+    private final String SCHEDULE = "data/schedule.txt";
     
     private final int classInterval = 15;
     private final int slotInterval = 5;

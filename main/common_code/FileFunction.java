@@ -44,13 +44,13 @@ public class FileFunction {
             case "Administrators":
                 return filename.equals(FileMenu.MANAGER) || filename.equals(FileMenu.FACILITYOFFICE) || filename.equals(FileMenu.ATTENDANCEOFFICE) || filename.equals(FileMenu.INSTRUCTOR) || filename.equals(FileMenu.STUDENT) || filename.equals(FileMenu.ADMINRECORD);
             case "Instructors":
-                return filename.equals(FileMenu.SCHEDULE) || filename.equals(FileMenu.STUDENTRATE) || filename.equals(FileMenu.ISSUE);
+                return filename.equals(FileMenu.CLASS) || filename.equals(FileMenu.SCHEDULE) || filename.equals(FileMenu.STUDENTRATE) || filename.equals(FileMenu.ISSUE);
             case "Facilities Officers":
                 return filename.equals(FileMenu.EQUIPMENT) || filename.equals(FileMenu.ISSUE) || filename.equals(FileMenu.ROOMEQUIPMENT);
             case "Attendance Officers":
                 return filename.equals(FileMenu.ATTENDANCE);
             case "Students":
-                return filename.equals(FileMenu.PAYMENT) || filename.equals(FileMenu.SCHEDULE) || filename.equals(FileMenu.BOOKING);
+                return filename.equals(FileMenu.CLASS) || filename.equals(FileMenu.PAYMENT) || filename.equals(FileMenu.SCHEDULE) || filename.equals(FileMenu.BOOKING);
             default:
                 return false;
         }
