@@ -213,6 +213,7 @@ public class equipment {
 
         for (int i = 1; i < rows.size(); i++) {
             String[] row = rows.get(i);
+            // If it doesn't have the same ID that the user search then keep the row
             if (!row[2].equals(id)) { // ROOMEQUIPMENT and ISSUE file has equipmentID in index 2
                 keptrows.add(row);
             }
