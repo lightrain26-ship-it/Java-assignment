@@ -173,7 +173,7 @@ public class issue {
 
         // A "Resolved" and "Disposed" issue cannot be changed again
         if(!"In Progress".equals(iss.getStatus())) {
-            throw new IllegalStateException(issueId + "is already " + iss.getStatus() +  " and it cannot be changed.");
+            throw new IllegalStateException(issueId + " is already " + iss.getStatus() +  " and it cannot be changed.");
         }
 
         if (!"Resolved".equals(newStatus) && !"Disposed".equals(newStatus)) {

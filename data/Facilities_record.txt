@@ -57,5 +57,3 @@ LOG055 | UPDATE | Issue | IS001 | Air conditioner not cooling | FAC001 | 2026-09
 LOG056 | UPDATE | Issue | IS002 | Crash mats torn at the edges | FAC004 | 2026-09-26 | status | In Progress | Disposed
 LOG057 | UPDATE | Issue | IS003 | Heavy punching bag chain broken | FAC001 | 2026-10-02 | status | In Progress | Disposed
 LOG058 | UPDATE | Issue | IS004 | Ceiling lights flickering | FAC004 | 2026-10-09 | status | In Progress | Resolved
-LOG059 | UPDATE | RoomEquipment | R004-EQ011 | Heavy Punching Bag in MMA Training Room | FAC001 | 2026-10-02 | quantity | 12 | 11
-LOG060 | UPDATE | Issue | IS004 | Ceiling lights flickering | FAC004 | 2026-10-09 | status | In Progress | Resolved
