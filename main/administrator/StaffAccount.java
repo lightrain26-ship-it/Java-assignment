@@ -28,6 +28,13 @@ public class StaffAccount extends User {
                 LocalDate.parse(row[6]), row[7], LocalDate.parse(row[8]));
     }
 
+    //OBJECT ORIENTED
+    //Polymorphism: every account can give one row for the table (password is never shown). InstructorAccount overrides this to fill specialty and grade
+    public String[] toTableRow() {
+        return new String[]{getId(), getRole(), getName(), getEmail(), getPhone(), getDob().toString(),
+                getGender(), "-", "-", getDateJoined().toString()};
+    }
+
     public boolean matches(String keyword) {
         keyword = keyword.toLowerCase();
         return getId().toLowerCase().contains(keyword)
