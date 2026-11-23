@@ -43,8 +43,6 @@ public class ViewInstructorRating {
                 continue;
             }
 
-            // Instructor ID is now at index 4
-
             if (row[4].equals(instructorID)) {
                 result.add(row);
             }

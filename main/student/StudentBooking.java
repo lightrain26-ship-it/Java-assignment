@@ -177,10 +177,6 @@ public class StudentBooking {
                 IDGenerator.generateNextID(
                         bookingFile, "BKG");
 
-        // NEW BOOKING STRUCTURE:
-        // bookingID | studentID | classID | scheID
-        // | bookingDate | scheduledDate | status
-
         String[] booking = {
             bookingID,
             studentID,
