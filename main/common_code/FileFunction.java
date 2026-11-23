@@ -50,7 +50,7 @@ public class FileFunction {
             case "Attendance Officers":
                 return filename.equals(FileMenu.ATTENDANCE);
             case "Students":
-                return filename.equals(FileMenu.CLASS) || filename.equals(FileMenu.PAYMENT) || filename.equals(FileMenu.SCHEDULE) || filename.equals(FileMenu.BOOKING);
+                return filename.equals(FileMenu.CLASS) || filename.equals(FileMenu.PAYMENT) || filename.equals(FileMenu.SCHEDULE) || filename.equals(FileMenu.BOOKING) || filename.equals(FileMenu.STUDENTRATE) || filename.equals(FileMenu.ATTENDANCE);
             default:
                 return false;
         }

@@ -18,7 +18,7 @@ public class WriteFunction {
             case "Attendance Officers":
                 return filename.equals(FileMenu.ATTENDANCE);
             case "Students":
-                return filename.equals(FileMenu.PAYMENT) || filename.equals(FileMenu.BOOKING);
+                return filename.equals(FileMenu.PAYMENT) || filename.equals(FileMenu.BOOKING) || filename.equals(FileMenu.STUDENTRATE);
             default:
                 return false;
         }
