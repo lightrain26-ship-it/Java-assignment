@@ -9,8 +9,10 @@ import manager.ManagerMenu;
 
 public class mainTest {
     public static void main(String[] args) {
-        ManagerMenu.managerMainMenu();
+        //ManagerMenu.managerMainMenu();
+        StudentMenu.studentMainMenu();
     }
+
     // public static void main(String[] args) {
     //     File issueFile = new File("data", FileMenu.ISSUE);
 

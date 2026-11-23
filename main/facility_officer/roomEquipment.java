@@ -67,8 +67,8 @@ public class roomEquipment {
 
     // Setters 
     public void setQty(int qty) {
-        if (qty < 1) {
-            throw new IllegalArgumentException("Room quantity must be 1 or more.");
+        if (qty < 0) {
+            throw new IllegalArgumentException("Equipments quantity in the room cannot be negative.");
         }
         this.qty = qty;
     }
@@ -145,8 +145,8 @@ public class roomEquipment {
 
     // If changing the room's quantity, it will recalculates the equipment's total quantity
     public static void updateRoomQty(String roomId, String equipmentId, int newQty) {
-        if (newQty < 1) {
-            throw new IllegalArgumentException("Room quantity must be 1 or more.");
+        if (newQty < 0) {
+            throw new IllegalArgumentException("Room quantity cannot be negative.");
         }
 
         List<String[]> rows = CRUD.readFile(ROOM_FILE);

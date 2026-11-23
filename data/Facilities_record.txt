@@ -1,0 +1,59 @@
+logID | actionType | targetType | targetID | targetName | performedBy | actionDate | fieldChanged | oldValue | newValue
+LOG001 | ADD | Equipment | EQ001 | Karate focus mitts | FAC001 | 2022-03-07 | N/A | N/A | N/A
+LOG002 | ADD | Equipment | EQ002 | Makiwara Striking Board | FAC001 | 2022-03-07 | N/A | N/A | N/A
+LOG003 | ADD | Equipment | EQ003 | Kicking Shield | FAC001 | 2022-03-14 | N/A | N/A | N/A
+LOG004 | UPDATE | RoomEquipment | R001-EQ003 | Kicking Shield in Karate Dojo | FAC001 | 2022-03-16 | quantity | 10 | 12
+LOG005 | ADD | Equipment | EQ004 | Speed Ball | FAC003 | 2022-03-21 | N/A | N/A | N/A
+LOG006 | DELETE | Equipment | EQ004 | Speed Ball | FAC003 | 2022-03-23 | N/A | N/A | N/A
+LOG007 | ADD | Equipment | EQ004 | Body Guard | FAC001 | 2022-03-28 | N/A | N/A | N/A
+LOG008 | ADD | Equipment | EQ005 | Head Guard | FAC001 | 2022-03-28 | N/A | N/A | N/A
+LOG009 | UPDATE | Equipment | EQ001 | Karate focus mitts | FAC001 | 2022-04-04 | minQty | 8 | 10
+LOG010 | ADD | Equipment | EQ006 | Judo Crash Pad | FAC003 | 2022-04-11 | N/A | N/A | N/A
+LOG011 | ADD | Equipment | EQ007 | Punch mitts | FAC003 | 2022-04-11 | N/A | N/A | N/A
+LOG012 | UPDATE | Equipment | EQ007 | Punch mitts | FAC003 | 2022-04-13 | minQty | 3 | 5
+LOG013 | ADD | Equipment | EQ008 | Agility Ladder | FAC004 | 2022-04-18 | N/A | N/A | N/A
+LOG014 | DELETE | Equipment | EQ008 | Agility Ladder | FAC004 | 2022-04-20 | N/A | N/A | N/A
+LOG015 | ADD | Equipment | EQ008 | Chest Guard | FAC004 | 2022-04-25 | N/A | N/A | N/A
+LOG016 | ADD | Equipment | EQ009 | Kicking Paddle | FAC004 | 2022-05-02 | N/A | N/A | N/A
+LOG017 | ADD | Equipment | EQ010 | MMA Gloves | FAC001 | 2022-05-09 | N/A | N/A | N/A
+LOG018 | ADD | Equipment | EQ011 | Jump Rope Set | FAC001 | 2022-05-11 | N/A | N/A | N/A
+LOG019 | DELETE | Equipment | EQ011 | Jump Rope Set | FAC001 | 2022-05-13 | N/A | N/A | N/A
+LOG020 | ADD | Equipment | EQ011 | Heavy Punching Bag | FAC001 | 2022-05-16 | N/A | N/A | N/A
+LOG021 | ADD | Equipment | EQ012 | Shin Guards | FAC003 | 2022-05-16 | N/A | N/A | N/A
+LOG022 | UPDATE | Equipment | EQ009 | Kicking Paddle | FAC004 | 2022-05-23 | minQty | 6 | 8
+LOG023 | UPDATE | Equipment | EQ010 | MMA Gloves | FAC001 | 2022-05-30 | minQty | 8 | 10
+LOG024 | ADD | Equipment | EQ013 | Muay Thai Pads | FAC004 | 2022-06-06 | N/A | N/A | N/A
+LOG025 | ADD | Equipment | EQ014 | Balance Board | FAC004 | 2022-06-08 | N/A | N/A | N/A
+LOG026 | DELETE | Equipment | EQ014 | Balance Board | FAC004 | 2022-06-10 | N/A | N/A | N/A
+LOG027 | ADD | Equipment | EQ014 | Thai Boxing Gloves | FAC004 | 2022-06-13 | N/A | N/A | N/A
+LOG028 | ADD | Equipment | EQ015 | Hanging Bag | FAC004 | 2022-06-13 | N/A | N/A | N/A
+LOG029 | UPDATE | Equipment | EQ013 | Muay Thai Pads | FAC004 | 2022-06-15 | minQty | 3 | 5
+LOG030 | ADD | Equipment | EQ016 | Wooden Dummy | FAC003 | 2022-06-20 | N/A | N/A | N/A
+LOG031 | ADD | Equipment | EQ017 | Bo Staff | FAC003 | 2022-06-27 | N/A | N/A | N/A
+LOG032 | UPDATE | RoomEquipment | R004-EQ012 | Shin Guards in MMA Training Room | FAC001 | 2022-07-04 | quantity | 20 | 24
+LOG033 | ADD | Equipment | EQ018 | Foam Roller | FAC001 | 2022-07-11 | N/A | N/A | N/A
+LOG034 | DELETE | Equipment | EQ018 | Foam Roller | FAC001 | 2022-07-13 | N/A | N/A | N/A
+LOG035 | ADD | Equipment | EQ018 | Nunchaku | FAC001 | 2022-07-18 | N/A | N/A | N/A
+LOG036 | ADD | Equipment | EQ019 | Floor Mat | FAC004 | 2022-08-01 | N/A | N/A | N/A
+LOG037 | UPDATE | RoomEquipment | R001-EQ019 | Floor Mat in Karate Dojo | FAC004 | 2022-08-04 | quantity | 50 | 60
+LOG038 | ADD | Equipment | EQ020 | Air Conditioner | FAC001 | 2022-08-08 | N/A | N/A | N/A
+LOG039 | ADD | Equipment | EQ021 | LED Ceiling Light | FAC001 | 2022-08-15 | N/A | N/A | N/A
+LOG040 | UPDATE | RoomEquipment | R003-EQ019 | Floor Mat in Taekwondo Studio | FAC004 | 2022-08-22 | quantity | 40 | 50
+LOG041 | ADD | Equipment | EQ022 | Resistance Band | FAC003 | 2022-09-05 | N/A | N/A | N/A
+LOG042 | DELETE | Equipment | EQ022 | Resistance Band | FAC003 | 2022-09-07 | N/A | N/A | N/A
+LOG043 | ADD | Equipment | EQ022 | Digital Timer | FAC003 | 2022-09-12 | N/A | N/A | N/A
+LOG044 | ADD | Equipment | EQ023 | Water Dispenser | FAC003 | 2022-09-12 | N/A | N/A | N/A
+LOG045 | UPDATE | RoomEquipment | R006-EQ017 | Bo Staff in Kung Fu Hall | FAC004 | 2022-09-15 | quantity | 12 | 20
+LOG046 | ADD | Equipment | EQ024 | CCTV Camera | FAC001 | 2022-09-19 | N/A | N/A | N/A
+LOG047 | UPDATE | Equipment | EQ015 | Banana Bag | FAC001 | 2023-06-05 | name | Hanging Bag | Banana Bag
+LOG048 | UPDATE | RoomEquipment | R005-EQ014 | Thai Boxing Gloves in Muay Thai Gym | FAC003 | 2023-09-18 | quantity | 20 | 24
+LOG049 | UPDATE | RoomEquipment | R003-EQ008 | Chest Guard in Taekwondo Studio | FAC004 | 2024-01-15 | quantity | 25 | 30
+LOG050 | UPDATE | Equipment | EQ021 | LED Ceiling Light | FAC001 | 2024-09-09 | category | Training Gear | Electrical
+LOG051 | ADD | Equipment | EQ025 | Whistle Set | FAC004 | 2025-03-17 | N/A | N/A | N/A
+LOG052 | ADD | Equipment | EQ026 | Training Cone | FAC004 | 2025-03-17 | N/A | N/A | N/A
+LOG053 | DELETE | Equipment | EQ026 | Training Cone | FAC001 | 2025-04-02 | N/A | N/A | N/A
+LOG054 | DELETE | Equipment | EQ025 | Whistle Set | FAC001 | 2025-04-02 | N/A | N/A | N/A
+LOG055 | UPDATE | Issue | IS001 | Air conditioner not cooling | FAC001 | 2026-09-24 | status | In Progress | Resolved
+LOG056 | UPDATE | Issue | IS002 | Crash mats torn at the edges | FAC004 | 2026-09-26 | status | In Progress | Disposed
+LOG057 | UPDATE | Issue | IS003 | Heavy punching bag chain broken | FAC001 | 2026-10-02 | status | In Progress | Disposed
+LOG058 | UPDATE | Issue | IS004 | Ceiling lights flickering | FAC004 | 2026-10-09 | status | In Progress | Resolved

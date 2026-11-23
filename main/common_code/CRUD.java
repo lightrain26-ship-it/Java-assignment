@@ -22,6 +22,11 @@ public class CRUD {
         try (Scanner myReader = new Scanner(file)){
             while(myReader.hasNextLine()){
                 String data = myReader.nextLine();
+                //My part need this one, in case there is an empty line or lines, i can prevent ArrayIndexOutOfBound.. a little? i guess..
+                if(data.isEmpty()) {
+                    continue;
+                }
+                
                 String[] skipBreak = data.trim().split(splitLines);
                 lines.add(skipBreak);
             }

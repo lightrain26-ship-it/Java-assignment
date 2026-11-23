@@ -45,6 +45,16 @@ public class equipment {
         return category;
     }
 
+    public String getStockStatus() {
+        if (totalQty == 0) {
+            return "Out of Stock";
+        }
+        if (totalQty <= minQty) {
+            return "Needs Restock";
+        }
+        return "In Stock";
+    }
+
     // Setters
     public void setEquipmentName(String equipmentName) {
         if(equipmentName == null || equipmentName.trim().isEmpty()) {
@@ -137,6 +147,11 @@ public class equipment {
                 throw new IllegalArgumentException("Each room can only be added once.");
             }
             sRm.add(r.getRoomId());
+
+            if (r.getQty() < 1) {
+                throw new IllegalArgumentException("Each room must have at least 1.");
+            }
+
             sum += r.getQty();
         }
         if (sum != totalQty) {
@@ -198,6 +213,7 @@ public class equipment {
 
         for (int i = 1; i < rows.size(); i++) {
             String[] row = rows.get(i);
+            // If it doesn't have the same ID that the user search then keep the row
             if (!row[2].equals(id)) { // ROOMEQUIPMENT and ISSUE file has equipmentID in index 2
                 keptrows.add(row);
             }
