@@ -15,7 +15,7 @@ public class officerHistory {
     private static final String NA = "N/A";
     private final String officerId; // Facilities officer who logged in to the system
 
-    // Constructor
+    // Saves the logged-in officer's ID so every row has records who did the action
     public officerHistory(String officerId) {
         if (officerId == null || officerId.trim().isEmpty()) {
             throw new IllegalArgumentException("Officer ID cannot be empty.");
