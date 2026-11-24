@@ -24,15 +24,14 @@ public class roomEquipment {
         if (roomId == null || roomId.trim().isEmpty()) {
             throw new IllegalArgumentException("Room ID cannot be blank.");
         }
-        if (roomId.contains("|")) {
-            throw new IllegalArgumentException("Room ID cannot contain '|'.");
-        }
 
-        if (roomName == null || roomName.trim().isEmpty()) {
-            throw new IllegalArgumentException("Room Name cannot be blank.");
-        }
-        if (roomName.contains("|")) {
-            throw new IllegalArgumentException("Room Name cannot contain '|'.");
+        String rName = roomName.trim();
+
+        for (int n = 0; n < rName.length(); n++) {
+            char chr = rName.charAt(n);
+            if (!Character.isLetter(chr) && chr != ' ') {
+                throw new IllegalArgumentException("Room name can only have letters and spaces.");
+            }
         }
 
         if (equipmentId == null || equipmentId.trim().isEmpty()) {

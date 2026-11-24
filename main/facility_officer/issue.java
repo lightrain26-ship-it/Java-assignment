@@ -27,12 +27,16 @@ public class issue {
             throw new IllegalArgumentException("Date cannot be empty");
         }
 
-        if (briefDescription == null || briefDescription.trim().isEmpty()) {
-            throw new IllegalArgumentException("Brief description cannot be empty");
-        }
+        String text = briefDescription.trim();
 
-        if (briefDescription.contains("|")) {
-            throw new IllegalArgumentException("Brief description cannot contain the character \"|\"");
+        if (text.length() < 5 || text.length() > 70) {
+            throw new IllegalArgumentException("Brief description must be between 5 to 70 characters.");
+        }
+        for (int b = 0; b < text.length(); b++) {
+            char ch = text.charAt(b);
+            if (!Character.isLetter(ch) && ch != ' ') {
+                throw new IllegalArgumentException("Description can only have letters and spaces.");
+            }
         }
 
         this.issueId = issueId;

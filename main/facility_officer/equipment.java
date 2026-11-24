@@ -60,8 +60,14 @@ public class equipment {
         if(equipmentName == null || equipmentName.trim().isEmpty()) {
             throw new IllegalArgumentException("Equipment name cannot be empty.");
         }
-        if(equipmentName.contains("|")){
-            throw new IllegalArgumentException("Equipment name cannot contain the character \"|\".");
+
+        String trim = equipmentName.trim();
+
+        for (int a = 0; a < trim.length(); a++) {
+            char c = trim.charAt(a);
+            if (!Character.isLetter(c) && c != ' ') {
+                throw new IllegalArgumentException("Equipment name can only have letters and spaces.");
+            }
         }
         this.equipmentName = equipmentName.trim();
     }
