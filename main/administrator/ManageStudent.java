@@ -64,6 +64,25 @@ public class ManageStudent extends ManageAccount {
         }
     }
 
+    //HELPER METHODS
+    //Take ID from email login
+    public static String extractUserIDFromEmail(String email) {
+        if (email == null || email.trim().isEmpty()) {
+            throw new IllegalArgumentException("Login email cannot be empty");
+        }
+        String cleaned = email.trim();
+        int atIndex = cleaned.indexOf('@');
+        String idPart = (atIndex != -1) ? cleaned.substring(0, atIndex).trim() : cleaned;
+        return idPart.toUpperCase();
+    }
+
+    //HELPER METHODS
+    //Create Object ManageStudent directly from email currently logged in
+    public static ManageStudent fromLoginEmail(String email, String userRole) {
+        String loggedInID = extractUserIDFromEmail(email);
+        return new ManageStudent(loggedInID, userRole);
+    }
+
     //===================================================================================================================================
     //                                                  ADD STUDENT
     //===================================================================================================================================
