@@ -120,6 +120,69 @@ public class ManageStaff extends ManageAccount {
         }
     }
 
+    //HELPER METHODS
+    //Check largest ID number for certain prefix in role txt file and Admin_record.txt 
+    private String nextStaffID(File targetFile, String prefix) {
+        int maxNumber = 0;
+
+        maxNumber = Math.max(maxNumber, findMaxNumberForPrefix(CRUD.readFile(targetFile), prefix));
+
+        if (logFile != null && logFile.exists()) {
+            maxNumber = Math.max(maxNumber, findMaxNumberForPrefix(CRUD.readFile(logFile), prefix));
+        }
+
+        return prefix + String.format("%03d", maxNumber + 1);
+    }
+
+    //HELPER METHODS
+    //Scan all cell from rows to search for roleID
+    private int findMaxNumberForPrefix(List<String[]> rows, String prefix) {
+        int max = 0;
+        if (rows == null || rows.isEmpty()) {
+            return max;
+        }
+        String pattern = prefix + "(\\d{3})";
+        java.util.regex.Pattern compiled = java.util.regex.Pattern.compile(pattern);
+
+        for (String[] row : rows) {
+            if (row == null) {
+                continue;
+            }
+            for (String cell : row) {
+                if (cell == null) {
+                    continue;
+                }
+                java.util.regex.Matcher matcher = compiled.matcher(cell.trim());
+                while (matcher.find()) {
+                    int num = Integer.parseInt(matcher.group(1));
+                    if (num > max) {
+                        max = num;
+                    }
+                }
+            }
+        }
+        return max;
+    }
+
+    //HELPER METHODS
+    //Take ID from email login
+    public static String extractUserIDFromEmail(String email) {
+        if (email == null || email.trim().isEmpty()) {
+            throw new IllegalArgumentException("Login email cannot be empty");
+        }
+        String cleaned = email.trim();
+        int atIndex = cleaned.indexOf('@');
+        String idPart = (atIndex != -1) ? cleaned.substring(0, atIndex).trim() : cleaned;
+        return idPart.toUpperCase();
+    }
+
+    //HELPER METHODS
+    //Create Object ManageStaff directly from email currently logged in
+    public static ManageStaff fromLoginEmail(String email, String userRole) {
+        String loggedInID = extractUserIDFromEmail(email);
+        return new ManageStaff(loggedInID, userRole);
+    }
+
     //===================================================================================================================================
     //                                                  ADD STAFF
     //===================================================================================================================================
@@ -170,7 +233,7 @@ public class ManageStaff extends ManageAccount {
         }
 
         //Prepare the values that's not typed by admin
-        String id = IDGenerator.generateNextID(targetFile, prefix);
+        String id = nextStaffID(targetFile, prefix);
         String email = IDGenerator.generateEmail(id);
         String password = passwordWord + id.substring(3);
 
@@ -367,10 +430,10 @@ public class ManageStaff extends ManageAccount {
         return staff;
     }
 
-    //The ID row stays in the txt file and everything else becomes N/A, so the same ID will never be used again
+    //delete everything in the row
     public StaffAccount deleteStaff(String staffID) {
         StaffAccount staff = checkDeletable(staffID);
-        CRUD.deactivateRecord(staff.getId(), userRole, getFileByRole(staff.getRole()));
+        CRUD.deleteRecord(staff.getId(), userRole, getFileByRole(staff.getRole()));
         logAction("DELETE", staff, FileMenu.EMPTY_DOMAIN, FileMenu.EMPTY_DOMAIN, FileMenu.EMPTY_DOMAIN);
         return staff;
     }
