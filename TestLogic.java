@@ -1,32 +1,66 @@
 import administrator.*;
+import java.util.List;
+import java.util.NoSuchElementException;
 
 public class TestLogic {
     public static void main(String[] args) {
-        System.out.println("=== MULAI TEST: ADD MAN004 -> DELETE MAN004 -> ADD LAGI ===");
+        System.out.println("=== MULAI TEST: DELETE MAN007 LALU ADD MANAGER BARU ===");
 
-        ManageStaff staffService = new ManageStaff("ADM001", "Administrators");
+        String loginEmail = "ADM001@mail.sda.edu.my";
+        ManageStaff staffService = ManageStaff.fromLoginEmail(loginEmail, "Administrators");
 
-        // 1. Add Manager pertama (ekspektasi: MAN004)
-        System.out.println("\n--- 1. Add Manager pertama ---");
-        StaffAccount m1 = staffService.addStaff(
-                "Manager", "Test Manager Satu", "0198811001",
-                "1990-05-10", "Female", null, null
-        );
-        System.out.println("Terbuat ID: " + m1.getId() + " | Nama: " + m1.getName());
+        String targetDeleteID = "MAN007";
 
-        // 2. Hapus akun yang baru dibuat (m1.getId())
-        System.out.println("\n--- 2. Delete " + m1.getId() + " ---");
-        staffService.checkDeletable(m1.getId());
-        StaffAccount deleted = staffService.deleteStaff(m1.getId());
-        System.out.println("Terhapus ID: " + deleted.getId());
+        // 1. Delete MAN007
+        System.out.println("\n--- Proses DELETE ID: " + targetDeleteID + " ---");
+        try {
+            StaffAccount calonHapus = staffService.checkDeletable(targetDeleteID);
+            System.out.println("checkDeletable OK -> Target: " + calonHapus.getName() + " (" + calonHapus.getRole() + ")");
 
-        // 3. Add Manager lagi untuk melihat apakah ID keluar 004 atau 005
-        System.out.println("\n--- 3. Add Manager setelah dihapus ---");
-        StaffAccount m2 = staffService.addStaff(
-                "Manager", "Test Manager Dua", "0198811002",
-                "1991-06-15", "Male", null, null
-        );
-        System.out.println("ID baru yang keluar: " + m2.getId() + " | Nama: " + m2.getName());
+            StaffAccount terhapus = staffService.deleteStaff(targetDeleteID);
+            System.out.println("BERHASIL DIHAPUS! ID=" + terhapus.getId() + " | Nama=" + terhapus.getName());
+
+            try {
+                staffService.findActiveStaff(targetDeleteID);
+                System.out.println("PERINGATAN: ID " + targetDeleteID + " masih terdeteksi aktif!");
+            } catch (NoSuchElementException e) {
+                System.out.println("Verifikasi OK: ID " + targetDeleteID + " sudah tidak aktif / terhapus.");
+            }
+        } catch (Exception e) {
+            System.out.println("GAGAL DELETE (" + targetDeleteID + "): " + e.getMessage());
+        }
+
+        // 2. Add Manager 1 lagi
+        System.out.println("\n--- Proses ADD Manager Baru ---");
+        try {
+            // Pastikan nomor HP berbeda dari yang sudah pernah dipakai sebelumnya
+            StaffAccount manBaru = staffService.addStaff(
+                    "Manager",
+                    "Rizky Pratama",
+                    "0111111199",
+                    "1989-04-12",
+                    "Male",
+                    null,
+                    null
+            );
+
+            System.out.println("BERHASIL DITAMBAHKAN! ID=" + manBaru.getId()
+                    + " | Role=" + manBaru.getRole()
+                    + " | Nama=" + manBaru.getName()
+                    + " | Email=" + manBaru.getEmail()
+                    + " | Pass=" + manBaru.getPassword());
+
+            StaffAccount ditemukan = staffService.findActiveStaff(manBaru.getId());
+            System.out.println("Verifikasi OK: ID " + ditemukan.getId() + " terdeteksi aktif.");
+        } catch (Exception e) {
+            System.out.println("GAGAL ADD Manager: " + e.getMessage());
+        }
+
+        // Cek total staff aktif setelah delete & add
+        System.out.println("\n--- Cek Total Staff Aktif ---");
+        List<StaffAccount> semuaAktif = staffService.getAllStaff();
+        System.out.println("Total staff aktif sekarang: " + semuaAktif.size());
+        System.out.println("Broken lines: " + staffService.getBrokenLines());
 
         System.out.println("\n=== SELESAI ===");
     }

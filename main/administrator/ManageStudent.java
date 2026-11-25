@@ -83,50 +83,6 @@ public class ManageStudent extends ManageAccount {
         return new ManageStudent(loggedInID, userRole);
     }
 
-    //HELPER METHODS
-    //Check largest ID number for certain prefix in student.txt and Admin_record.txt
-    private String nextStudentID(File targetFile, String prefix) {
-        int maxNumber = 0;
-
-        maxNumber = Math.max(maxNumber, findMaxNumberForPrefix(CRUD.readFile(targetFile), prefix));
-
-        if (logFile != null && logFile.exists()) {
-            maxNumber = Math.max(maxNumber, findMaxNumberForPrefix(CRUD.readFile(logFile), prefix));
-        }
-
-        return prefix + String.format("%03d", maxNumber + 1);
-    }
-
-    //HELPER METHODS
-    //Scan all cells from rows to search for ID with given prefix
-    private int findMaxNumberForPrefix(List<String[]> rows, String prefix) {
-        int max = 0;
-        if (rows == null || rows.isEmpty()) {
-            return max;
-        }
-        String pattern = prefix + "(\\d{3})";
-        java.util.regex.Pattern compiled = java.util.regex.Pattern.compile(pattern);
-
-        for (String[] row : rows) {
-            if (row == null) {
-                continue;
-            }
-            for (String cell : row) {
-                if (cell == null) {
-                    continue;
-                }
-                java.util.regex.Matcher matcher = compiled.matcher(cell.trim());
-                while (matcher.find()) {
-                    int num = Integer.parseInt(matcher.group(1));
-                    if (num > max) {
-                        max = num;
-                    }
-                }
-            }
-        }
-        return max;
-    }
-
     //===================================================================================================================================
     //                                                  ADD STUDENT
     //===================================================================================================================================
@@ -143,7 +99,7 @@ public class ManageStudent extends ManageAccount {
         grade = checkGrade(grade);
 
         //Prepare the values that's not typed by admin
-        String id = nextStudentID(studentFile, "STU");
+        String id = IDGenerator.generateNextID(studentFile, logFile, "STU");
         String email = IDGenerator.generateEmail(id);
         String password = "student" + id.substring(3);
 

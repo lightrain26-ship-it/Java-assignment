@@ -121,50 +121,6 @@ public class ManageStaff extends ManageAccount {
     }
 
     //HELPER METHODS
-    //Check largest ID number for certain prefix in role txt file and Admin_record.txt 
-    private String nextStaffID(File targetFile, String prefix) {
-        int maxNumber = 0;
-
-        maxNumber = Math.max(maxNumber, findMaxNumberForPrefix(CRUD.readFile(targetFile), prefix));
-
-        if (logFile != null && logFile.exists()) {
-            maxNumber = Math.max(maxNumber, findMaxNumberForPrefix(CRUD.readFile(logFile), prefix));
-        }
-
-        return prefix + String.format("%03d", maxNumber + 1);
-    }
-
-    //HELPER METHODS
-    //Scan all cell from rows to search for roleID
-    private int findMaxNumberForPrefix(List<String[]> rows, String prefix) {
-        int max = 0;
-        if (rows == null || rows.isEmpty()) {
-            return max;
-        }
-        String pattern = prefix + "(\\d{3})";
-        java.util.regex.Pattern compiled = java.util.regex.Pattern.compile(pattern);
-
-        for (String[] row : rows) {
-            if (row == null) {
-                continue;
-            }
-            for (String cell : row) {
-                if (cell == null) {
-                    continue;
-                }
-                java.util.regex.Matcher matcher = compiled.matcher(cell.trim());
-                while (matcher.find()) {
-                    int num = Integer.parseInt(matcher.group(1));
-                    if (num > max) {
-                        max = num;
-                    }
-                }
-            }
-        }
-        return max;
-    }
-
-    //HELPER METHODS
     //Take ID from email login
     public static String extractUserIDFromEmail(String email) {
         if (email == null || email.trim().isEmpty()) {
@@ -233,7 +189,7 @@ public class ManageStaff extends ManageAccount {
         }
 
         //Prepare the values that's not typed by admin
-        String id = nextStaffID(targetFile, prefix);
+        String id = IDGenerator.generateNextID(targetFile, logFile, prefix);
         String email = IDGenerator.generateEmail(id);
         String password = passwordWord + id.substring(3);
 
