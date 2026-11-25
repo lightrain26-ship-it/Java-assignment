@@ -1,7 +1,7 @@
 package common_code;
 // keep the file in here as final for using
 public class FileMenu {
-        public static final String MANAGER = "manager.txt";
+        public static final String MANAGER = "managers.txt";
         public static final String ADMIN = "administrator.txt";
         public static final String FACILITYOFFICE = "facilitiesOfficer.txt";
         public static final String ATTENDANCEOFFICE = "attendanceOfficer.txt";
