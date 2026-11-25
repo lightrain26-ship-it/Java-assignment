@@ -57,19 +57,20 @@ public class equipment {
 
     // Setters
     public void setEquipmentName(String equipmentName) {
-        if(equipmentName == null || equipmentName.trim().isEmpty()) {
+        if (equipmentName == null || equipmentName.trim().isEmpty()) {
             throw new IllegalArgumentException("Equipment name cannot be empty.");
         }
 
-        String trim = equipmentName.trim();
+        String text = equipmentName.trim();
 
-        for (int a = 0; a < trim.length(); a++) {
-            char c = trim.charAt(a);
+        // Only letters and spaces are allowed
+        for (int a = 0; a < text.length(); a++) {
+            char c = text.charAt(a);
             if (!Character.isLetter(c) && c != ' ') {
                 throw new IllegalArgumentException("Equipment name can only have letters and spaces.");
             }
         }
-        this.equipmentName = equipmentName.trim();
+        this.equipmentName = text;
     }
 
     public void setTotalQty(int totalQty) {
@@ -138,6 +139,11 @@ public class equipment {
         if (totalQty < 1) {
             throw new IllegalArgumentException("Total quantity must be 1 or more.");
         }
+
+        if (minQty > totalQty) {
+            throw new IllegalArgumentException("Minimum quantity cannot be more than total quantity.");
+        }
+
         if (assign == null || assign.isEmpty()) {
             throw new IllegalArgumentException("Assign the equipment to at least one room.");
         }

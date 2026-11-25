@@ -37,9 +37,6 @@ public class roomEquipment {
         if (equipmentId == null || equipmentId.trim().isEmpty()) {
             throw new IllegalArgumentException("Equipment ID cannot be blank.");
         }
-        if (equipmentId.contains("|")) {
-            throw new IllegalArgumentException("Equipment ID cannot contain '|'.");
-        }
 
         this.roomId = roomId.trim();
         this.roomName = roomName.trim();
@@ -94,6 +91,19 @@ public class roomEquipment {
             rmRows.add(new roomEquipment(parts[0], parts[1], parts[2], qty));
         }
     }
+
+    // Defined Room ID
+    public static String getRoomIdByName(String roomName) {
+    switch (roomName) {
+        case "Karate Dojo":       return "R001";
+        case "Judo Hall":         return "R002";
+        case "Taekwondo Studio":  return "R003";
+        case "MMA Training Room": return "R004";
+        case "Muay Thai Gym":     return "R005";
+        case "Kung Fu Hall":      return "R006";
+        default: return null;
+    }
+}
     
     // Other classes can read the list
     public static ArrayList<roomEquipment> getRoomRow() {
