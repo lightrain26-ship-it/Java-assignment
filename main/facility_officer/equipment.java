@@ -128,9 +128,11 @@ public class equipment {
         return equipmentList;
     }
     
+    // HELPER METHOD: To generate the ID 
     public static String generateID() {
         File eFile = new File("data", FileMenu.EQUIPMENT);
-        return IDGenerator.generateNextID(eFile, "EQ");
+        File logFile = new File("data", FileMenu.FACILITIESRECORD);
+        return IDGenerator.generateNextID(eFile, logFile, "EQ");
     }
 
     public static equipment addEquipment(String id, String name, int totalQty, int minQty, String category, List<roomEquipment> assign) {
