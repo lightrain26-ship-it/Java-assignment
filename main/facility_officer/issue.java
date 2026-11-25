@@ -27,12 +27,16 @@ public class issue {
             throw new IllegalArgumentException("Date cannot be empty");
         }
 
-        if (briefDescription == null || briefDescription.trim().isEmpty()) {
-            throw new IllegalArgumentException("Brief description cannot be empty");
-        }
+        String text = briefDescription.trim();
 
-        if (briefDescription.contains("|")) {
-            throw new IllegalArgumentException("Brief description cannot contain the character \"|\"");
+        if (text.length() < 5 || text.length() > 70) {
+            throw new IllegalArgumentException("Brief description must be between 5 to 70 characters.");
+        }
+        for (int b = 0; b < text.length(); b++) {
+            char ch = text.charAt(b);
+            if (!Character.isLetter(ch) && ch != ' ') {
+                throw new IllegalArgumentException("Description can only have letters and spaces.");
+            }
         }
 
         this.issueId = issueId;
@@ -173,7 +177,7 @@ public class issue {
 
         // A "Resolved" and "Disposed" issue cannot be changed again
         if(!"In Progress".equals(iss.getStatus())) {
-            throw new IllegalStateException(issueId + "is already " + iss.getStatus() +  " and it cannot be changed.");
+            throw new IllegalStateException(issueId + " is already " + iss.getStatus() +  " and it cannot be changed.");
         }
 
         if (!"Resolved".equals(newStatus) && !"Disposed".equals(newStatus)) {

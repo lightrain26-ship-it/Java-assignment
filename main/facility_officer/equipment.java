@@ -57,13 +57,20 @@ public class equipment {
 
     // Setters
     public void setEquipmentName(String equipmentName) {
-        if(equipmentName == null || equipmentName.trim().isEmpty()) {
+        if (equipmentName == null || equipmentName.trim().isEmpty()) {
             throw new IllegalArgumentException("Equipment name cannot be empty.");
         }
-        if(equipmentName.contains("|")){
-            throw new IllegalArgumentException("Equipment name cannot contain the character \"|\".");
+
+        String text = equipmentName.trim();
+
+        // Only letters and spaces are allowed
+        for (int a = 0; a < text.length(); a++) {
+            char c = text.charAt(a);
+            if (!Character.isLetter(c) && c != ' ') {
+                throw new IllegalArgumentException("Equipment name can only have letters and spaces.");
+            }
         }
-        this.equipmentName = equipmentName.trim();
+        this.equipmentName = text;
     }
 
     public void setTotalQty(int totalQty) {
@@ -121,9 +128,11 @@ public class equipment {
         return equipmentList;
     }
     
+    // HELPER METHOD: To generate the ID 
     public static String generateID() {
         File eFile = new File("data", FileMenu.EQUIPMENT);
-        return IDGenerator.generateNextID(eFile, "EQ");
+        File logFile = new File("data", FileMenu.FACILITIESRECORD);
+        return IDGenerator.generateNextID(eFile, logFile, "EQ");
     }
 
     public static equipment addEquipment(String id, String name, int totalQty, int minQty, String category, List<roomEquipment> assign) {
@@ -132,6 +141,11 @@ public class equipment {
         if (totalQty < 1) {
             throw new IllegalArgumentException("Total quantity must be 1 or more.");
         }
+
+        if (minQty > totalQty) {
+            throw new IllegalArgumentException("Minimum quantity cannot be more than total quantity.");
+        }
+
         if (assign == null || assign.isEmpty()) {
             throw new IllegalArgumentException("Assign the equipment to at least one room.");
         }
@@ -170,27 +184,6 @@ public class equipment {
         return newEquipment;
     }
 
-    public static List<equipment> searchEquipment(String answer) {
-        if (answer == null || answer.trim().isEmpty()) {
-            throw new IllegalArgumentException("Search keyword cannot be empty.");
-        }
-
-        List<equipment> result = new ArrayList<>();
-
-        String search = answer.trim().toLowerCase();
-
-        // Find all id, equipment, total quantity, category that has the same keyword (it can be partial or whole match)
-        for (equipment e : loadequipment()) {
-            if (e.getEquipmentId().toLowerCase().equals(search)
-                || e.getEquipmentName().toLowerCase().contains(search)
-                || String.valueOf(e.getTotalQty()).equals(search)
-                || e.getCategory().toLowerCase().contains(search)) {
-                result.add(e);
-            }
-        }
-        return result;
-    }
-
     public static equipment updateEquipment(String equipmentId, String newName, int newMinQty, String newCategory) {
         File ef = new File("data", FileMenu.EQUIPMENT);
 
@@ -213,6 +206,7 @@ public class equipment {
 
         for (int i = 1; i < rows.size(); i++) {
             String[] row = rows.get(i);
+            // If it doesn't have the same ID that the user search then keep the row
             if (!row[2].equals(id)) { // ROOMEQUIPMENT and ISSUE file has equipmentID in index 2
                 keptrows.add(row);
             }

@@ -16,9 +16,12 @@ public class stockReport {
         String search = key.trim().toLowerCase();
         List<equipment> show = new ArrayList<>();
 
-        for (equipment p : equipment.loadequipment()){
-            if (p.getEquipmentId().toLowerCase().equals(search) || 
-                p.getEquipmentName().toLowerCase().contains(search)) {
+        for (equipment p : equipment.loadequipment()) {
+            if (p.getEquipmentId().toLowerCase().equals(search)
+                || p.getEquipmentName().toLowerCase().contains(search)
+                || String.valueOf(p.getTotalQty()).equals(search)
+                || String.valueOf(p.getMinQty()).equals(search)
+                || p.getCategory().toLowerCase().contains(search)) {
                 show.add(p);
             }
         }

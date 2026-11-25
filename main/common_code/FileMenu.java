@@ -7,6 +7,7 @@ public class FileMenu {
         public static final String ATTENDANCEOFFICE = "attendanceOfficer.txt";
         public static final String INSTRUCTOR  = "instructor.txt";
         public static final String STUDENT = "student.txt";
+        public static final String CLASS = "class.txt";
         public static final String SCHEDULE = "schedule.txt";
         public static final String STUDENTRATE = "studentRating.txt";
         public static final String ISSUE = "issue.txt";

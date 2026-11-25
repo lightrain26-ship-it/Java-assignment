@@ -40,6 +40,12 @@ public class StudentAccount extends User{
         return new String[] {getId(), getPassword(), getName(), getEmail(), getPhone(), getDob().toString(), getGender(), specialty, grade, getDateJoined().toString()};
     }
 
+    //One row for the table (password is never shown). Student has no role column
+    public String[] toTableRow() {
+        return new String[]{getId(), getName(), getEmail(), getPhone(), getDob().toString(),
+                getGender(), specialty, grade, getDateJoined().toString()};
+    }
+
     public static StudentAccount fromRow(String[] row) {
         return new StudentAccount(row[0], row[1], row[2], row[3], row[4],
                                 LocalDate.parse(row[5]), row[6], row[7], row[8], LocalDate.parse(row[9]));

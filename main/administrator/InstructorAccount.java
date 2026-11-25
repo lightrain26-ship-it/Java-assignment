@@ -35,6 +35,14 @@ public class InstructorAccount extends StaffAccount {
                 getDob().toString(), getGender(), specialty, grade, getDateJoined().toString()};
     }
 
+    //OBJECT ORIENTED
+    //Method overriding: same method as StaffAccount.toTableRow(), but Instructor has specialty and grade to show
+    @Override
+    public String[] toTableRow() {
+        return new String[]{getId(), getRole(), getName(), getEmail(), getPhone(), getDob().toString(),
+                getGender(), specialty, grade, getDateJoined().toString()};
+    }
+
     public static InstructorAccount fromInstructorRow(String[] row) {
         return new InstructorAccount(row[0], row[1], row[3], row[4], row[5], LocalDate.parse(row[6]),
                 row[7], row[8], row[9], LocalDate.parse(row[10]));

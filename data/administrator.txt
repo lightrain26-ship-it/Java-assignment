@@ -1,7 +1,6 @@
 staffID | password | role | name | email | phone | dob | gender | dateJoined
 ADM001 | admin001 | Administrator | Max | ADM001@mail.sda.edu.my | 0126478909 | 1994-01-12 | Male | 2013-06-08
 ADM002 | admin002 | Administrator | Nurul Huda | ADM002@mail.sda.edu.my | 0134455667 | 1992-03-30 | Female | 2016-04-12
-ADM003 | admin003 | Administrator | James | ADM003@mail.sda.edu.my | 0800178767 | 1995-05-20 | Male | 2026-11-08
-ADM004 | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A
-ADM005 | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A
-ADM006 | admin006 | Administrator | James | ADM006@mail.sda.edu.my | 01014741852 | 1994-01-01 | Male | 2026-11-18
+ADM003 | admin003 | Administrator | James | ADM003@mail.sda.edu.my | 0100178767 | 1995-05-20 | Male | 2026-11-08
+ADM004 | admin004 | Administrator | Jack | ADM004@mail.sda.edu.my | 0114145263 | 2000-08-29 | Male | 2026-11-08
+ADM005 | admin006 | Administrator | James | ADM006@mail.sda.edu.my | 01014741852 | 1994-01-01 | Male | 2026-11-18
