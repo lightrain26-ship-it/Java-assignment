@@ -57,13 +57,20 @@ public class equipment {
 
     // Setters
     public void setEquipmentName(String equipmentName) {
-        if(equipmentName == null || equipmentName.trim().isEmpty()) {
+        if (equipmentName == null || equipmentName.trim().isEmpty()) {
             throw new IllegalArgumentException("Equipment name cannot be empty.");
         }
-        if(equipmentName.contains("|")){
-            throw new IllegalArgumentException("Equipment name cannot contain the character \"|\".");
+
+        String text = equipmentName.trim();
+
+        // Only letters and spaces are allowed
+        for (int a = 0; a < text.length(); a++) {
+            char c = text.charAt(a);
+            if (!Character.isLetter(c) && c != ' ') {
+                throw new IllegalArgumentException("Equipment name can only have letters and spaces.");
+            }
         }
-        this.equipmentName = equipmentName.trim();
+        this.equipmentName = text;
     }
 
     public void setTotalQty(int totalQty) {
@@ -132,6 +139,11 @@ public class equipment {
         if (totalQty < 1) {
             throw new IllegalArgumentException("Total quantity must be 1 or more.");
         }
+
+        if (minQty > totalQty) {
+            throw new IllegalArgumentException("Minimum quantity cannot be more than total quantity.");
+        }
+
         if (assign == null || assign.isEmpty()) {
             throw new IllegalArgumentException("Assign the equipment to at least one room.");
         }
@@ -168,27 +180,6 @@ public class equipment {
 
         roomEquipment.loadRoomEquipment(); // refresh the in-memory room list
         return newEquipment;
-    }
-
-    public static List<equipment> searchEquipment(String answer) {
-        if (answer == null || answer.trim().isEmpty()) {
-            throw new IllegalArgumentException("Search keyword cannot be empty.");
-        }
-
-        List<equipment> result = new ArrayList<>();
-
-        String search = answer.trim().toLowerCase();
-
-        // Find all id, equipment, total quantity, category that has the same keyword (it can be partial or whole match)
-        for (equipment e : loadequipment()) {
-            if (e.getEquipmentId().toLowerCase().equals(search)
-                || e.getEquipmentName().toLowerCase().contains(search)
-                || String.valueOf(e.getTotalQty()).equals(search)
-                || e.getCategory().toLowerCase().contains(search)) {
-                result.add(e);
-            }
-        }
-        return result;
     }
 
     public static equipment updateEquipment(String equipmentId, String newName, int newMinQty, String newCategory) {

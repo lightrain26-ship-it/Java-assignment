@@ -24,22 +24,18 @@ public class roomEquipment {
         if (roomId == null || roomId.trim().isEmpty()) {
             throw new IllegalArgumentException("Room ID cannot be blank.");
         }
-        if (roomId.contains("|")) {
-            throw new IllegalArgumentException("Room ID cannot contain '|'.");
-        }
 
-        if (roomName == null || roomName.trim().isEmpty()) {
-            throw new IllegalArgumentException("Room Name cannot be blank.");
-        }
-        if (roomName.contains("|")) {
-            throw new IllegalArgumentException("Room Name cannot contain '|'.");
+        String rName = roomName.trim();
+
+        for (int n = 0; n < rName.length(); n++) {
+            char chr = rName.charAt(n);
+            if (!Character.isLetter(chr) && chr != ' ') {
+                throw new IllegalArgumentException("Room name can only have letters and spaces.");
+            }
         }
 
         if (equipmentId == null || equipmentId.trim().isEmpty()) {
             throw new IllegalArgumentException("Equipment ID cannot be blank.");
-        }
-        if (equipmentId.contains("|")) {
-            throw new IllegalArgumentException("Equipment ID cannot contain '|'.");
         }
 
         this.roomId = roomId.trim();
@@ -95,6 +91,19 @@ public class roomEquipment {
             rmRows.add(new roomEquipment(parts[0], parts[1], parts[2], qty));
         }
     }
+
+    // Defined Room ID
+    public static String getRoomIdByName(String roomName) {
+    switch (roomName) {
+        case "Karate Dojo":       return "R001";
+        case "Judo Hall":         return "R002";
+        case "Taekwondo Studio":  return "R003";
+        case "MMA Training Room": return "R004";
+        case "Muay Thai Gym":     return "R005";
+        case "Kung Fu Hall":      return "R006";
+        default: return null;
+    }
+}
     
     // Other classes can read the list
     public static ArrayList<roomEquipment> getRoomRow() {
