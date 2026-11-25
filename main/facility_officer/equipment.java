@@ -182,27 +182,6 @@ public class equipment {
         return newEquipment;
     }
 
-    public static List<equipment> searchEquipment(String answer) {
-        if (answer == null || answer.trim().isEmpty()) {
-            throw new IllegalArgumentException("Search keyword cannot be empty.");
-        }
-
-        List<equipment> result = new ArrayList<>();
-
-        String search = answer.trim().toLowerCase();
-
-        // Find all id, equipment, total quantity, category that has the same keyword (it can be partial or whole match)
-        for (equipment e : loadequipment()) {
-            if (e.getEquipmentId().toLowerCase().equals(search)
-                || e.getEquipmentName().toLowerCase().contains(search)
-                || String.valueOf(e.getTotalQty()).equals(search)
-                || e.getCategory().toLowerCase().contains(search)) {
-                result.add(e);
-            }
-        }
-        return result;
-    }
-
     public static equipment updateEquipment(String equipmentId, String newName, int newMinQty, String newCategory) {
         File ef = new File("data", FileMenu.EQUIPMENT);
 
