@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package General;
 
 import common_code.*;
@@ -10,45 +6,35 @@ import instructor.User;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author ASUS
- */
-public class Login implements Repository{
+public class Login{
     public enum LoginResult{
         INVALID_EMAIL,
         INVALID_PASSWORD_FORMAT,
         SUCCESS,
         INCORRECT_PASSWORD_EMAIL
     }
-    private Student student = new Student();
-    private Instructor inst = new Instructor();
-    private AttendanceOfficer attOff = new AttendanceOfficer();
-    private FacilitiesOfficer facOff = new FacilitiesOfficer();
-    private Manager manager = new Manager();
-    private Administrator administrator = new Administrator();
-
-    private List<User> users;
-    private Repository<User> userRep = new Login();
 
     private String userID;
+    private String email;
+    private String pw;
     
-    public Login() {
-        
+    public Login(String email, String pw) {
+        this.email = email;
+        this.pw = pw;
     }
 
     // Load users from all role repositories
-    @Override
-    public List<User> loadRepo() {
+    
+    public List<User> loadUser() {
 
         List<User> users = new ArrayList<>();
 
-        users.addAll(student.loadRepo());
-        users.addAll(inst.loadRepo());
-        users.addAll(attOff.loadRepo());
-        users.addAll(facOff.loadFacOfficers());
-        users.addAll(manager.loadManager());
-        users.addAll(administrator.loadAdmin());
+        users.addAll(Student.loadStudent());
+        users.addAll(Instructor.loadInst());
+        users.addAll(AttendanceOfficer.loadAO());
+        users.addAll(FacilityOfficer.loadFacOfficers());
+        users.addAll(Manager.loadManager());
+        users.addAll(Administrator.loadAdmin());
 
         return users;
     }
@@ -62,7 +48,7 @@ public class Login implements Repository{
     }
 
     // Check whether the email is typed correclty or not..
-    public boolean emailExists(String email){
+    public boolean emailExists(String email, List<User> users){
         for(User u : users) {
             if (u.getEmail().equalsIgnoreCase(email.trim())) {
                 return true;
@@ -78,14 +64,14 @@ public class Login implements Repository{
     }
 
     // Authenticate the user...
-    public LoginResult validLogin(String email, String pw){
-        List<User> userList = userRep.loadRepo();
+    public LoginResult validLogin(){
+        List<User> userList = loadUser();
         
         if(!validEmail(email)) {
             return LoginResult.INVALID_EMAIL;
         }
         email =email.trim();
-        if(!emailExists(email)){
+        if(!emailExists(email, userList)){
             return LoginResult.INCORRECT_PASSWORD_EMAIL;
         }
         if(!validPassword(pw)){
@@ -103,21 +89,30 @@ public class Login implements Repository{
         return LoginResult.INCORRECT_PASSWORD_EMAIL;
     }
     
-    //cuz each email must be unique can use email to search for id
+    //cuz each email must be unique can use email to retrieve the id
     public String getID(String email){
-        List<User> userList = userRep.loadRepo();
-        
-        for(User u : userList){
+        for(User u : loadUser()){
             if(u.getEmail().equals(email)){
-                return u.getEmail();
+                return u.getId();
             }
             
         }
-        return null;
+        return "";
     }
     
+    
+
+}    
 /* this is the logic for switching between users
-            switch(s){
+       
+        String email = emailtxt.getText();
+        char[] rawpw = pwtxt.getPassword();
+        String pw = String.valueOf(rawpw);
+        
+        
+        Login log = new Login(email, pw);
+        LoginResult s =log.validLogin();
+        switch(s){
             case LoginResult.INCORRECT_PASSWORD_EMAIL:
                 emailtxt.setText("Incorrect Email or Password!");
                 emailtxt.setForeground(Color.red);
@@ -134,9 +129,19 @@ public class Login implements Repository{
                 break;
                 
             case LoginResult.SUCCESS:
+                //This one get the USER'S ID
                 String id = log.getID(email);
                 String role = id.substring(0, 3);
                 
+                if(id.isBlank()){
+                    JOptionPane.showMessageDialog(null, "Cannot retrieve user ID");
+                }
+                
+                if(id.isBlank()){
+                    JOptionPane.showMessageDialog(null, "Cannot retrieve id");
+                    return;
+                }
+                // here u guys will put ur 
                 switch(role){
                     case "STU" -> {
                         Student_Main_UI stu = new Student_Main_UI(id);
@@ -157,7 +162,7 @@ public class Login implements Repository{
                         
                     case "ATT" -> {
                 }
-                    default -> JOptionPane.showMessageDialog( null,"NO NO SYUDUDU");
+                    default -> JOptionPane.showMessageDialog( null,No selectable option");
                         
                 }
                 this.dispose();
