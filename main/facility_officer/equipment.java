@@ -55,22 +55,27 @@ public class equipment {
         return "In Stock";
     }
 
-    // Setters
-    public void setEquipmentName(String equipmentName) {
-        if (equipmentName == null || equipmentName.trim().isEmpty()) {
-            throw new IllegalArgumentException("Equipment name cannot be empty.");
+    // HELPER METHOD: to check the equipment Name
+    public static String checkName(String equipmentName) {
+        if (equipmentName == null || equipmentName.trim().isEmpty()){
+            throw new IllegalArgumentException("Equipment name cannot be empty");
         }
-
-        String text = equipmentName.trim();
+        
+        String txt = equipmentName.trim();
 
         // Only letters and spaces are allowed
-        for (int a = 0; a < text.length(); a++) {
-            char c = text.charAt(a);
+        for (int a = 0; a < txt.length(); a++) {
+            char c = txt.charAt(a);
             if (!Character.isLetter(c) && c != ' ') {
                 throw new IllegalArgumentException("Equipment name can only have letters and spaces.");
             }
         }
-        this.equipmentName = text;
+        return txt;
+    }
+
+    // Setters
+    public void setEquipmentName(String equipmentName) {
+        this.equipmentName = checkName(equipmentName);
     }
 
     public void setTotalQty(int totalQty) {
@@ -128,7 +133,7 @@ public class equipment {
         return equipmentList;
     }
     
-    // HELPER METHOD: To generate the ID 
+    // HELPER METHOD: To generate the next ID 
     public static String generateID() {
         File eFile = new File("data", FileMenu.EQUIPMENT);
         File logFile = new File("data", FileMenu.FACILITIESRECORD);
@@ -190,13 +195,25 @@ public class equipment {
         roomEquipment.loadRoomEquipment();
         int total = roomEquipment.getTotalQty(equipmentId);
 
+        // find the old minimum quantity
+        int oldMin = -1;
+        for(equipment m : loadequipment()) {
+            if (m.getEquipmentId().equals(equipmentId)) {
+                oldMin = m.getMinQty();
+            }
+        }
+
+        if (newMinQty != oldMin && newMinQty > total) {
+            throw new IllegalArgumentException("Minimum quantity cannot be more than the total quantity.");
+        }
+
         equipment updatedEquipment = new equipment(equipmentId, newName, total, newMinQty, newCategory);
 
         CRUD.updateRecord("Facilities Officers", ef, updatedEquipment.toRow());
         return updatedEquipment;
     }
 
-    //helper to remove every row from a file that has the same equipmentID
+    // HELPER METHOD: To remove every row from a file that has the same equipmentID
     private static void removeRows(String fileName, String id) {
         File rFile = new File("data", fileName);
         List <String[]> rows = CRUD.readFile(rFile);

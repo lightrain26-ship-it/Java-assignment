@@ -24,6 +24,23 @@ public class facilityProblem {
         return totalA;
     }
 
+    // HELPER METHOD : Room that is the same with the instructor specialty
+    public static String getRoomIdBySpecialty(String specialty) {
+        if (specialty == null) {
+            throw new IllegalArgumentException("Instructor specialty not found.");
+        }
+
+        switch (specialty) {
+            case "Karate":    return "R001";
+            case "Judo":      return "R002";
+            case "Taekwondo": return "R003";
+            case "MMA":       return "R004";
+            case "MuayThai":  return "R005";
+            case "KungFu":    return "R006";
+            default: throw new IllegalArgumentException("No room found for the specialty: " + specialty);
+        }
+    }
+
     public static issue addComplaint(String roomId, String equipmentId, int affected, String reportedBy, String description) {
         if (reportedBy == null || reportedBy.trim().isEmpty()) {
             throw new IllegalArgumentException("Instructor ID cannot be empty.");

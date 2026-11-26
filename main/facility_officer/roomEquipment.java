@@ -175,4 +175,49 @@ public class roomEquipment {
         }
         throw new IllegalArgumentException("This equipment is not in that room");
     }
+
+    // Move this equipment from one room to another room (the quantity stays the same)
+    public static void updateRoom(String oldRoomId, String equipmentId, String newRoomName) {
+        String newRoomId = getRoomIdByName(newRoomName);
+        if (newRoomId == null) {
+            throw new IllegalArgumentException("Invalid room.");
+        }
+    
+        if (newRoomId.equals(oldRoomId)) {
+            throw new IllegalArgumentException("Please choose a different room!");
+        }
+
+        // If the room has an issue still "In Progress", then stop it
+        for (issue is : issue.loadIssue()) {
+            if (is.getRoomId().equals(oldRoomId) && is.getEquipmentId().equals(equipmentId) && "In Progress".equals(is.getStatus())) {
+                throw new IllegalArgumentException("This equipment has an issue 'In Progress' in that room. Resolve it first.");
+            }
+        }
+
+        List<String[]> rows = CRUD.readFile(ROOM_FILE);
+        String[] neww = null;   // the row we want to move
+
+        for (int i = 1; i < rows.size(); i++) {
+            String[] row = rows.get(i);
+
+            // the new room must not have this equipment already
+            if (row[0].equals(newRoomId) && row[2].equals(equipmentId)) {
+                throw new IllegalArgumentException("That room already has this equipment.");
+            }
+    
+            if (row[0].equals(oldRoomId) && row[2].equals(equipmentId)) {
+                neww = row;
+            }
+        }
+
+        if (neww == null) {
+            throw new IllegalArgumentException("This equipment is not in that room");
+        }
+
+        neww[0] = newRoomId;     // change the room ID
+        neww[1] = newRoomName;   // change the room name
+        WriteFile.overWriteFile(ROOM_FILE, rows);
+
+        loadRoomEquipment();
+    }
 }

@@ -112,7 +112,7 @@ public class officerHistory {
         log("DELETE", "Equipment", id, current.getEquipmentName(), NA, NA, NA);
     }
 
-    // RoomEquipment: UPDATE (quantity of one equipment in one room)
+    // RoomEquipment: UPDATE (quantity of the equipment in one room)
     public void updateRoomQty(String roomId, String equipmentId, int newQty) {
         roomEquipment before = findRoom(roomId, equipmentId);
         int oldQty = before.getQty();
@@ -124,6 +124,17 @@ public class officerHistory {
             log("UPDATE", "RoomEquipment", roomId + "-" + equipmentId, label, "quantity",
                 String.valueOf(oldQty), String.valueOf(newQty));
         }
+    }
+
+    // RoomEquipment: UPDATE (move the equipment to another room)
+    public void changeRoom(String oldRoomId, String equipmentId, String newRoomName) {
+        String oldRoomName = findRoom(oldRoomId, equipmentId).getRoomName();   // read before the change
+
+        roomEquipment.updateRoom(oldRoomId, equipmentId, newRoomName);
+
+        String newRoomId = roomEquipment.getRoomIdByName(newRoomName);
+        String label = findEquipment(equipmentId).getEquipmentName() + " in " + newRoomName;
+        log("UPDATE", "RoomEquipment", newRoomId + "-" + equipmentId, label, "room", oldRoomName, newRoomName);
     }
 
     // Issue: UPDATE (In Progress to Resolved or Disposed)

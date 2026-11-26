@@ -21,7 +21,8 @@ public class stockReport {
                 || p.getEquipmentName().toLowerCase().contains(search)
                 || String.valueOf(p.getTotalQty()).equals(search)
                 || String.valueOf(p.getMinQty()).equals(search)
-                || p.getCategory().toLowerCase().contains(search)) {
+                || p.getCategory().toLowerCase().contains(search) 
+                || p.getStockStatus().toLowerCase().contains(search)) {
                 show.add(p);
             }
         }
