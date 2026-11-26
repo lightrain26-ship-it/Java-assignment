@@ -21,14 +21,26 @@ public class StudentBooking {
         this.studentID = studentID;
     }
 
-    // VIEW AVAILABLE SCHEDULES
+    // CHECK TWO-DAY BOOKING REQUIREMENT
+    private void validateBookingDate(String date) {
 
+        LocalDate scheduledDate = LocalDate.parse(date);
+
+        if (scheduledDate.isBefore(
+                LocalDate.now().plusDays(2))) {
+
+            throw new IllegalArgumentException(
+                    "Bookings must be made at least 2 days before the class.");
+        }
+    }
+
+    // VIEW AVAILABLE SCHEDULES
     public List<String[]> viewAvailableClasses() {
 
         List<String[]> available = new ArrayList<>();
 
         List<String[]> schedules =
-                CRUD.readFile(StudentData.getFile(FileMenu.SCHEDULE));
+                StudentData.read(FileMenu.SCHEDULE);
 
         for (int i = 1; i < schedules.size(); i++) {
 
@@ -50,8 +62,9 @@ public class StudentBooking {
                 continue;
             }
 
-            if (LocalDate.parse(schedule[2])
-                    .isBefore(LocalDate.now())) {
+            try {
+                validateBookingDate(schedule[2]);
+            } catch (IllegalArgumentException e) {
                 continue;
             }
 
@@ -61,10 +74,8 @@ public class StudentBooking {
         return available;
     }
 
-    // CHECK EXISTING BOOKINGS FOR CAPACITY
-
-    private int countBookings(
-            String classID, String scheduledDate) {
+    // COUNT ACTIVE BOOKINGS FOR A SCHEDULE
+    private int countBookings(String scheduleID) {
 
         int count = 0;
 
@@ -79,9 +90,11 @@ public class StudentBooking {
                 continue;
             }
 
-            if (row[2].equals(classID)
-                    && row[5].equals(scheduledDate)
-                    && row[6].equalsIgnoreCase("Confirmed")) {
+            boolean activeStatus =
+                    row[6].equalsIgnoreCase("Confirmed")
+                    || row[6].equalsIgnoreCase("Pending Payment");
+
+            if (row[3].equals(scheduleID) && activeStatus) {
                 count++;
             }
         }
@@ -90,10 +103,8 @@ public class StudentBooking {
     }
 
     // CHECK DUPLICATE BOOKING
-
     private boolean alreadyBooked(
-            String classID,
-            String scheduledDate,
+            String scheduleID,
             String excludeBookingID) {
 
         for (String[] row : viewBookings()) {
@@ -102,10 +113,14 @@ public class StudentBooking {
                 continue;
             }
 
-            if (row[2].equals(classID)
-                    && row[5].equals(scheduledDate)
-                    && row[6].equalsIgnoreCase("Confirmed")
+            boolean activeStatus =
+                    row[6].equalsIgnoreCase("Confirmed")
+                    || row[6].equalsIgnoreCase("Pending Payment");
+
+            if (row[3].equals(scheduleID)
+                    && activeStatus
                     && !row[0].equals(excludeBookingID)) {
+
                 return true;
             }
         }
@@ -114,16 +129,13 @@ public class StudentBooking {
     }
 
     // CHECK CLASS CAPACITY
-
     private void checkCapacity(
             String[] cls,
-            String classID,
-            String scheduledDate) {
+            String scheduleID) {
 
         int maximum = Integer.parseInt(cls[5]);
 
-        int current =
-                countBookings(classID, scheduledDate);
+        int current = countBookings(scheduleID);
 
         if (current >= maximum) {
             throw new IllegalStateException(
@@ -132,8 +144,10 @@ public class StudentBooking {
     }
 
     // BOOK CLASS
-
     public String[] bookClass(String scheduleID) {
+
+        scheduleID = StudentData.requireText(
+                scheduleID, "Schedule ID");
 
         String[] schedule =
                 StudentData.findById(
@@ -149,42 +163,48 @@ public class StudentBooking {
                     "Schedule is not available.");
         }
 
-        LocalDate scheduledDate =
-                LocalDate.parse(schedule[2]);
-
-        if (scheduledDate.isBefore(LocalDate.now())) {
-            throw new IllegalArgumentException(
-                    "Cannot book a past schedule.");
-        }
+        // VALIDATE SCHEDULE DATE
+        validateBookingDate(schedule[2]);
 
         String classID = schedule[1];
 
-        String[] cls = StudentData.findClass(classID);
+        String[] cls =
+                StudentData.findClass(classID);
 
-        if (cls == null || !cls[11].equalsIgnoreCase("ACTIVE")) {
+        if (cls == null || cls.length != 13) {
+            throw new IllegalStateException(
+                    "Class information not found.");
+        }
+
+        if (!cls[11].equalsIgnoreCase("ACTIVE")) {
             throw new IllegalStateException(
                     "Class is not active.");
         }
 
-        if (alreadyBooked(classID, schedule[2], null)) {
+        // CHECK DUPLICATE BOOKING
+        if (alreadyBooked(scheduleID, null)) {
             throw new IllegalStateException(
-                    "You have already booked this class.");
+                    "You have already booked this schedule.");
         }
 
-        checkCapacity(cls, classID, schedule[2]);
+        // CHECK CAPACITY
+        checkCapacity(cls, scheduleID);
 
+        // GENERATE BOOKING ID
         String bookingID =
                 IDGenerator.generateNextID(
                         bookingFile, "BKG");
 
+        // CREATE BOOKING
         String[] booking = {
+
             bookingID,
             studentID,
             classID,
             scheduleID,
             LocalDate.now().toString(),
             schedule[2],
-            "Confirmed"
+            "Pending Payment"
         };
 
         CRUD.addRecord(
@@ -194,7 +214,6 @@ public class StudentBooking {
     }
 
     // VIEW OWN BOOKINGS
-
     public List<String[]> viewBookings() {
 
         return StudentData.getStudentRows(
@@ -202,7 +221,6 @@ public class StudentBooking {
     }
 
     // SEARCH OWN BOOKINGS
-
     public List<String[]> searchBookings(String keyword) {
 
         keyword = StudentData.requireText(
@@ -225,7 +243,6 @@ public class StudentBooking {
     }
 
     // RESCHEDULE BOOKING
-
     public String[] rescheduleBooking(
             String bookingID, String newScheduleID) {
 
@@ -243,9 +260,11 @@ public class StudentBooking {
                     "This booking does not belong to you.");
         }
 
-        if (!booking[6].equalsIgnoreCase("Confirmed")) {
+        if (!booking[6].equalsIgnoreCase("Confirmed")
+                && !booking[6].equalsIgnoreCase("Pending Payment")) {
+
             throw new IllegalStateException(
-                    "Only confirmed bookings can be rescheduled.");
+                    "Only active bookings can be rescheduled.");
         }
 
         String[] schedule =
@@ -257,6 +276,7 @@ public class StudentBooking {
                     "New schedule not found.");
         }
 
+        // MUST BE THE SAME CLASS
         if (!schedule[1].equals(booking[2])) {
             throw new IllegalArgumentException(
                     "You can only select another schedule of the same class.");
@@ -267,27 +287,30 @@ public class StudentBooking {
                     "New schedule is not available.");
         }
 
-        LocalDate newDate =
-                LocalDate.parse(schedule[2]);
+        // CHECK TWO-DAY REQUIREMENT
+        validateBookingDate(schedule[2]);
 
-        if (newDate.isBefore(LocalDate.now())) {
+        // PREVENT SELECTING THE SAME SCHEDULE
+        if (schedule[0].equals(booking[3])) {
             throw new IllegalArgumentException(
-                    "Cannot select a past schedule.");
+                    "You are already booked for this schedule.");
         }
 
-        if (alreadyBooked(
-                booking[2], schedule[2], bookingID)) {
+        // CHECK DUPLICATE BOOKING
+        if (alreadyBooked(newScheduleID, bookingID)) {
             throw new IllegalStateException(
-                    "You already have a booking for this class on that date.");
+                    "You already have a booking for this schedule.");
         }
 
-        String[] cls = StudentData.findClass(booking[2]);
+        // CHECK CAPACITY
+        String[] cls =
+                StudentData.findClass(booking[2]);
 
-        checkCapacity(cls, booking[2], schedule[2]);
+        checkCapacity(cls, newScheduleID);
 
+        // UPDATE BOOKING
         String[] updated = booking.clone();
 
-        // Update both new schedule ID and date
         updated[3] = newScheduleID;
         updated[5] = schedule[2];
 
@@ -298,7 +321,6 @@ public class StudentBooking {
     }
 
     // CANCEL BOOKING
-
     public void cancelBooking(String bookingID) {
 
         String[] booking =
@@ -315,9 +337,11 @@ public class StudentBooking {
                     "This booking does not belong to you.");
         }
 
-        if (!booking[6].equalsIgnoreCase("Confirmed")) {
+        if (!booking[6].equalsIgnoreCase("Confirmed")
+                && !booking[6].equalsIgnoreCase("Pending Payment")) {
+
             throw new IllegalStateException(
-                    "This booking is not active.");
+                    "This booking cannot be cancelled.");
         }
 
         String[] updated = booking.clone();

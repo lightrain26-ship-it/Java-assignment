@@ -16,18 +16,20 @@ public class StudentRating {
     private final File ratingFile =
             StudentData.getFile(FileMenu.STUDENTRATE);
 
+    private final File bookingFile =
+            StudentData.getFile(FileMenu.BOOKING);
+
     public StudentRating(String studentID) {
         StudentData.validateId(studentID, "STU");
         this.studentID = studentID;
     }
 
-    // CHECK ATTENDANCE USING SCHEID
-
+    // CHECK ATTENDANCE USING SCHEDULE ID
     private boolean hasAttended(String scheID) {
 
         List<String[]> attendance =
                 CRUD.readFile(
-                    StudentData.getFile(FileMenu.ATTENDANCE));
+                        StudentData.getFile(FileMenu.ATTENDANCE));
 
         for (int i = 1; i < attendance.size(); i++) {
 
@@ -44,6 +46,7 @@ public class StudentRating {
 
                 if (status.equalsIgnoreCase("PRESENT")
                         || status.equalsIgnoreCase("LATE")) {
+
                     return true;
                 }
             }
@@ -53,11 +56,13 @@ public class StudentRating {
     }
 
     // ADD INSTRUCTOR RATING
-
     public String[] addRating(
             String bookingID,
             int ratingScore,
             String feedback) {
+
+        bookingID = StudentData.requireText(
+                bookingID, "Booking ID");
 
         if (ratingScore < 1 || ratingScore > 5) {
             throw new IllegalArgumentException(
@@ -68,7 +73,6 @@ public class StudentRating {
                 feedback, "Feedback");
 
         // FIND BOOKING
-
         String[] booking =
                 StudentData.findById(
                         FileMenu.BOOKING, bookingID);
@@ -79,12 +83,12 @@ public class StudentRating {
         }
 
         // VERIFY BOOKING OWNER
-
         if (!booking[1].equals(studentID)) {
             throw new SecurityException(
                     "This booking does not belong to you.");
         }
 
+        // ONLY CONFIRMED BOOKINGS CAN BE RATED
         if (!booking[6].equalsIgnoreCase("Confirmed")) {
             throw new IllegalStateException(
                     "This booking cannot be rated.");
@@ -93,8 +97,7 @@ public class StudentRating {
         String classID = booking[2];
         String scheID = booking[3];
 
-        // VERIFY THAT THE SCHEDULE EXISTS
-
+        // VERIFY SCHEDULE
         String[] schedule =
                 StudentData.findById(
                         FileMenu.SCHEDULE, scheID);
@@ -104,15 +107,28 @@ public class StudentRating {
                     "Schedule information not found.");
         }
 
-        // VERIFY ATTENDANCE
+        // VERIFY BOOKING AND SCHEDULE DATE
+        if (!booking[5].equals(schedule[2])) {
+            throw new IllegalStateException(
+                    "Booking date does not match schedule date.");
+        }
 
+        // PREVENT RATING BEFORE CLASS DATE
+        LocalDate scheduledDate =
+                LocalDate.parse(booking[5]);
+
+        if (scheduledDate.isAfter(LocalDate.now())) {
+            throw new IllegalStateException(
+                    "You cannot rate a class before its scheduled date.");
+        }
+
+        // VERIFY ATTENDANCE
         if (!hasAttended(scheID)) {
             throw new IllegalStateException(
                     "You must attend this class before submitting a rating.");
         }
 
         // FIND INSTRUCTOR
-
         String[] cls =
                 StudentData.findClass(classID);
 
@@ -123,8 +139,7 @@ public class StudentRating {
 
         String instructorID = cls[1];
 
-        // PREVENT DUPLICATE RATING FOR SAME BOOKING
-
+        // PREVENT DUPLICATE RATING
         List<String[]> existingRatings = viewRatings();
 
         for (String[] existing : existingRatings) {
@@ -138,16 +153,16 @@ public class StudentRating {
         }
 
         // GENERATE RATING ID
-
         String ratingID =
                 IDGenerator.generateNextID(
                         ratingFile, "RAT");
 
-        // NEW RATING STRUCTURE:
+        // CREATE RATING RECORD
         // ratingID | bookingID | studentID | classID
         // | instructorID | ratingScore | feedback | ratingDate
 
         String[] rating = {
+
             ratingID,
             bookingID,
             studentID,
@@ -155,25 +170,32 @@ public class StudentRating {
             instructorID,
             String.valueOf(ratingScore),
             feedback,
-            LocalDate.now().toString()
+            booking[5]
         };
 
+        // SAVE RATING
         CRUD.addRecord(
                 "Students", ratingFile, rating);
+
+        // UPDATE BOOKING STATUS TO COMPLETED
+        String[] updatedBooking = booking.clone();
+
+        updatedBooking[6] = "Completed";
+
+        CRUD.updateRecord(
+                "Students", bookingFile, updatedBooking);
 
         return rating;
     }
 
     // VIEW OWN RATINGS
-
     public List<String[]> viewRatings() {
 
         return StudentData.getStudentRows(
-                FileMenu.STUDENTRATE, studentID);
+                FileMenu.STUDENTRATE, studentID, 2);
     }
 
     // SEARCH OWN RATINGS
-
     public List<String[]> searchRatings(String keyword) {
 
         keyword = StudentData.requireText(

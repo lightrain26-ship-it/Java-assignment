@@ -5,9 +5,10 @@ import common_code.FileMenu;
 import common_code.IDGenerator;
 
 import java.io.File;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.time.LocalDate;
+import java.util.Locale;
 
 public class StudentPayment {
 
@@ -16,13 +17,15 @@ public class StudentPayment {
     private final File paymentFile =
             StudentData.getFile(FileMenu.PAYMENT);
 
+    private final File bookingFile =
+            StudentData.getFile(FileMenu.BOOKING);
+
     public StudentPayment(String studentID) {
         StudentData.validateId(studentID, "STU");
         this.studentID = studentID;
     }
 
     // ADD PAYMENT
-
     public String[] addPayment(
             String bookingID, String paymentMethod) {
 
@@ -32,6 +35,7 @@ public class StudentPayment {
         paymentMethod = StudentData.requireText(
                 paymentMethod, "Payment method");
 
+        // FIND BOOKING
         String[] booking =
                 StudentData.findById(
                         FileMenu.BOOKING, bookingID);
@@ -41,18 +45,19 @@ public class StudentPayment {
                     "Booking not found.");
         }
 
+        // VERIFY BOOKING OWNER
         if (!booking[1].equals(studentID)) {
             throw new SecurityException(
                     "This booking does not belong to you.");
         }
 
-        if (!booking[6].equalsIgnoreCase("Confirmed")) {
+        // ONLY PENDING BOOKINGS CAN BE PAID
+        if (!booking[6].equalsIgnoreCase("Pending Payment")) {
             throw new IllegalStateException(
-                    "Only confirmed bookings can be paid.");
+                    "Only bookings awaiting payment can be paid.");
         }
 
         // PREVENT DUPLICATE PAYMENT
-
         List<String[]> payments = viewPayments();
 
         for (String[] payment : payments) {
@@ -66,7 +71,6 @@ public class StudentPayment {
         }
 
         // GET CLASS PRICE
-
         String[] cls =
                 StudentData.findClass(booking[2]);
 
@@ -75,46 +79,61 @@ public class StudentPayment {
                     "Class information not found.");
         }
 
-        double amount =
-                Double.parseDouble(cls[12]);
+        double amount;
 
-        if (amount <= 0) {
+        try {
+            amount = Double.parseDouble(cls[12]);
+        } catch (NumberFormatException e) {
+            throw new IllegalStateException(
+                    "Invalid class price.");
+        }
+
+        if (!Double.isFinite(amount) || amount <= 0) {
             throw new IllegalStateException(
                     "Invalid payment amount.");
         }
 
+        // GENERATE PAYMENT ID
         String paymentID =
                 IDGenerator.generateNextID(
                         paymentFile, "PAY");
 
+        // CREATE PAYMENT RECORD
         String[] payment = {
+
             paymentID,
             bookingID,
             studentID,
             booking[2],
-            String.format(
-                java.util.Locale.US, "%.2f", amount),
-            LocalDate.now().toString(),
+            String.format(Locale.US, "%.2f", amount),
+            booking[4],
             paymentMethod,
             "Paid"
         };
 
+        // SAVE PAYMENT
         CRUD.addRecord(
                 "Students", paymentFile, payment);
+
+        // UPDATE BOOKING STATUS TO CONFIRMED
+        String[] updatedBooking = booking.clone();
+
+        updatedBooking[6] = "Confirmed";
+
+        CRUD.updateRecord(
+                "Students", bookingFile, updatedBooking);
 
         return payment;
     }
 
     // VIEW OWN PAYMENTS
-
     public List<String[]> viewPayments() {
 
         return StudentData.getStudentRows(
-                FileMenu.PAYMENT, studentID);
+                FileMenu.PAYMENT, studentID, 2);
     }
 
     // SEARCH PAYMENTS
-
     public List<String[]> searchPayments(String keyword) {
 
         keyword = StudentData.requireText(
