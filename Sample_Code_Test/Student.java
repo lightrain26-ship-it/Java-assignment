@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package instructor;
 
 
@@ -41,18 +37,24 @@ public class Student extends User{
     
     
     public static List<Student> loadStudent(){
-        
         File file = new File(STUDENT); // can perhaps remove this and change it through fileRead
         List<String[]> read = CRUD.readFile(file); //change the var in File reader to String
         read.remove(0);
         List<Student> students = new ArrayList<>(); //create a new list consist of List of Object 'Student'
         
-        for(String[] s : read){
-            students.add(new Student(s[0],s[1],s[2],s[3],s[4],LocalDate.parse(s[5]),s[6],LocalDate.parse(s[9]),s[7], s[8]));//just immediately add student cuz it doesnt contain other  "OBJECT" like Attendance
+        try{
+            for(String[] s : read){
+                students.add(new Student(s[0],s[1],s[2],s[3],s[4],LocalDate.parse(s[5]),s[6],LocalDate.parse(s[9]),s[7], s[8]));//just immediately add student cuz it doesnt contain other  "OBJECT" like Attendance
+            }
+        }catch (ArrayIndexOutOfBoundsException e){
+            System.out.println("Array Index Out Of Bound occurs, Student");
+        } catch(DateTimeParseException e){
+            System.out.println("Invalid parsing the time format, Student");
+        } catch (NullPointerException e){
+            System.out.println("There is Null value, Student");
         }
         
         return students;
-        
     }
     //??
     public static Student findStudent(String ID){
