@@ -1,20 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package instructor;
 
 import Util.CRUD;
 
 import java.io.File;
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author ASUS
- */
 public class Instructor extends User{
     private String role;
     private String speciality;
@@ -41,9 +34,16 @@ public class Instructor extends User{
         List<String[]> read = CRUD.readFile(file); 
         read.remove(0);
         List<Instructor> instructors = new ArrayList<>(); 
-        
-        for(String[] s : read){
-            instructors.add(new Instructor(s[0],s[1],s[3],s[4], s[5],LocalDate.parse(s[6]),s[7],LocalDate.parse(s[10]),s[8], s[9], s[2]));
+        try{
+            for(String[] s : read){
+                instructors.add(new Instructor(s[0],s[1],s[3],s[4], s[5],LocalDate.parse(s[6]),s[7],LocalDate.parse(s[10]),s[8], s[9], s[2]));
+            }
+        }catch (ArrayIndexOutOfBoundsException e){
+            System.out.println("Array Index Out Of Bound occurs, Student");
+        } catch(DateTimeParseException e){
+            System.out.println("Invalid parsing the time format, Student");
+        } catch (NullPointerException e){
+            System.out.println("There is Null value, Student");
         }
         
         return instructors;
