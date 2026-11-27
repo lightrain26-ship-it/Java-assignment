@@ -92,7 +92,7 @@ public class StudentBooking {
 
             boolean activeStatus =
                     row[6].equalsIgnoreCase("Confirmed")
-                    || row[6].equalsIgnoreCase("Pending Payment");
+                    || row[6].equalsIgnoreCase("Pending");
 
             if (row[3].equals(scheduleID) && activeStatus) {
                 count++;
@@ -115,7 +115,7 @@ public class StudentBooking {
 
             boolean activeStatus =
                     row[6].equalsIgnoreCase("Confirmed")
-                    || row[6].equalsIgnoreCase("Pending Payment");
+                    || row[6].equalsIgnoreCase("Pending");
 
             if (row[3].equals(scheduleID)
                     && activeStatus
@@ -144,14 +144,14 @@ public class StudentBooking {
     }
 
     // BOOK CLASS
-    public String[] bookClass(String scheduleID) {
+    public String[] bookClass(String scheID) {
 
-        scheduleID = StudentData.requireText(
-                scheduleID, "Schedule ID");
+        scheID = StudentData.requireText(
+                scheID, "scheID");
 
         String[] schedule =
                 StudentData.findById(
-                        FileMenu.SCHEDULE, scheduleID);
+                        FileMenu.SCHEDULE, scheID);
 
         if (schedule == null || schedule.length != 7) {
             throw new IllegalArgumentException(
@@ -182,13 +182,13 @@ public class StudentBooking {
         }
 
         // CHECK DUPLICATE BOOKING
-        if (alreadyBooked(scheduleID, null)) {
+        if (alreadyBooked(scheID, null)) {
             throw new IllegalStateException(
                     "You have already booked this schedule.");
         }
 
         // CHECK CAPACITY
-        checkCapacity(cls, scheduleID);
+        checkCapacity(cls, scheID);
 
         // GENERATE BOOKING ID
         String bookingID =
@@ -201,10 +201,10 @@ public class StudentBooking {
             bookingID,
             studentID,
             classID,
-            scheduleID,
+            scheID,
             LocalDate.now().toString(),
             schedule[2],
-            "Pending Payment"
+            "Pending"
         };
 
         CRUD.addRecord(
@@ -261,7 +261,7 @@ public class StudentBooking {
         }
 
         if (!booking[6].equalsIgnoreCase("Confirmed")
-                && !booking[6].equalsIgnoreCase("Pending Payment")) {
+                && !booking[6].equalsIgnoreCase("Pending")) {
 
             throw new IllegalStateException(
                     "Only active bookings can be rescheduled.");
@@ -338,7 +338,7 @@ public class StudentBooking {
         }
 
         if (!booking[6].equalsIgnoreCase("Confirmed")
-                && !booking[6].equalsIgnoreCase("Pending Payment")) {
+                && !booking[6].equalsIgnoreCase("Pending")) {
 
             throw new IllegalStateException(
                     "This booking cannot be cancelled.");
