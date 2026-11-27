@@ -179,6 +179,31 @@ public class ManageStudent extends ManageAccount {
         return results;
     }
 
+    //Search student by keyword and specialty and grade
+    public List<StudentAccount> searchStudents(String keyword, String specialty, String grade) {
+        List<StudentAccount> baseList = searchStudents(keyword);
+        List<StudentAccount> filtered = new ArrayList<>();
+
+        String cleanSpecialty = (specialty == null) ? "" : specialty.trim();
+        String cleanGrade = (grade == null) ? "" : grade.trim();
+
+        for (StudentAccount student : baseList) {
+            boolean matchSpecialty = cleanSpecialty.isEmpty()
+                    || cleanSpecialty.equalsIgnoreCase("All specialties")
+                    || (student.getSpecialty() != null && student.getSpecialty().equalsIgnoreCase(cleanSpecialty));
+
+            boolean matchGrade = cleanGrade.isEmpty()
+                    || cleanGrade.equalsIgnoreCase("All grades")
+                    || (student.getGrade() != null && student.getGrade().equalsIgnoreCase(cleanGrade));
+
+            if (matchSpecialty && matchGrade) {
+                filtered.add(student);
+            }
+        }
+
+        return filtered;
+    }
+
     //===================================================================================================================================
     //                                                  UPDATE STUDENT
     //===================================================================================================================================
