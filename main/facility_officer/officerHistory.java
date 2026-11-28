@@ -118,6 +118,20 @@ public class officerHistory {
         int oldQty = before.getQty();
         String label = stockName(before);
 
+        // Count how many of this equipment are broken in the room (from issues that are still 'In Progress')
+        int inProgress = 0;
+        for (issue is : issue.loadIssue()) {
+            if (is.getRoomId().equals(roomId) && is.getEquipmentId().equals(equipmentId)
+                && "In Progress".equals(is.getStatus())) {
+                inProgress += is.getAffected();
+            }
+        }
+    
+        // Ex: 3 punching bags are broken, so the room cannot be set to 1 
+        if (newQty < inProgress) {
+            throw new IllegalArgumentException("Room quantity cannot be less than " + inProgress + ", because that many are in 'In Progress' issues. Resolve or dispose the issue first.");
+        }
+
         roomEquipment.updateRoomQty(roomId, equipmentId, newQty);
 
         if (oldQty != newQty) {

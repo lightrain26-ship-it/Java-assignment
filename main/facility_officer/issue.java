@@ -205,7 +205,6 @@ public class issue {
             }
         }
 
-        // Lower down the room quantity and the equipment total quantity
         if ("Disposed".equals(newStatus)) {
             roomEquipment.updateRoomQty(iss.getRoomId(), iss.getEquipmentId(), roomQty - iss.getAffected());
         }

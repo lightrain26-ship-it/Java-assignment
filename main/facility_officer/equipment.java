@@ -113,7 +113,7 @@ public class equipment {
     }
 
     // -----------------------------------------------------------------------------------------
-    // Read equipment.txt and turn the row into an equipment object
+    // HELPER METHOD: Read equipment.txt and turn the row into an equipment object
     public static List<equipment> loadequipment() {
         File equipmentFile = new File("data", FileMenu.EQUIPMENT); 
         
@@ -140,8 +140,9 @@ public class equipment {
         return IDGenerator.generateNextID(eFile, logFile, "EQ");
     }
 
-    public static equipment addEquipment(String id, String name, int totalQty, int minQty, String category, List<roomEquipment> assign) {
-        equipment newEquipment = new equipment(id, name, totalQty, minQty, category);
+    //HELPER METHOD: Validation of the new equipment
+    public static void validation(String id, String name, int totalQty, int minQty, String category, List<roomEquipment> assign) {
+        new equipment(id, name, totalQty, minQty, category); // checks name, category and negative numbers
 
         if (totalQty < 1) {
             throw new IllegalArgumentException("Total quantity must be 1 or more.");
@@ -158,7 +159,7 @@ public class equipment {
         int sum = 0;
         List<String> sRm = new ArrayList<>(); // rooms that have already been seen
 
-        for (roomEquipment r : assign) {   
+        for (roomEquipment r : assign) {
             if (!r.getEquipmentId().equals(id)) {
                 throw new IllegalArgumentException("The room row has the wrong equipment Id.");
             }
@@ -173,9 +174,16 @@ public class equipment {
 
             sum += r.getQty();
         }
+
         if (sum != totalQty) {
-            throw new IllegalArgumentException("Quantities in the room must add up to the total quantity");
+            throw new IllegalArgumentException("The room quantities add up to " + sum + ", but the total quantity is " + totalQty + ".");
         }
+    }
+
+    public static equipment addEquipment(String id, String name, int totalQty, int minQty, String category, List<roomEquipment> assign) {
+        validation(id, name, totalQty, minQty, category, assign);
+
+        equipment newEquipment = new equipment(id, name, totalQty, minQty, category);
 
         File equipFile = new File("data", FileMenu.EQUIPMENT);
         File roomFile = new File("data", FileMenu.ROOMEQUIPMENT);

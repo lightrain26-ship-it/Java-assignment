@@ -16,6 +16,7 @@ public class roomEquipment {
     private static final File ROOM_FILE = new File("data", FileMenu.ROOMEQUIPMENT);
     private static final File EQUIPMENT_FILE = new File("data", FileMenu.EQUIPMENT);
     private static final String ROLE = "Facilities Officers";
+    public static final int MAX_QTY = 1000;
 
     private static ArrayList<roomEquipment> rmRows = new ArrayList<>();
 
@@ -65,6 +66,10 @@ public class roomEquipment {
     public void setQty(int qty) {
         if (qty < 0) {
             throw new IllegalArgumentException("Equipments quantity in the room cannot be negative.");
+        }
+
+        if (qty > MAX_QTY) {
+            throw new IllegalArgumentException("Equipments quantity in the room cannot be more than " + MAX_QTY + ".");
         }
         this.qty = qty;
     }
@@ -156,6 +161,10 @@ public class roomEquipment {
     public static void updateRoomQty(String roomId, String equipmentId, int newQty) {
         if (newQty < 0) {
             throw new IllegalArgumentException("Room quantity cannot be negative.");
+        }
+
+        if (newQty > MAX_QTY) {
+            throw new IllegalArgumentException("Room quantity cannot be more than " + MAX_QTY + ".");
         }
 
         List<String[]> rows = CRUD.readFile(ROOM_FILE);
